@@ -1,0 +1,25 @@
+# OS/IDE specific
+/.idea
+.DS_Store
+/.vscode
+
+# Vendor files
+node_modules
+vendor
+
+# Lint results
+eslint-result.html
+stylelint-result.txt
+
+# Log files
+npm-debug.log
+
+# GraphQL Settings
+.graphqlconfig
+schema.graphql
+
+# Testing stuff
+cypress/screenshots
+
+# Gitkeep should always be added
+!.gitkeep
