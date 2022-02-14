@@ -1,8 +1,8 @@
 <template>
   <div id="vue" class="counter">
-      <button @click="subtract()">-</button>
-      <pre>{{ count }}</pre>
-      <button @click="add()">+</button>
+      <button @click="subtract()" class="text-9xl">-</button>
+      <pre class="text-9xl">{{ count }}</pre>
+      <button @click="add()" class="text-9xl">+</button>
   </div>
 </template>
 
@@ -22,3 +22,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '../styles/components/counter';
+</style>
