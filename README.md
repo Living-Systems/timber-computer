@@ -3,7 +3,7 @@
 Timber Computer for Living Systems
 
 ## General
-We use the current node LTS Node version 16.x
+We use the current Node LTS version 16.x
 
 Installing global dependencies, that will be used for all workspaces
 `npm install dependency-123 --save`
