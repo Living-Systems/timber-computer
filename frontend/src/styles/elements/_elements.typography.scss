@@ -2,12 +2,6 @@
   #HEADINGS
 \*------------------------------------*/
 
-// Resetting margin for p
-// We will handle this differently
-p {
-    margin: 0;
-}
-
 h1,
 h2,
 h3,
@@ -15,20 +9,9 @@ h4,
 h5,
 h6 {
     @include text-style('400');
-    font-weight: 400;
+    font-weight: 400; // overwrite browser style
 
     @include respond-to(md) {
         @include text-style('600');
     }
-}
-
-em,
-strong {
-    font-weight: inherit;
-    font-style: normal;
-}
-
-address,
-cite {
-    font-style: normal;
 }
