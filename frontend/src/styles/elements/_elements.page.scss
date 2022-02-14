@@ -1,0 +1,55 @@
+/*------------------------------------*\
+  #PAGE
+\*------------------------------------*/
+
+/**
+ * Page-level styling (e.g. HTML and BODY elements).
+ */
+
+html {
+    // Accessible font size scaling
+    // for all rem units
+    //
+    // Using rem sizes throughout this code base will lead to a relative scaled value
+    // based on the base font size calculation put in place here
+    //
+    // Over time me moved for a more complex but developer friendly implementation
+    // (http://zellwk.com/blog/viewport-based-typography/) to a more accessible and easy
+    // to get solution (https://twitter.com/heydonworks/status/1255462784088891392)
+    //
+    // 1. em or rem does not matter here
+    // 2. em-size should not go much below 1em to keep browser default in sync
+    // 3. Increase or decrease zoom factor to define zoom distinction
+    --baseFontSize: 0.5rem; // [1][2]
+    --fontSizeZoomFactor: 3vw; // [3]
+    font-size: calc(var(--baseFontSize) + var(--fontSizeZoomFactor));
+
+    // Fix for safari bug: Permanent font size scaling fails
+    // https://css-tricks.com/snippets/css/fluid-typography/#comment-1753016
+    // 1. Scope to safari if class is available
+    // 2. 0vw gets stripped in production build
+    &.is-safari { // [1]
+        min-height: 1vw; // [2]
+    }
+
+    // scaling for md
+    @include respond-to(md) {
+        --baseFontSize: 0.7rem; // [1][2]
+        --fontSizeZoomFactor: 0.5vw; // [3]
+    }
+
+    // scaling for lg
+    @include respond-to(lg) {
+        --baseFontSize: 0.2rem; // [1][2]
+        --fontSizeZoomFactor: 1vw; // [3]
+    }
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    @include text-style('default');
+    color: var(--text-default);
+    background-color: var(--bg-default);
+}

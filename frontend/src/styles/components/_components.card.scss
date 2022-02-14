@@ -1,0 +1,28 @@
+/*------------------------------------*\
+  #card
+\*------------------------------------*/
+
+.card {
+    padding: 1rem;
+    background: var(--bg-fond);
+    border-radius: var(--border-radius-m);
+    width: var(--card-w);
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    transform: translate3d(0,0,0) scale(0.98);
+    transition: box-shadow $trans-time--s $trans-func--ease-in-out,
+                transform $trans-time--s $trans-func--ease-in-out,
+                background $trans-time--xs $trans-func--default;
+    cursor: pointer;
+
+    @include respond-to(lg) {
+        cite {
+            @include text-style('400');
+        }
+
+        p {
+            @include text-style('600');
+        }
+    }
+}

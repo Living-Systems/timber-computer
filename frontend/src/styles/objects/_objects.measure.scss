@@ -1,0 +1,16 @@
+/*------------------------------------*\
+  #MEASURE
+\*------------------------------------*/
+
+// Define a max text with based on font size
+
+.measure {
+    max-width: var(--measure);
+
+    h2,
+    h3,
+    h4,
+    p {
+        max-width: var(--measure);
+    }
+}

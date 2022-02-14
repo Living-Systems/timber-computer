@@ -1,0 +1,36 @@
+@use "sass:math";
+
+///*----------------------------------*\
+//  #VARS
+//\*----------------------------------*/
+
+// Static SASS vars for use in components, objects and utilities
+
+// ========================================================= TRANSITIONS
+
+// Transition timing
+$trans-time--xs: 0.125s;
+$trans-time--s: 0.25s;
+$trans-time--m: 0.5s;
+$trans-time--l: 1s;
+$trans-time--xl: 1.5s;
+$trans-time--xxl: 3s;
+$trans-time--modal-in: 0.3s;
+$trans-time--modal-out: 0.25s;
+$trans-time--modal-fade: 0.8s;
+$trans-time--startoff: 1.2s;
+
+// Transition funcs
+$trans-func--default: cubic-bezier(.1,.6,.4,1); /// ease out
+$trans-func--ease-in-out: cubic-bezier(.55,.08,.21,.92);
+$trans-func--ease-out: cubic-bezier(0,.23,.07,1);
+$trans-func--logo: cubic-bezier(.33,.01,.04,.99);
+
+// ========================================================= ASPECT RATIO
+
+// Box ratios
+$portrait-ratio: (math.div(3, 2) * 100%); // 2:3
+// $landscape-ratio: (math.div(3, 4) * 100%); // 4:3
+// $wide-ratio: (math.div(1, 2) * 100%); // 2:1
+// $cube-ratio: 100%;
+

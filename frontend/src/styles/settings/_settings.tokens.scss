@@ -1,0 +1,132 @@
+///*----------------------------------*\
+//  #TOKENS
+//\*----------------------------------*/
+
+// Global design tokens
+
+
+// SIZE SCALE
+//
+// We use a modular scale that powers all the utilities that
+// it is relevant for (text styles/font-size, margin, padding).
+// All items are calculated off these tokens.
+//
+// OUR APPROACH
+// Instead of going into complicated SASS Mixins or Calc operations
+// we use this tool to get the values for a chosen type of scale:
+// https://type-scale.com/
+//
+// NAMING CONVENTION
+// Naming is taken from font weight where a weight of 400 is considered normal
+//
+// This project uses a Major Third scale above 1rem
+// meaning the ratio between values is 1.25
+// Values below are handpicked
+$size-scale: (
+    '25': 0.1rem,
+    '50': 0.25rem,
+    '100': 0.5rem,
+    '200': 0.64rem,
+    '300': 0.8rem,
+    '400': 1rem,
+    '500': 1.25rem,
+    '600': 1.563rem,
+    '700': 1.953rem,
+    '800': 2.441rem,
+    '900': 3.052rem,
+    '1000': 3.815rem,
+    '1100': 4.768rem,
+    '1200': 5.96rem,
+    '1300': 7.451rem,
+    '1400': 9.313rem,
+);
+
+// COLORS
+// Set up a colour palette which allows us
+// to theme the entire project from one location.
+
+// Text colors
+$text-colors: (
+    'default': #000,
+);
+
+// Background colors
+$bg-colors: (
+    'default': #faf9f5,
+    // 'highlight': #f36e22,
+    // 'fond': #efede4,
+);
+
+// Border colors
+$border-colors: (
+    // 'default': #BFBEB7,
+    // 'highlight': #2E1705,
+);
+
+// Border radius
+$border-radius: (
+    's': 0.3rem,
+    'm': 0.8rem,
+);
+
+// TEXT STYLES
+//
+// Get if item in $text-styles matches size from $size-scale
+// font-size is automatically set to this value
+//
+// .usage {
+//   @include text-style(100);
+// }
+//
+$text-styles: (
+    // Default Font Family
+    'default': (
+        font-weight: 400,
+        line-height: 1.333,
+        letter-spacing: -0.03em,
+        font-family: "'My nice Webfont', system, -apple-system, '.SFNSText-Regular', 'San Francisco', 'Roboto', 'Segoe UI', 'Helvetica Neue', sans-serif;", // TODO: Add webfont
+    ),
+
+    // Service Info
+    '100': (
+        letter-spacing: 0,
+    ),
+
+    // Tags
+    '200': (
+        letter-spacing: -0.01em,
+    ),
+
+    // Card Eyebrows - mobile
+    '300': (
+        line-height: 1.4,
+        letter-spacing: -0.02em,
+    ),
+
+    // Body Text Size
+    // XD File: 19pt
+    '400': (
+        line-height: 1.333,
+    ),
+
+    // M
+    // XD File: Not used - mobile
+     '500': (
+         line-height: '1.25',
+     ),
+
+    // M
+    // XD File: 30pt
+    '600': (
+        line-height: '1.2',
+    ),
+
+    // L
+    // XD File: 37pt - mobile
+    '700': (
+        line-height: '1.1',
+    ),
+);
+
+
+

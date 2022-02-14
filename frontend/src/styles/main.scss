@@ -1,34 +1,107 @@
-@tailwind base;
-@tailwind components;
+/*------------------------------------*\
+  #MAIN
+\*------------------------------------*/
+
+/**
+ *
+ * REFERENCE and GUIDELINES
+ * https://github.com/Humans-Machines/styleguide/tree/develop/html-css
+ *
+ *
+ * CONTENTS
+ *
+ * SETTINGS
+ * Define the ground: Design tokens, sizes, other vars
+ * No CSS output here
+ *
+ * TOOLS
+ * Globally used mixins and functions
+ * No CSS output here
+ *
+ * GENERIC
+ * Global resets and normalize styles, box-sizing definition, etc
+ * First layer of the triangle that generates CSS
+ *
+ * VENDOR
+ * Includes of vendor styles for third party components
+ * Try to include only low specificity styles
+ * Add if needed
+ *
+ * ELEMENTS
+ * Styling for bare HTML elements (like H1, A, header, footer, …)
+ * Redefine browser presets to the projects needs and pursued design system
+ *
+ * OBJECTS
+ * Class-based selectors which define composition and undecorated design patterns.
+ * An object (CUBE CSS Methodology: Utility) does one job and does that job well.
+ *
+ * COMPONENTS
+ * Specific UI components which are to complex to be defined by atomic CSS utilities
+ * Uses BEM for naming
+ *
+ * SCOPES
+ * Styling for bare HTML elements in a scoped context
+ * Eg. for Markdown output from CMS
+ *
+ * UTILITIES
+ * Atomic CSS utilities
+ * Included last to also ba able to serve as component modifiers
+ *
+ * DEVELOPMENT
+ * Debugging and Development components and styles
+ *
+ */
+
+// SETTINGS
+@import "settings/settings.tokens"; // TODO: Define Colors and Size Scale
+@import "settings/settings.breakpoints";
+@import "settings/settings.ui";
+@import "settings/settings.z-index";
+@import "settings/settings.vars";
+
+// TOOLS
+@import "tools/tools.functions";
+@import "tools/tools.mixins";
+// @import "tools/tools.animations"; // TODO: Create some animations if needed
+
+// GENERIC
+@import "generic/generic.box-sizing";
+@import "generic/generic.normalize";
+@import "generic/generic.reset";
+
+// VENDOR
+// Add Vendor files if needed
+
+// ELEMENTS
+@import "elements/elements.fontface"; // TODO: Add correct webfont
+@import "elements/elements.root";
+@import "elements/elements.page";
+@import "elements/elements.typography"; // TODO: Define default type styles
+@import "elements/elements.links";
+
+// OBJECTS
+// @import "objects/objects.page-grid";
+@import "objects/objects.cluster";
+@import "objects/objects.flow";
+@import "objects/objects.measure";
+
+// COMPONENTS
+// Component Styles for VUE components should not be listed here
+// TODO: Add custom components if needed
+// @import "components/components.button";
+// @import "components/components.media-box";
+// @import "components/components.card";
+
+// SCOPES
+@import "scopes/scopes.prose";
+
+// UTILITIES
+@import "utilities/utilities.color";
+@import "utilities/utilities.text-styles";
+// @import "utilities/utilities.accessibility"; // TODO: See if we need that
+@import "utilities/utilities.width";
+
+// TAILWIND
+// @tailwind base; // We are not using Tailwind base
+// @tailwind components; // We not using tailwind components
 @tailwind utilities;
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-}
-
-:root {
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
-    font-size: 1rem;
-    --user-font-scale: 1rem - 16px;
-    font-size: clamp(0.875rem, 0.4626rem + 1.0309vw + var(--user-font-scale), 1.125rem);
-}
-
-body {
-    padding: 4rem 2rem;
-    width: 100%;
-    min-height: 100vh;
-    display: grid;
-    justify-content: center;
-    background: #f9fafb;
-    color: #111827;
-}
-
-@media (prefers-color-scheme: dark) {
-    body {
-        background: #111827;
-        color: #fff;
-    }
-}
-
-@import 'pages/home';

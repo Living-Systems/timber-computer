@@ -1,0 +1,24 @@
+/*------------------------------------*\
+  #COLOR
+\*------------------------------------*/
+
+// Adding color utility classes
+// Naming convention based on tailwind
+//
+// Basic classes
+// .bg-default, .p-secondary, etc
+//
+// Optional Responsive classes
+// .md:bg-default, .lg:p-secondary, etc
+
+// Adding bespoke utility classes
+//
+// @mixin token-utilities(
+//      $class-name,
+//      $properties,
+//      $prefixes: md lg,
+//      $token-set: $size-scale)
+
+@include token-utilities('text', color, lg, $text-colors);
+@include token-utilities('bg', background-color, lg, $bg-colors);
+@include token-utilities('border', border-color, lg, $border-colors);

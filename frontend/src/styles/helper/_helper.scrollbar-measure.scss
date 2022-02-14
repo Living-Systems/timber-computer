@@ -1,0 +1,12 @@
+// Define scrollbar with via js
+:root {
+  --scrollbar-width: 0;
+}
+
+.scrollbar-measure {
+  width: 100px;
+  height: 100px;
+  overflow: scroll;
+  position: fixed;
+  top: -9999px;
+}

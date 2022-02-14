@@ -1,0 +1,13 @@
+/*------------------------------------*\
+  #LINKS
+\*------------------------------------*/
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color $trans-time--s $trans-func--default;
+
+    &:hover {
+        color: var(--text-highlight);
+    }
+}

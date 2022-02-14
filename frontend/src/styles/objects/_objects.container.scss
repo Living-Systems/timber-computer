@@ -1,0 +1,12 @@
+/*------------------------------------*\
+  #CONTAINER
+\*------------------------------------*/
+
+// Container width a flexible width to hold the inner grid
+//
+// --container-w is defined in _settings.ui.scss
+.container {
+    width: var(--container-w);
+    margin-left: auto;
+    margin-right: auto;
+}

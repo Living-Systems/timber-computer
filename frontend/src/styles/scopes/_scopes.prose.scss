@@ -1,0 +1,56 @@
+/*------------------------------------*\
+  #PROSE
+\*------------------------------------*/
+
+.prose {
+    word-break: break-word;
+
+    h1,
+    h2 {
+       @include text-style('500');
+    }
+
+    h1,
+    h2 {
+        --flow-space: var(--size-800);
+    }
+
+    h1,
+    h2,
+    h3 {
+        & + p {
+            --flow-space: 0.1rem;
+        }
+    }
+
+    ul {
+        list-style: disc outside;
+    }
+
+    hr {
+        background: none;
+        border: none;
+        --flow-space: var(--size-1200);
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    @include respond-to(md) {
+        h1,
+        h2 {
+            @include text-style('600');
+        }
+
+        h3 {
+            @include text-style('500');
+        }
+
+        h4,
+        h5,
+        h6 {
+            @include text-style('400');
+        }
+    }
+}

@@ -24,5 +24,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/components/counter';
+@import '../styles/components/components.counter';
 </style>

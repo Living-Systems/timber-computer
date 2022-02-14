@@ -1,0 +1,66 @@
+/*------------------------------------*\
+  #FLOW
+\*------------------------------------*/
+
+// Global spacing utility
+// which reduced the pain of spacing individual elements
+//
+// https://every-layout.dev/layouts/stack/
+// https://24ways.org/2018/managing-flow-and-rhythm-with-css-custom-properties/
+//
+// 1. Class for parents with spaced children
+// 2. Flex declaration lets us group elements to the top and bottom
+// of the vertical space with a margin-bottom: auto on a child.
+// 3. Define specific margins via custom properties
+// 4. Spaced children: All but the first get a top margin
+.flow-25, // [1]
+.flow-50, // [1]
+.flow-100, // [1]
+.flow-200,
+.flow-300,
+.flow-400,
+.flow-500,
+.flow-600,
+.flow-700,
+.flow-800,
+.flow-900,
+.flow-1000,
+.flow-1100,
+.flow-1200,
+.flow-section {
+    display: flex; // [2]
+    flex-direction: column; // [2]
+    justify-content: flex-start;
+}
+
+.flow-25 > * + *, // [4]
+.flow-50 > * + *, // [4]
+.flow-100 > * + *, // [4]
+.flow-200 > * + *,
+.flow-300 > * + *,
+.flow-400 > * + *,
+.flow-500 > * + *,
+.flow-600 > * + *,
+.flow-700 > * + *,
+.flow-800 > * + *,
+.flow-900 > * + *,
+.flow-1000 > * + *,
+.flow-1100 > * + *,
+.flow-1200 > * + * {
+    margin-top: var(--flow-space);
+}
+
+.flow-25 > * + *  { --flow-space: #{map-get($size-scale, "25")};} // [3]
+.flow-50 > * + *  { --flow-space: #{map-get($size-scale, "50")};} // [3]
+.flow-100 > * + *  { --flow-space: #{map-get($size-scale, "100")};} // [3]
+.flow-200 > * + *  { --flow-space: #{map-get($size-scale, "200")};} // [3]
+.flow-300 > * + *  { --flow-space: #{map-get($size-scale, "300")};} // [3]
+.flow-400 > * + *  { --flow-space: #{map-get($size-scale, "400")};} // [3]
+.flow-500 > * + *  { --flow-space: #{map-get($size-scale, "500")};} // [3]
+.flow-600 > * + *  { --flow-space: #{map-get($size-scale, "600")};} // [3]
+.flow-700 > * + *  { --flow-space: #{map-get($size-scale, "700")};} // [3]
+.flow-800 > * + *  { --flow-space: #{map-get($size-scale, "800")};} // [3]
+.flow-900 > * + *  { --flow-space: #{map-get($size-scale, "900")};} // [3]
+.flow-1000 > * + *  { --flow-space: #{map-get($size-scale, "1000")};} // [3]
+.flow-1100 > * + *  { --flow-space: #{map-get($size-scale, "1100")};} // [3]
+.flow-1200 > * + *  { --flow-space: #{map-get($size-scale, "1200")};} // [3]

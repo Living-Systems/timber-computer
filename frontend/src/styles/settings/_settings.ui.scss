@@ -1,0 +1,48 @@
+///*----------------------------------*\
+//  #UI
+//\*----------------------------------*/
+
+// Project-level settings and setup for custom properties dealing with the ui
+//
+// The $ui-props map will automatically be output as custom properties in the :root styles
+// -> ./elements/_elements.root.scss
+
+$ui-props: (
+    // default values
+    'default': (
+        // Body padding/margin
+        'body-p': 0.6rem,
+
+        // Default definition for .page-grid
+        'grid-rows': 16,
+
+        // Default gap for width classes
+        // Will be set to --column-gap if inside .cluster
+        // Apparently needs to have a px value
+        'cluster-gap': 0px,
+
+        // cards
+        'card-w': 17rem,
+        'card-ratio': 1.5,
+
+        // measure for max line length
+        'measure': 38ex,
+    ),
+
+    // breakpoint md values
+    'md': (
+        // specific overwrites here
+
+        // Body padding/margin
+        'body-p': 0.8rem,
+
+        // cards
+        'card-w': 20rem,
+    ),
+
+    // breakpoint lg values
+    'lg': (
+        // cards
+        'card-w': 28rem,
+    ),
+);

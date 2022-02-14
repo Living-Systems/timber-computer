@@ -1,0 +1,42 @@
+/*------------------------------------*\
+  #FONTFACE
+\*------------------------------------*/
+
+//
+// 1. Prevent FOIT - https://web.dev/font-display/
+// font-display: fallback; -> Acts as a compromise between the auto and swap values.
+// The browser will hide the text for about 100ms and, if the font has not yet been downloaded,
+// will use the fallback text. It will swap to the new font after it is downloaded,
+// but only during a short swap period (probably 3 seconds).
+
+// 1. swap
+// swap gives the font face a zero second block period and an infinite swap period.
+// This means the browser draws text immediately with a fallback if the font face
+// isn’t loaded, but swaps the font face in as soon as it loads. Similar to block,
+// this value should only be used when rendering text in a particular font is
+// important for the page, but rendering in any font will still get a correct
+// message across. Logo text is a good candidate for swap since displaying a
+// company’s name using a reasonable fallback will get the message across but
+// you’d eventually use the official typeface.
+
+// 1. block
+// block gives the font face a short block period (3s is recommended in most cases)
+// and an infinite swap period. In other words, the browser draws "invisible" text
+// at first if the font is not loaded, but swaps the font face in as soon as it loads.
+// To do this the browser creates an anonymous font face with metrics similar to the
+// selected font but with all glyphs containing no "ink." This value should only be
+// used if rendering text in a particular typeface is required for the page to be useable.
+
+// 2. Subset Unicode range to decrease file size
+// https://markoskon.com/creating-font-subsets/
+
+// Fallback static fonts
+/*
+@font-face {
+    font-family: 'Atak';
+    src: url('../fonts/AtakRegular.woff2') format('woff2'),
+    url('../fonts/AtakRegular.woff') format('woff');
+    font-weight: 200;
+    font-display: fallback; // [1]
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2212, U+2215, U+FEFF; // [2]
+}*/

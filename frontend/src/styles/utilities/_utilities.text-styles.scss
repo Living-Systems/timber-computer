@@ -1,0 +1,27 @@
+/*------------------------------------*\
+  #TEXT-STYLES
+\*------------------------------------*/
+
+// Utilities for text layout formats
+@each $name in map-keys($text-styles) {
+    .text-style-#{$name} {
+        // @include responsive-selector(true, md) {
+            @include text-style($name);
+        // }
+    }
+}
+
+// Reduce big sizes for small breakpoint
+/* if needed
+.text-style-700 {
+    @include respond-to(sm-only) {
+        @include text-style('600');
+    }
+}
+
+.text-style-800 {
+    @include respond-to(sm-only) {
+        @include text-style('600');
+    }
+}*/
+
