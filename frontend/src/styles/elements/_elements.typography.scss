@@ -8,10 +8,10 @@ h3,
 h4,
 h5,
 h6 {
-    @include text-style('400');
     font-weight: 400; // overwrite browser style
+    @include text-style('600');
 
     @include respond-to(md) {
-        @include text-style('600');
+        // @include text-style('600');
     }
 }

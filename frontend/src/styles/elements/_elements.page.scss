@@ -20,28 +20,29 @@ html {
     // 1. em or rem does not matter here
     // 2. em-size should not go much below 1em to keep browser default in sync
     // 3. Increase or decrease zoom factor to define zoom distinction
-    --baseFontSize: 0.5rem; // [1][2]
-    --fontSizeZoomFactor: 3vw; // [3]
-    font-size: calc(var(--baseFontSize) + var(--fontSizeZoomFactor));
+    --baseFontSize: 0.9rem; // [1][2]
+    --fontSizeZoomFactor: 0.7vw; // [3]
+    --maxFontSize: 3rem; // [3]
+    font-size: min(var(--baseFontSize) + var(--fontSizeZoomFactor), var(--maxFontSize));
 
     // Fix for safari bug: Permanent font size scaling fails
     // https://css-tricks.com/snippets/css/fluid-typography/#comment-1753016
     // 1. Scope to safari if class is available
     // 2. 0vw gets stripped in production build
-    &.is-safari { // [1]
+    // &.is-safari { // [1]
         min-height: 1vw; // [2]
-    }
+    // }
 
     // scaling for md
     @include respond-to(md) {
-        --baseFontSize: 0.7rem; // [1][2]
-        --fontSizeZoomFactor: 0.5vw; // [3]
+        // --baseFontSize: 0.7rem; // [1][2]
+        // --fontSizeZoomFactor: 0.5vw; // [3]
     }
 
     // scaling for lg
     @include respond-to(lg) {
-        --baseFontSize: 0.2rem; // [1][2]
-        --fontSizeZoomFactor: 1vw; // [3]
+        // --baseFontSize: 0.2rem; // [1][2]
+        // --fontSizeZoomFactor: 1vw; // [3]
     }
 }
 

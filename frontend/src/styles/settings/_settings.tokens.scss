@@ -20,25 +20,18 @@
 // Naming is taken from font weight where a weight of 400 is considered normal
 //
 // This project uses a Major Third scale above 1rem
-// meaning the ratio between values is 1.25
+// meaning the ratio between values is 1.333
 // Values below are handpicked
 $size-scale: (
     '25': 0.1rem,
-    '50': 0.25rem,
-    '100': 0.5rem,
-    '200': 0.64rem,
-    '300': 0.8rem,
-    '400': 1rem,
-    '500': 1.25rem,
-    '600': 1.563rem,
-    '700': 1.953rem,
-    '800': 2.441rem,
-    '900': 3.052rem,
-    '1000': 3.815rem,
-    '1100': 4.768rem,
-    '1200': 5.96rem,
-    '1300': 7.451rem,
-    '1400': 9.313rem,
+    '50': 0.2rem,
+    '100': 0.4rem,
+    '200': 0.563rem,   // Label 13px
+    '300': 0.75rem,
+    '400': 1rem,       // Base/Copy 24px
+    '500': 1.333rem,
+    '600': 1.777rem,   // H1 40px
+    '700': 2.369rem,
 );
 
 // COLORS
@@ -82,48 +75,25 @@ $text-styles: (
     // Default Font Family
     'default': (
         font-weight: 400,
-        line-height: 1.333,
-        letter-spacing: -0.03em,
+        line-height: 1.2,
         font-family: "'My nice Webfont', system, -apple-system, '.SFNSText-Regular', 'San Francisco', 'Roboto', 'Segoe UI', 'Helvetica Neue', sans-serif;", // TODO: Add webfont
     ),
 
-    // Service Info
-    '100': (
-        letter-spacing: 0,
-    ),
-
-    // Tags
+    // Label
+    // Figma File: 13pt
     '200': (
-        letter-spacing: -0.01em,
-    ),
-
-    // Card Eyebrows - mobile
-    '300': (
-        line-height: 1.4,
-        letter-spacing: -0.02em,
+        line-height: '1.25',
     ),
 
     // Body Text Size
-    // XD File: 19pt
+    // Figma File: 24pt
     '400': (
-        line-height: 1.333,
+        // line-height: 1.2,
     ),
 
-    // M
-    // XD File: Not used - mobile
-     '500': (
-         line-height: '1.25',
-     ),
-
-    // M
-    // XD File: 30pt
+    // H1
+    // Figma File: 40pt
     '600': (
-        line-height: '1.2',
-    ),
-
-    // L
-    // XD File: 37pt - mobile
-    '700': (
         line-height: '1.1',
     ),
 );
