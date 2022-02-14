@@ -7,11 +7,7 @@
 
     h1,
     h2 {
-       @include text-style('500');
-    }
-
-    h1,
-    h2 {
+        @include text-style('600');
         --flow-space: var(--size-800);
     }
 
@@ -35,22 +31,5 @@
 
     a {
         text-decoration: underline;
-    }
-
-    @include respond-to(md) {
-        h1,
-        h2 {
-            @include text-style('600');
-        }
-
-        h3 {
-            @include text-style('500');
-        }
-
-        h4,
-        h5,
-        h6 {
-            @include text-style('400');
-        }
     }
 }
