@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Timber Computer for Living Systems",
   "main": "index.js",
+  "engines" : {
+    "npm" : ">=8.0.0",
+    "node" : ">=16.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
