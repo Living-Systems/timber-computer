@@ -29,5 +29,9 @@
     "Sebastian Schaefer <sebastian@humans-machines.com>",
     "Tim Jungmann <tim@humans-machines.com>",
     "Adrian Bahr <adrian@humans-machines.com>"
+  ],
+  "workspaces": [
+    "./frontend/",
+    "./backend/"
   ]
 }
