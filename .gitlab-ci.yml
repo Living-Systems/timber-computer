@@ -1,0 +1,25 @@
+stages:
+    - deploy
+
+# deploy kepler
+build:
+    stage: deploy
+    only:
+        variables:
+            - $CI_COMMIT_MESSAGE =~ /\[deploy-kepler\]/
+    tags:
+        - kepler
+        - www
+    script:
+        - cd /var/www/timber-computer
+        - git fetch
+        - git checkout $CI_COMMIT_REF_NAME
+        - git pull
+        - nvm use 16
+        - npm install
+        - cd frontend/
+        - npm run build
+    artifacts:
+        paths:
+            - dist/
+
