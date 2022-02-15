@@ -16,6 +16,9 @@ $ui-props: (
         // Default definition for .page-grid
         'grid-rows': 16,
 
+        // Default gap for columns
+        'column-gap': 0.6rem,
+
         // Default gap for width classes
         // Will be set to --column-gap if inside .cluster
         // Apparently needs to have a px value
