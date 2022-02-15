@@ -12,6 +12,7 @@ build:
         - www
     script:
         - cd /var/www/timber-computer
+        - source ~/.bashrc
         - git fetch
         - git checkout $CI_COMMIT_REF_NAME
         - git pull
