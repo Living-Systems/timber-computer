@@ -1,6 +1,7 @@
 stages:
     - deploy
 
+# deploy kepler
 build:
     stage: deploy
     only:
@@ -21,3 +22,4 @@ build:
     artifacts:
         paths:
             dist/
+
