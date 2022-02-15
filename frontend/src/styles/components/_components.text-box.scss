@@ -14,29 +14,19 @@
 
 // media box containing images or videos
 // by default aspect ratio is defined by content
-.media-box {
-    position: relative; // [1]
-    overflow: hidden; // [2]
-
-    img,
-    video {
-        width: 100%;
-    }
-}
 
 
-// media boxes with aspect ratios have a specific ratio
-.media-box--portrait {
-    @include aspect-ratio($portrait-ratio);
+.text-box--s,
+.text-box--m {
+    @include text-style('600');
+    @include smoked-glass;
+    padding: 1rem;
+};
 
-    img,
-    video {
-        width: calc(100% + 2px);
-        height: calc(100% + 2px);
-        position: absolute;
-        top: 0;
-        left: 0;
-        object-fit: cover;
-        object-position: 50% 50%;
-    }
-}
+.text-box--s{
+    @include border-radius('s');
+};
+
+.text-box--m{
+    @include border-radius('m');
+};

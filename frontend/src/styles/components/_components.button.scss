@@ -13,14 +13,17 @@
 // 7. Make buttons inherit font colors (often necessary when styling `a`s as buttons).
 //
 
-$_btn-h: 2rem;
+// * Big Round Buttons
+
+$_btn-h: 6rem;
 $_btn-p: 1rem;
 
 .btn {
-    display: inline-block; // [1]
-    vertical-align: middle; // [2]
+    height: 12rem;
+    display: flex; // [1]
+    justify-content: center; // [2]
     font: inherit; // [3]
-    text-align: center; // [4]
+    align-items: center; // [4]
     cursor: pointer; // [5]
     color: inherit; // [6]
     outline: none; // [4]
@@ -29,9 +32,8 @@ $_btn-p: 1rem;
     appearance: none; // [7]
     white-space: nowrap; // [8]
 
-    @include text-style('400');
-    background-color: var(--bg-highlight);
-    padding: 0 $_btn-p;
+    @include text-style('600');
+    @include smoked-glass;
     line-height: $_btn-h;
     border-radius: $_btn-h;
 }

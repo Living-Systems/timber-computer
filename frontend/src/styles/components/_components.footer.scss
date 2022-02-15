@@ -1,0 +1,20 @@
+.footer{
+    height: 2.7rem;
+    padding: var(--body-p);
+    @include smoked-glass;
+    width:100%;
+    @include text-style('200');
+}
+
+.footer__scale{
+    display:flex;
+    justify-content: space-between;
+    line-height: 1.4rem;
+    vertical-align:baseline;
+};
+
+.footer__scale li {
+    width: calc(((100vw - (2 * var(--body-p))) / 12) - 0.2rem);
+    border-top: 0.2rem solid var(--text-default);
+    border-radius: 2px;
+};

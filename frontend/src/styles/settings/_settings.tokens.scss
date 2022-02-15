@@ -40,26 +40,27 @@ $size-scale: (
 
 // Text colors
 $text-colors: (
-    'default': #000,
+    'default': #fff,
+    'alternate': #000
 );
 
 // Background colors
 $bg-colors: (
-    'default': #faf9f5,
+    'default': #000,
     // 'highlight': #f36e22,
     // 'fond': #efede4,
 );
 
 // Border colors
 $border-colors: (
-    // 'default': #BFBEB7,
+    'default': #fff,
     // 'highlight': #2E1705,
 );
 
 // Border radius
 $border-radius: (
-    's': 0.3rem,
-    'm': 0.8rem,
+    's': 0.2rem,
+    'm': 0.5rem,
 );
 
 // TEXT STYLES

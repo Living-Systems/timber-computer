@@ -1,0 +1,27 @@
+body{
+    background: url('/Users/timjungmann/Documents/timber-computer/frontend/public/assets/1376-Shenzhen-Natural-History-Museum_X-Bonus-05-evening_1800.jpeg') no-repeat center / cover;
+}
+
+.content-box{
+    position: relative;
+    padding: var(--body-p);
+};
+
+.content-box__header{
+    height:2.4rem;
+}
+
+.content-box__header ul{
+    @include text-style('200');
+    color: var(--text-alternate);
+    display: flex;
+    justify-content: space-between;
+};
+
+.no-footer{
+    height: 100vh;
+}
+
+.has-footer{
+    height: calc(100vh - 2.7rem);
+}

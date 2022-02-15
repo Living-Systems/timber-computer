@@ -36,7 +36,7 @@
 
 // Add vertical spacing
 .cluster--y-gap {
-    --cluster-y-gap: var(--column-gap, 1rem);
+    --cluster-y-gap: var(--column-gap, 0.6rem);
     margin-top: calc(var(--cluster-y-gap) * 0.5 * -1);
     margin-bottom: calc(var(--cluster-y-gap) * 0.5 * -1);
 }

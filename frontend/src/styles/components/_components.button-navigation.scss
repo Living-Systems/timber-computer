@@ -1,0 +1,11 @@
+.button-container {
+    width:calc(100vw - (var(--body-p) * 2));
+    position:absolute;
+    bottom:var(--body-p);
+}
+
+.button-container ul {
+    display: grid;
+    grid-gap: var(--body-p);
+    grid-template-columns: 1fr 1fr;
+}

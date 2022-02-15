@@ -9,6 +9,18 @@
 
 // Global mixins available to the entire project.
 
+// Mixin for blurry smoked glass look
+@mixin smoked-glass {
+    background: rgba(59, 55, 55, 0.3);
+    backdrop-filter: blur(20px);
+}
+
+// Mixin for blurry clear glass look
+@mixin clear-glass {
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+}
+
 // Mixin for input placeholder styling
 @mixin placeholder() {
     ::placeholder {

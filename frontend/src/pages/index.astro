@@ -1,9 +1,13 @@
 ---
 // Component Imports
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Tour from '../components/Tour.astro';
+
+
 // You can import components from any supported Framework here!
-import VueCounter from '../components/VueCounter.vue';
+// import Index from './index.vue';
+import ButtonNavigation from '../components/ButtonNavigation.vue'
+import Footer from '../components/Footer.vue';
+import Welcome from '../components/Welcome.vue';
 
 // Component Script:
 // You can write any JavaScript/TypeScript that you'd like here.
@@ -18,25 +22,12 @@ let title = 'My Astro Site';
 
 <!-- Use defined layout component like in vue -->
 <BaseLayout title={ title }>
-	<header>
-		<div>
-			<img width="60" height="80" src="/assets/logo.svg" alt="Astro logo">
-			<h1>Welcome to <a href="https://astro.build/">Astro</a></h1>
-		</div>
-	</header>
 
-	<Tour />
+    <div slot="main">
+        <Welcome/>
+        <ButtonNavigation/>
+    </div>
 
-	<!--
-
-	You can also use imported framework components directly in your markup!
-
-	Note: by default, these components are NOT interactive on the client.
-	The `:visible` directive tells Astro to make it interactive.
-
-	See https://docs.astro.build/core-concepts/component-hydration/
-
-	-->
-
-	<VueCounter client:visible />
+    <Footer slot="footer"/>
+	
 </BaseLayout>

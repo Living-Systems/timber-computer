@@ -10,10 +10,25 @@ const { title } = Astro.props;
         <title>{ title }</title>
 	    <link rel="stylesheet" type="text/css"  href={Astro.resolve('../styles/main.scss')} />
 	</head>
+
 	<body>
-		<main>
-			<!-- Content goes here -->
-			<slot />
-		</main>
+        <div class="content-box has-footer">
+            <header>
+                <nav class="content-box__header">
+                    <ul>
+                        <li>TIMBER COMPUTER</li>
+                        <li>LEARN →</li>
+                    </ul>
+                </nav>
+                <!-- <h1>TIMBER COMPUTER</h1> -->
+            </header>
+            <main>
+                <slot name="main"/>
+            </main>
+        </div>
+
+        <slot name="footer" />
+
+        <!-- <footer> -->
 	</body>
 </html>
