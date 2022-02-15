@@ -13,9 +13,10 @@ build:
     script:
         - cd /var/www/timber-computer
         - source ~/.bashrc
+        - git stash -u
         - git fetch
         - git checkout $CI_COMMIT_REF_NAME
-        - git pull
+        - git pull -X theirs
         - nvm use 16
         - npm install
         - cd frontend/
