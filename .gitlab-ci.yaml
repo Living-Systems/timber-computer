@@ -1,7 +1,7 @@
 stages:
     - deploy
 
-# deploy kepler
+## deploy kepler
 build:
     stage: deploy
     only:
@@ -22,5 +22,5 @@ build:
         - npm run build
     artifacts:
         paths:
-            dist/
+            - dist/
 
