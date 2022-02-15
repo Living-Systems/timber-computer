@@ -1,10 +1,10 @@
 .button-container {
-    width:calc(100vw - (var(--body-p) * 2));
-    position:absolute;
+    width:calc(100vw - (var(--body-p) * 2)); // @todo tim: use of 100vw mostly is a bad idea – maybe 100%, but I think you might not need a with at all …
+    position:absolute; // … because we do not need the absolute position here … better a flex or grid on parent level
     bottom:var(--body-p);
 }
 
-.button-container ul {
+.button-container ul { // @todo tim: might be simpler to just use a .cluster with .cluster--stretched
     display: grid;
     grid-gap: var(--body-p);
     grid-template-columns: 1fr 1fr;
