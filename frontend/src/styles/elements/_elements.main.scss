@@ -1,0 +1,10 @@
+/*------------------------------------*\
+  #Main
+\*------------------------------------*/
+
+main {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100% - var(--header-h) - var(--size-200));
+    margin-top: var(--size-200);
+}

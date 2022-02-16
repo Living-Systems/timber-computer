@@ -13,6 +13,12 @@ $ui-props: (
         // Body padding/margin
         'body-p': 0.6rem,
 
+        // box
+        'box-p': 1rem,
+
+        // main
+        'header-h': 3rem,
+
         // Default definition for .page-grid
         'grid-rows': 16,
 
@@ -27,9 +33,6 @@ $ui-props: (
         // subnav
         'subnav-item-h': 2.8rem,
         'subnav-item-p': 1rem,
-
-        // box
-        'box-p': 1rem,
 
         // measure for max line length
         'measure': 44ex,
