@@ -37,14 +37,14 @@
  *
  * 1. Force all items on one line
  * 2. Make all items the same width
- *    flex-grow: 1; makes flex-basis: 0%;
+ *    flex: 1; makes flex-basis: 0%;
  *    https://css-tricks.com/equal-columns-with-flexbox-its-more-complicated-than-you-might-think/
  */
 .cluster--stretched {
     flex-wrap: nowrap; // [1]
 
     > * {
-        flex-grow: 1; // [2]
+        flex: 1; // [2]
     }
 }
 
