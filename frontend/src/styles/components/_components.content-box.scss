@@ -3,16 +3,16 @@ body{
 }
 
 .content-box{
-    position: relative;
-    padding: var(--body-p);
+    // position: relative;
+    // padding: var(--body-p);
 };
 
 .content-box__header{
-    height:2.4rem;
+    // height:2.4rem;
 }
 
-.content-box__header ul{
-    @include text-style('200');
+.content-box__header ul {
+    // @include text-style('200');
     color: var(--text-alternate);
     display: flex;
     justify-content: space-between;

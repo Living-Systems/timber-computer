@@ -28,6 +28,8 @@ module.exports = {
             '500': 'var(--size-500)',
             '600': 'var(--size-600)',
             '700': 'var(--size-700)',
+            'body': 'var(--body-p)',
+            'auto': 'auto',
         },
         minHeight: {
             // '0': '0',

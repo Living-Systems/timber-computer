@@ -18,3 +18,36 @@
     border-top: 0.2rem solid var(--text-default);
     border-radius: 2px;
 };
+
+.subnav {
+    @include smoked-glass;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    li {
+        position: relative;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 0.2rem;
+            background: currentColor;
+        }
+    }
+}
+
+.subnav__item-title {
+    position: absolute;
+    top: 0.4rem;
+    left: 0;
+    opacity: 0;
+
+    .subnav__item:hover & {
+        opacity: 1;
+    }
+}
