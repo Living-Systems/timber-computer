@@ -24,7 +24,11 @@ $ui-props: (
         // Apparently needs to have a px value
         'cluster-gap': 0px,
 
-        // cards
+        // subnav
+        'subnav-item-h': 2.8rem,
+        'subnav-item-p': 1rem,
+
+        // cards // todo remove
         'card-w': 17rem,
         'card-ratio': 1.5,
 
@@ -37,15 +41,9 @@ $ui-props: (
         // specific overwrites here
 
         // Body padding/margin
-        'body-p': 0.8rem,
+        'body-p': 1rem,
 
         // cards
         'card-w': 20rem,
-    ),
-
-    // breakpoint lg values
-    'lg': (
-        // cards
-        'card-w': 28rem,
     ),
 );
