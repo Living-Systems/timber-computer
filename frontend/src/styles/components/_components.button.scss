@@ -18,8 +18,7 @@
 $_big-btn-h: 7rem;
 $_big-btn-p: 1rem;
 
-.big-btn {
-    height: 14rem;
+.btn {
     display: flex; // [1]
     justify-content: center; // [2]
     font: inherit; // [3]
@@ -31,11 +30,14 @@ $_big-btn-p: 1rem;
     background: none; // [4]
     appearance: none; // [7]
     white-space: nowrap; // [8]
-
-    @include text-style('600');
     @include smoked-glass;
-    line-height: $_big-btn-h;
-    border-radius: $_big-btn-h;
+    padding: 0.4rem;
+}
+
+.btn--xl {
+    @include text-style('600');
+    height: var(--btn-xl-h);
+    border-radius: calc(var(--btn-xl-h) / 2);
 }
 
 // * Small boxy Buttons for component navigation

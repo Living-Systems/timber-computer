@@ -1,7 +1,11 @@
 <template>
-    <ul class="cluster cluster--stretched my-body">
-        <li class="big-btn">Compute</li>
-        <li class="big-btn">Learn</li>
-    </ul>
+    <nav class="cluster cluster--stretched pt-300">
+        <a href="/configurator" class="btn btn--xl">
+            <span>Compute</span>
+        </a>
+        <a href="/learn" class="btn btn--xl">
+            <span>Learn</span>
+        </a>
+    </nav>
 </template>
 

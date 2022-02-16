@@ -10,14 +10,13 @@
 $ui-props: (
     // default values
     'default': (
-        // Body padding/margin
+        // Layout element sizes
         'body-p': 0.6rem,
-
-        // box
         'box-p': 1rem,
-
-        // main
         'header-h': 3rem,
+
+        // buttons
+        'btn-xl-h': 14rem,
 
         // Default definition for .page-grid
         'grid-rows': 16,
