@@ -17,8 +17,9 @@
 //      $class-name,
 //      $properties,
 //      $prefixes: md lg,
-//      $token-set: $size-scale)
+//      $token-set: $size-scale
+//      $custom-property: true // Use custom properties as values, also create custom properties in :root!
 
-@include token-utilities('text', color, lg, $text-colors);
-@include token-utilities('bg', background-color, lg, $bg-colors);
-@include token-utilities('border', border-color, lg, $border-colors);
+@include token-utilities('text', color, lg, $text-colors, true);
+@include token-utilities('bg', background-color, lg, $bg-colors, true);
+@include token-utilities('border', border-color, lg, $border-colors, true);

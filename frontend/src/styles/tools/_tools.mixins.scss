@@ -484,14 +484,19 @@
 /// @param {list} $properties - The properties to be set with the size value
 /// @param {list} $prefixes [md lg] - The the list of default breakpoint prefixes
 /// @param {map} $token-set [$size-scale] - Alternate map for utility creation
-@mixin token-utilities($class-name, $properties, $prefixes: md lg, $token-set: $size-scale) {
+/// @param {bool} $custom-property [false] - Use custom property as setting
+@mixin token-utilities($class-name, $properties, $prefixes: md lg, $token-set: $size-scale, $custom-property: false) {
     // Loop through token set
     @each $name in map-keys($token-set) {
         // Create class with size suffix
         .#{$class-name}-#{$name} {
             // Add property with value
             @each $property in $properties {
-                #{$property}: map-get($token-set, $name);
+                @if ($custom-property == false) {
+                    #{$property}: map-get($token-set, $name);
+                } @else {
+                    #{$property}: var(--#{$class-name}-#{$name});
+                }
             }
         }
     }
@@ -509,7 +514,11 @@
                     .#{$prefix}\:#{$class-name}-#{$name} {
                         // Add property with value
                         @each $property in $properties {
-                            #{$property}: map-get($token-set, $name);
+                            @if ($custom-property == false) {
+                                #{$property}: map-get($token-set, $name);
+                            } @else {
+                                #{$property}: var(--#{$class-name}-#{$name});
+                            }
                         }
                     }
                 }
