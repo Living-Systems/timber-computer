@@ -7,6 +7,8 @@
  */
 
 html {
+    height: 100%;
+
     // Accessible font size scaling
     // for all rem units
     //
@@ -47,6 +49,7 @@ html {
 }
 
 body {
+    height: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
