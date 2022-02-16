@@ -10,8 +10,9 @@ h5,
 h6 {
     font-weight: 400; // overwrite browser style
     @include text-style('600');
+    max-width: var(--measure); // force max line-length
+}
 
-    @include respond-to(md) {
-        // @include text-style('600');
-    }
+p {
+    max-width: var(--measure); // force max line-length
 }
