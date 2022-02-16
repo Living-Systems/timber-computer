@@ -1,0 +1,12 @@
+/*------------------------------------*\
+  #glass
+\*------------------------------------*/
+
+// Utilities to add a glass effect
+.smoked-glass {
+    @include smoked-glass;
+}
+
+.clear-glass {
+    @include clear-glass;
+}

@@ -1,19 +1,6 @@
 /*------------------------------------*\
-  #MEDIA-BOX
+  #MEDIA-BOX TODO @Tim: probably not gonna need it like this
 \*------------------------------------*/
-
-/**
- * Provide a media container in order to display media (usually images)
- * cropped to certain ratios and provide a placeholder box while images
- * are still loading
- *
- * 1. Set up a positioning context in which the image can sit.
- * 2. This is the crucial part: where the cropping happens.
- * 3. Show a background style before lazy images are shown
- */
-
-// media box containing images or videos
-// by default aspect ratio is defined by content
 
 // smoked glass style boxes for text
 
@@ -23,11 +10,11 @@
     @include smoked-glass;
 };
 
-.smoke-box--sm{
+.smoke-box--sm {
     @include border-radius('sm');
 };
 
-.smoke-box--md{
+.smoke-box--md {
     @include border-radius('md');
 };
 
@@ -39,10 +26,10 @@
     @include clear-glass;
 };
 
-.clear-box--sm{
+.clear-box--sm {
     @include border-radius('sm');
 };
 
-.clear-box--md{
+.clear-box--md {
     @include border-radius('md');
 };

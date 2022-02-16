@@ -29,6 +29,7 @@ module.exports = {
             '600': 'var(--size-600)',
             '700': 'var(--size-700)',
             'body': 'var(--body-p)',
+            'box': 'var(--box-p)',
             'auto': 'auto',
         },
         minHeight: {

@@ -19,5 +19,5 @@
     @include create-custom-properties($border-colors, false, 'border-');
 
     // Add border radius
-    @include create-custom-properties($border-radius, false, 'border-radius-');
+    @include create-custom-properties($border-radius, false, 'radius-');
 }
