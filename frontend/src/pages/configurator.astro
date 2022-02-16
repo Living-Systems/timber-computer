@@ -5,9 +5,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 // You can import components from any supported Framework here!
 // import Index from './index.vue';
-import ButtonNavigation from '../components/ButtonNavigation.vue'
 import SubNav from '../components/SubNav.vue'
-import Welcome from '../components/Welcome.vue';
+
+import LiveGraph from '../components/LiveGraph.vue';
+import BuildingComponents from '../components/BuildingComponents.vue';
 
 // Component Script:
 // You can write any JavaScript/TypeScript that you'd like here.
@@ -28,9 +29,9 @@ let title = 'My Astro Site';
     </div>
 
     <main slot="main" class="flex flex-col p-body">
-        <Welcome/>
-        <div class="mt-auto">
-            <ButtonNavigation/>
+        <div class="flex justify-between">
+            <BuildingComponents/>
+            <LiveGraph/>
         </div>
     </main>
 

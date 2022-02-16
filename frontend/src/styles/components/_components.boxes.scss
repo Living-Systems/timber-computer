@@ -15,18 +15,34 @@
 // media box containing images or videos
 // by default aspect ratio is defined by content
 
+// smoked glass style boxes for text
 
-.text-box--s,
-.text-box--m {
+.smoke-box--sm,
+.smoke-box--md {
     @include text-style('600');
     @include smoked-glass;
-    padding: 1rem;
 };
 
-.text-box--s{
-    @include border-radius('s');
+.smoke-box--sm{
+    @include border-radius('sm');
 };
 
-.text-box--m{
-    @include border-radius('m');
+.smoke-box--md{
+    @include border-radius('md');
+};
+
+// clear glass style boxes for building components
+
+.clear-box--sm,
+.clear-box--md {
+    @include text-style('600');
+    @include clear-glass;
+};
+
+.clear-box--sm{
+    @include border-radius('sm');
+};
+
+.clear-box--md{
+    @include border-radius('md');
 };

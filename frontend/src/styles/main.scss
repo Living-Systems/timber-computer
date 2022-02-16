@@ -53,7 +53,7 @@
  */
 
 // SETTINGS
-@import "settings/settings.tokens"; // TODO: Define Colors and Size Scale
+@import "settings/settings.tokens";
 @import "settings/settings.breakpoints";
 @import "settings/settings.ui";
 @import "settings/settings.z-index";
@@ -89,9 +89,11 @@
 // Component Styles for VUE components should not be listed here
 // TODO: Add custom components if needed
 @import "components/components.content-box";
+@import "components/components.live-graph";
+@import "components/components.building-components";
 @import "components/components.subnav";
 @import "components/components.button";
-@import "components/components.text-box";
+@import "components/components.boxes";
 // @import "components/components.card";
 
 // SCOPES

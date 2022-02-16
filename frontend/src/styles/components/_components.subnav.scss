@@ -37,6 +37,7 @@
             right: 0;
             height: 0.2rem;
             background: currentColor;
+            border-radius: var(--border-radius-sm);
         }
     }
 }
@@ -46,8 +47,16 @@
     top: 0.4rem;
     left: 0;
     opacity: 0;
+    white-space: nowrap;
 
     .subnav__item:hover & {
         opacity: 1;
+    }
+};
+
+.subnav__group-title {
+
+    .subnav ul:hover & {
+        opacity: 0;
     }
 }

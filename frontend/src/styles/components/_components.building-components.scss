@@ -1,0 +1,23 @@
+.building-components {
+    $top-nav-height: calc(2 * var(--body-p) + 0.563rem); // TODO: Berechnung anpassen
+    // $bottom-nav-height: ; // TODO: berechnen
+    
+    height: calc(100vh - $top-nav-height - $top-nav-height - calc(2 * var(--body-p)));
+    width: 60%; // TODO: Wert ermitteln / entscheiden
+}
+
+.building-components__row { // TODO: in cluster element umbauen? + Naming klären
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+}
+
+.building-components__row > p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.building-components__buttons {
+    width: 14rem;
+}

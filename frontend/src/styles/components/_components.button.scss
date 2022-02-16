@@ -15,10 +15,10 @@
 
 // * Big Round Buttons
 
-$_btn-h: 7rem;
-$_btn-p: 1rem;
+$_big-btn-h: 7rem;
+$_big-btn-p: 1rem;
 
-.btn {
+.big-btn {
     height: 14rem;
     display: flex; // [1]
     justify-content: center; // [2]
@@ -34,6 +34,27 @@ $_btn-p: 1rem;
 
     @include text-style('600');
     @include smoked-glass;
-    line-height: $_btn-h;
-    border-radius: $_btn-h;
+    line-height: $_big-btn-h;
+    border-radius: $_big-btn-h;
+}
+
+// * Small boxy Buttons for component navigation
+
+.sml-btn {
+    padding: var(--body-p);
+    display: flex; // [1]
+    justify-content: center; // [2]
+    font: inherit; // [3]
+    align-items: center; // [4]
+    cursor: pointer; // [5]
+    color: inherit; // [6]
+    outline: none; // [4]
+    border: none; // [4]
+    background: none; // [4]
+    appearance: none; // [7]
+    white-space: nowrap; // [8]
+
+    @include text-style('200');
+    @include smoked-glass;
+    border-radius: var(--border-radius-sm);
 }
