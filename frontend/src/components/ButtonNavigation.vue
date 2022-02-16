@@ -1,9 +1,7 @@
 <template>
-    <div class="button-container- my-body">
-        <ul class="cluster cluster--stretched">
-            <li class="btn">Compute</li>
-            <li class="btn">Learn</li>
-        </ul>
-    </div>
+    <ul class="cluster cluster--stretched my-body">
+        <li class="btn">Compute</li>
+        <li class="btn">Learn</li>
+    </ul>
 </template>
 

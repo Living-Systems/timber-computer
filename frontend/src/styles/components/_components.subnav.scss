@@ -1,0 +1,53 @@
+// .footer {
+//     height: 2.7rem;
+//     padding: var(--body-p);
+//     @include smoked-glass;
+//     width:100%;
+//     @include text-style('200');
+// }
+
+// .footer__scale { // todo @tim: better use a cluster here. I created a cluser--stretch variant which should handle this
+//     display:flex;
+//     justify-content: space-between;
+//     line-height: 1.4rem;
+//     vertical-align:baseline;
+// };
+
+// .footer__scale li {
+//     width: calc(((100vw - (2 * var(--body-p))) / 12) - 0.2rem);
+//     border-top: 0.2rem solid var(--text-default);
+//     border-radius: 2px;
+// };
+
+.subnav {
+    @include smoked-glass;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    li {
+        position: relative;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 0.2rem;
+            background: currentColor;
+        }
+    }
+}
+
+.subnav__item-title {
+    position: absolute;
+    top: 0.4rem;
+    left: 0;
+    opacity: 0;
+
+    .subnav__item:hover & {
+        opacity: 1;
+    }
+}

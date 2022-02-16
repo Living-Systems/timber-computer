@@ -15,11 +15,11 @@
 
 // * Big Round Buttons
 
-$_btn-h: 6rem;
+$_btn-h: 7rem;
 $_btn-p: 1rem;
 
 .btn {
-    height: 12rem;
+    height: 14rem;
     display: flex; // [1]
     justify-content: center; // [2]
     font: inherit; // [3]
