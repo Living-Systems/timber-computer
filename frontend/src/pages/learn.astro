@@ -1,0 +1,27 @@
+---
+// Component Imports
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Component Script:
+// You can write any JavaScript/TypeScript that you'd like here.
+// It will run during the build, but never in the browser.
+// All variables are available to use in the HTML template below.
+let title = 'Learn';
+
+// Full Astro Component Syntax:
+// https://docs.astro.build/core-concepts/astro-components/
+---
+
+
+<!-- Use defined layout component like in vue -->
+<BaseLayout title={ title }>
+
+    <div slot="main">
+        <section class="flow-200 px-body">
+            <h1 class="p-box rounded-sm smoked-glass self-start">
+                Let’s learn
+            </h1>
+        </section>
+    </div>
+
+</BaseLayout>
