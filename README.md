@@ -16,5 +16,13 @@ More infos on workspaces: [npm workspaces](https://docs.npmjs.com/cli/v8/using-n
 ## Backend
 The backends runs on [strapi](https://strapi.io/)
 
+To create the neccessary files for the strapi backend run
+`npm run build`
+Generate files are stored in the .cache folder.
+
+To access the backend in development run
+`npm run develop`
+This is included in the servers pm2 tasks.
+
 ## Frontend
 The frontend is powered by [astro](https://astro.build/), [vue3](https://vuejs.org/), [tailwindcss](https://tailwindcss.com/), [vite](https://vitejs.dev/)
