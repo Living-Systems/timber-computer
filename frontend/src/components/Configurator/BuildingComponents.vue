@@ -31,6 +31,7 @@
 
 <script>
 import ComponentCardItem from './ComponentCardItem.vue';
+
 export default {
     props: {
         building: Object,
