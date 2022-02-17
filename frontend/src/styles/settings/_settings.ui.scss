@@ -42,7 +42,7 @@ $ui-props: (
         // specific overwrites here
 
         // Body padding/margin
-        'body-p': 0.8rem,
+        'body-p': var(--size-200),
 
         // cards
         'card-w': 20rem,

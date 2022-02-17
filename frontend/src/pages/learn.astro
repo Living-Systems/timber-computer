@@ -6,6 +6,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 // You can write any JavaScript/TypeScript that you'd like here.
 // It will run during the build, but never in the browser.
 // All variables are available to use in the HTML template below.
+import SubNav from '../components/SubNav.vue'
+
 let title = 'Learn';
 
 // Full Astro Component Syntax:
@@ -15,6 +17,10 @@ let title = 'Learn';
 
 <!-- Use defined layout component like in vue -->
 <BaseLayout title={ title }>
+
+    <div slot="subnav">
+        <SubNav/>
+    </div>
 
     <div slot="main">
         <section class="flow-200 px-body">

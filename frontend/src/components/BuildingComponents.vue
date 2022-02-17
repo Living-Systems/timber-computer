@@ -1,6 +1,6 @@
 <template>
     <section class="building-components | flow-100">
-        
+
         <!-- // component heading -->
         <h2 class="p-box rounded-sm smoked-glass self-start">Ceiling</h2>
 
