@@ -27,6 +27,7 @@ export async function getBuildingByName(name) {
                     attributes {
                         constructions {
                             data {
+                                id
                                 attributes {
                                     name
                                     components {
@@ -36,6 +37,7 @@ export async function getBuildingByName(name) {
                                                 area
                                                 elements {
                                                     data {
+                                                        id
                                                         attributes {
                                                             name
                                                             cradleToSite
