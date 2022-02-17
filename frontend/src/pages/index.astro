@@ -23,13 +23,14 @@ let title = 'Timber Computer';
 <!-- Use defined layout component like in vue -->
 <BaseLayout title={ title }>
 
-    <div slot="subnav">
+    <!-- <div slot="subnav">
         <SubNav/>
-    </div>
+    </div> -->
 
     <div slot="main" class="flex flex-col flex-1 px-body h-full">
         <Welcome/>
-        <div class="mt-auto mb-800">
+        <!-- @raffael : mb-800 warum hier? ↓ -->
+        <div class="mt-auto pb-body">
             <ButtonNavigation/>
         </div>
     </div>

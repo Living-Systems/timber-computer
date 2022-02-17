@@ -21,7 +21,7 @@ async function fetchAPI(query, { variables } = {}) {
 export async function getBuildingByName(name) {
 	const data = await fetchAPI(`
         {
-            buildings(filters: { Name: { eq: "${name}" } } ) {
+            buildings(filters: { name: { eq: "${name}" } } ) {
                 data {
                     id
                     attributes {
@@ -29,18 +29,18 @@ export async function getBuildingByName(name) {
                             data {
                                 attributes {
                                     name
-                                    comps {
+                                    components {
                                         data {
                                             attributes {
-                                                Name
-                                                Area
+                                                name
+                                                area
                                                 elements {
                                                     data {
                                                         attributes {
-                                                            Name
-                                                            CradleToSite
-                                                            CradleToLife
-                                                            CradleToCradle
+                                                            name
+                                                            cradleToSite
+                                                            cradleToLife
+                                                            cradleToCradle
                                                         }
                                                     }
                                                 }

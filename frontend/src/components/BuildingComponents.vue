@@ -1,7 +1,7 @@
 <template>
-    <section class="building-components | flow-100" v-for="component in building.constructions.data[0].attributes.comps.data[0]" :key="component">
+    <section class="building-components main-wrapper | flow-100" v-for="component in building.constructions.data[0].attributes.components.data[0]" :key="component">
         <!-- // component heading -->
-        <h2 class="p-box rounded-sm smoked-glass self-start">{{ component.Name }}</h2>
+        <h2 class="p-box rounded-sm smoked-glass self-start">{{ component.name }}</h2>
 
         <!-- //  component types -->
         <div class="clear-glass rounded-sm uppercase text-style-200 overflow-y-scroll overflow-x-hidden">
