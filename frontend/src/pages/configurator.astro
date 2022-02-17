@@ -1,4 +1,6 @@
 ---
+// Import content function
+import { getBuildingByName } from '../lib/api';
 // Component Imports
 import BaseLayout from '../layouts/BaseLayout.astro';
 
@@ -14,7 +16,11 @@ import BuildingComponents from '../components/BuildingComponents.vue';
 // You can write any JavaScript/TypeScript that you'd like here.
 // It will run during the build, but never in the browser.
 // All variables are available to use in the HTML template below.
-let title = 'My Astro Site';
+
+const title    = "Compute";
+const buildingType = "Typenhaus";
+const getBuilding  = await getBuildingByName( buildingType );
+const building     = getBuilding.data[0].attributes;
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
@@ -32,8 +38,7 @@ let title = 'My Astro Site';
         <h1 class="sr-only">
             Timber Computer
         </h1>
-
-        <BuildingComponents/>
+        <BuildingComponents building={ building } />
         <LiveGraph/>
     </div>
 

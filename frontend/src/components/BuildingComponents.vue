@@ -1,7 +1,7 @@
 <template>
-    <section class="building-components | flow-100">
+    <section class="building-components | flow-100" v-for="component in building.constructions.data[0].attributes.comps.data[0]" :key="component">
         <!-- // component heading -->
-        <h2 class="p-box rounded-sm smoked-glass self-start">Ceiling</h2>
+        <h2 class="p-box rounded-sm smoked-glass self-start">{{ component.Name }}</h2>
 
         <!-- //  component types -->
         <div class="clear-box--sm uppercase text-style-200 overflow-y-scroll overflow-x-hidden">
@@ -14,9 +14,7 @@
             </ul>
 
             <div class="building-components__card cluster cluster--stretched flex-col">
-                <ComponentCardItem/>
-                <ComponentCardItem/>
-                <ComponentCardItem/>
+                <ComponentCardItem v-for="element in component.elements.data" :key="element" :element="element"/>
             </div>
 
         </div>
@@ -32,6 +30,9 @@
 <script>
 import ComponentCardItem from './ComponentCardItem.vue';
 export default {
+    props: {
+        building: Object,
+    },
     components: {
         ComponentCardItem
     }
