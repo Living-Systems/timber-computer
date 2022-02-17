@@ -1,8 +1,12 @@
 .building-components {
     $top-nav-height: calc(2 * var(--body-p) + 0.563rem); // TODO: Berechnung anpassen
     // $bottom-nav-height: ; // TODO: berechnen
-    
-    height: calc(100vh - $top-nav-height - $top-nav-height - calc(2 * var(--body-p)));
+
+    // height: calc(100vh - $top-nav-height - $top-nav-height - calc(2 * var(--body-p)));
+
+    height: calc(100vh - var(--size-900) - var(--size-200) - var(--header-h)); // TODO: das geht noch besser (ohne vh)
+    margin-bottom: var(--size-900);
+    max-height: 80rem;
     width: 60%; // TODO: Wert ermitteln / entscheiden
 }
 

@@ -28,11 +28,13 @@ let title = 'My Astro Site';
         <SubNav/>
     </div>
 
-    <main slot="main" class="flex flex-col p-body">
-        <div class="flex justify-between">
-            <BuildingComponents/>
-            <LiveGraph/>
-        </div>
-    </main>
+    <div slot="main" class="flex flex-col flex-1 px-body h-full">
+        <h1 class="sr-only">
+            Timber Computer
+        </h1>
+
+        <BuildingComponents/>
+        <LiveGraph/>
+    </div>
 
 </BaseLayout>
