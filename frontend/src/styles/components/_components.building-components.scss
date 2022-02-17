@@ -11,19 +11,26 @@
     width: 60%; // TODO: Wert ermitteln / entscheiden
 }
 
-.building-components__row { // TODO: in cluster element umbauen? + Naming klären
+.building-components__head-row,
+.building-components__comp-row { // TODO: in cluster element umbauen? + Naming klären
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 1fr;
-    &.is-chosen {
-        border: 4px solid red;
-    }
 }
 
-.building-components__row > p {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.building-components__comp-row {
+    cursor:pointer;
+
+    &.is-chosen {
+        border: 1px solid var(--border-default);
+        border-radius: var(--radius-sm);
+    }
+
+    & > p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 .building-components__buttons {
