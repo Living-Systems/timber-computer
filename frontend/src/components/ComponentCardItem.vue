@@ -1,5 +1,5 @@
 <template>
-    <div class="building-components__row | p-body">
+    <div class="building-components__row | p-body is-chosen">
             <div>
                 <img src="../../public/assets/dummy-component.png" alt="">
                 <p>Massivholz</p>
