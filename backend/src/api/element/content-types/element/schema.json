@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "elements",
+  "info": {
+    "singularName": "element",
+    "pluralName": "elements",
+    "displayName": "Element",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "cradleToSite": {
+      "type": "float"
+    },
+    "cradleToLife": {
+      "type": "float",
+      "required": true
+    },
+    "cradleToCradle": {
+      "type": "float",
+      "required": true
+    },
+    "frontendName": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
