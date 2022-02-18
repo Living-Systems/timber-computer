@@ -1,5 +1,8 @@
 // Subnav Component
 .subnav {
+    --group-items: 1;
+    --total-items: 1;
+
     @include smoked-glass;
     position: fixed;
     bottom: 0;
@@ -12,6 +15,10 @@
     ol {
         --cluster-gap: 0.2rem;
     }
+}
+
+.subnav__construction-item {
+    width: calc((var(--group-items) / var(--total-items) * 100%) - var(--cluster-gap));
 }
 
 .subnav__item {
