@@ -63,4 +63,8 @@ export async function getBuildingByName(name) {
 const fetchBuilding = await getBuildingByName(buildingType);
 const constructions = atom(fetchBuilding.data[0].attributes.constructions.data);
 
-export { constructions };
+
+
+export { 
+    constructions
+};

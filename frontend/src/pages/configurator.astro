@@ -38,7 +38,7 @@ const building     = getBuilding.data[0].attributes;
         <h1 class="sr-only">
             Timber Computer
         </h1>
-        <BuildingComponents building={ building } />
+        <BuildingComponents building={ building } client:load/>
         <LiveGraph/>
     </div>
 

@@ -1,9 +1,9 @@
 <template>
-    <nav class="cluster cluster--stretched pt-300">
+    <nav class="pt-300 big-button-container">
         <a :href="hrefL" class="btn btn--xl">
             <span>{{ buttonL }}</span>
         </a>
-        <a :href="hrefR" class="btn btn--xl">
+        <a v-if="hrefR && buttonR" :href="hrefR" class="btn btn--xl">
             <span>{{ buttonR }}</span>
         </a>
     </nav>

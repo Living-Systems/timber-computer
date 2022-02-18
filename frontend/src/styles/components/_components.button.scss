@@ -13,7 +13,8 @@
 // 7. Make buttons inherit font colors (often necessary when styling `a`s as buttons).
 //
 
-// * Big Round Buttons
+
+// * Basic Button Setup
 
 .btn {
     display: flex; // [1]
@@ -31,11 +32,22 @@
     padding: 0.4rem;
 }
 
+
+// * Big Round Buttons
+
 .btn--xl {
     @include text-style('600');
     height: var(--btn-xl-h);
     border-radius: calc(var(--btn-xl-h) / 2);
 }
+
+.big-button-container {
+    display: grid;                     // fixme: build as cluster?
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-gap: var(--column-gap, 1rem); // same as cluster gap
+}
+
 
 // * Small boxy Buttons for component navigation
 

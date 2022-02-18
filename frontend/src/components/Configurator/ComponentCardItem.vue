@@ -1,8 +1,8 @@
 <template>
     <div class="building-components__comp-row | p-body is-chosen">
-            <div>
+            <div class="relative pb-300">
                 <img src="../../../public/assets/dummy-component.png" alt="">
-                <p class="whitespace-nowrap">{{ element.attributes.name }}</p>
+                <p class="whitespace-nowrap absolute bottom-0 left-0">{{ element.attributes.name }}</p>
             </div>
             <!-- <p class="border-2 border-solid rounded-full border-current">A+</p> -->
             <p>A+</p>
@@ -14,8 +14,6 @@
 
 <script>
 export default {
-    props: {
-        element: Object,
-    }
+    props: ['element']
 }
 </script>
