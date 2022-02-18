@@ -15,6 +15,11 @@ import TextBox from '../components/UI/TextBox.vue';
 // All variables are available to use in the HTML template below.
 let title = 'Timber Computer';
 
+// TextBox input
+let textBoxHeading = 'Welcome';
+
+let textBoxContent = 'Timber Computer helps you understand the potential carbon impact of a future design by configuring a reference building.';
+
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
 ---
@@ -28,10 +33,11 @@ let title = 'Timber Computer';
     </div> -->
 
     <div slot="main" class="flex flex-col flex-1 px-body h-full">
-        <TextBox/>
+        <TextBox heading={textBoxHeading} content={textBoxContent}/>
+
         <!-- @raffael : mb-800 warum hier? ↓ -->
         <div class="mt-auto pb-body">
-            <ButtonNavigation button-l="Compute" button-r="Learn" href-l="/configurator" href-r="/learn"/>
+            <ButtonNavigation button-l="Compute" button-r="Learn" href-l="/compute" href-r="/learn"/>
         </div>
     </div>
 
