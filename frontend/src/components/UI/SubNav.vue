@@ -1,8 +1,14 @@
 <template>
     <nav class="subnav">
+
         <ol class="cluster cluster--stretched items-start">
+
+            <!-- first loop: constructions -->
             <li v-for="construction in constructions" :key="construction.id">
+
                 <ol class="cluster cluster--stretched items-start">
+
+                    <!-- second loop: components -->
                     <li v-for="component in construction.attributes.components.data" :key="component">
                         <a href="#" class="subnav__item is-set">
                             <div class="subnav__item-title">
@@ -13,12 +19,13 @@
                             </div>
                         </a>
                     </li>
+
                 </ol>
-                <!-- <div class="subnav__group-title">
-                    {{ construction.attributes.name }}
-                </div> -->
+
             </li>
+
         </ol>
+
     </nav>
 </template>
 
