@@ -1,5 +1,5 @@
 <template>
-    <label class="building-components__comp-selection">
+    <label class="building-components__label">
         <input
             type="radio"
             :name="component.attributes.name"

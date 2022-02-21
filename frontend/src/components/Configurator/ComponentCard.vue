@@ -43,6 +43,7 @@ const props = defineProps(['building', 'component']);
 const componentState = ref(null);
 
 const updateSelection = (val) => {
+    console.log(val);
     componentState.value = val;
-}
+};
 </script>
