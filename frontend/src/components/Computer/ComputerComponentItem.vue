@@ -1,12 +1,12 @@
 <template>
-    <label class="building-components__label">
+    <label class="computer-components__label">
         <input
             type="radio"
             :name="component.attributes.name"
             :id="element.id"
             @change="$emit('updateSelection', element)"
         />
-        <div class="building-components__comp-row | p-body">
+        <div class="computer-components__comp-row | p-body">
             <div class="relative pb-300">
                 <img src="../../../public/assets/dummy-component.png" alt="" />
                 <p class="whitespace-nowrap absolute bottom-0 left-0">

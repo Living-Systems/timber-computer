@@ -5,7 +5,7 @@
             <div
                 v-for="component in allComponents"
                 :key="component.id"
-                class="building-component | flow-100"
+                class="computer-component | flow-100"
                 :class="
                     component.id === activeComponent.value ? 'is-active' : null
                 "
@@ -19,7 +19,7 @@
         <nav
             class="configurator__nav | cluster cluster--x-50 cluster--stretched"
         >
-            <button class="btn btn--md">
+            <button class="btn btn--md" @click="changeActive">
                 <span class="sr-only">previous</span>
                 <span aria-hidden="true">←</span>
             </button>
@@ -34,7 +34,7 @@
 <script setup>
 import { computed } from "vue";
 import { useStore } from "@nanostores/vue";
-import { activeComponentId } from "../../../store/constructions";
+import { activeComponentId, changeActive } from "../../../store/constructions";
 
 import ComputerComponent from "./ComputerComponent.vue";
 

@@ -21,7 +21,7 @@
             <li class="text-center">Cradle to life</li>
             <li class="text-center">Cradle to cradle</li>
         </ul>
-        <div class="building-components__card cluster cluster--stretched flex-col" >
+        <div class="computer-components__card cluster cluster--stretched flex-col" >
             <ComputerComponentItem
                 v-for="element in component.attributes.elements.data"
                 :key="element.id"
