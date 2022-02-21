@@ -1,0 +1,44 @@
+---
+// Import content function
+import { getAllPagesWithSlugs, getPageBySlug } from '../../lib/api';
+// Component Imports
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Component Script:
+import LearnNav from '../../components/UI/LearnNav.vue'
+
+// generate URLs for pages using the slug
+export async function getStaticPaths() {
+    const pagesWithSlugs = await getAllPagesWithSlugs();
+    return pagesWithSlugs.data.map(({ attributes }) => {
+        return {
+            params: { slug: attributes.slug },
+        };
+    });
+}
+
+
+const { slug } = Astro.request.params;
+const getPage = await getPageBySlug(slug);
+const page = getPage.data[0].attributes;
+
+let title = page.title;
+---
+
+
+<!-- Use defined layout component like in vue -->
+<BaseLayout title={ title }>
+
+    <div slot="subnav">
+        <LearnNav/>
+    </div>
+
+    <div slot="main">
+        <section class="flow-200 px-body">
+            <h1 class="">
+                { title }
+            </h1>
+        </section>
+    </div>
+
+</BaseLayout>
