@@ -44,7 +44,13 @@ export async function getBuildingByName(name) {
                                                             cradleToSite
                                                             cradleToLife
                                                             cradleToCradle
+                                                            sustainability
                                                         }
+                                                    }
+                                                }
+                                                element {
+                                                    data {
+                                                        id
                                                     }
                                                 }
                                             }

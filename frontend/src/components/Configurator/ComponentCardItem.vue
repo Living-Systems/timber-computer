@@ -14,7 +14,7 @@
                 </p>
             </div>
             <!-- <p class="border-2 border-solid rounded-full border-current">A+</p> -->
-            <p>A+</p>
+            <p>{{ element.attributes.sustainability }}</p>
             <p>{{ element.attributes.cradleToSite }}</p>
             <p>{{ element.attributes.cradleToLife }}</p>
             <p>{{ element.attributes.cradleToCradle }}</p>
