@@ -41,6 +41,7 @@ export async function getBuildingByName(name) {
                                                         id
                                                         attributes {
                                                             name
+                                                            frontendName
                                                             cradleToSite
                                                             cradleToLife
                                                             cradleToCradle

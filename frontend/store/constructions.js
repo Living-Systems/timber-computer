@@ -70,6 +70,8 @@ const updateConstructions = function updateConstructions(component) {
 	// constructions.set(constructions.get().filter((item) => item.attributes.title !== title ));
 };
 
+export const activeComponentId = atom('1');
+
 export { 
     selectedConstructions
 };

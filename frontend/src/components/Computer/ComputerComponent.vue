@@ -22,7 +22,7 @@
             <li class="text-center">Cradle to cradle</li>
         </ul>
         <div class="building-components__card cluster cluster--stretched flex-col" >
-            <ComponentCardItem
+            <ComputerComponentItem
                 v-for="element in component.attributes.elements.data"
                 :key="element.id"
                 :element="element"
@@ -36,7 +36,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import ComponentCardItem from "./ComponentCardItem.vue";
+import ComputerComponentItem from "./ComputerComponentItem.vue";
 
 const props = defineProps(['building', 'component']);
 

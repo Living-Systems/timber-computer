@@ -10,7 +10,7 @@
             <div class="relative pb-300">
                 <img src="../../../public/assets/dummy-component.png" alt="" />
                 <p class="whitespace-nowrap absolute bottom-0 left-0">
-                    {{ element.attributes.name }}
+                    {{ element.attributes.frontendName }}
                 </p>
             </div>
             <!-- <p class="border-2 border-solid rounded-full border-current">A+</p> -->

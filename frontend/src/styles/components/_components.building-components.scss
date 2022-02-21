@@ -1,12 +1,8 @@
-
-.configurator-wrapper {
-    height: calc(100vh - var(--size-900) - var(--size-200) - var(--header-h)); // TODO: das geht noch besser (ohne vh)
-    margin-bottom: var(--size-900);
-}
-
-.building-components {
-    width: 45%; // TODO: Wert ermitteln / entscheiden
-    min-width: 32rem;
+.building-component {
+    &:not(.is-active){
+        width: 0;
+        overflow: hidden;
+    }
 }
 
 .building-components__head-row,
@@ -39,26 +35,22 @@
         align-items: center;
         justify-content: center;
 
-        &.high{
+        &.high {
             border: 1px solid green;
             border-radius: 50%;
             color:green;
         }
 
-        &.medium{
+        &.medium {
             border: 1px solid yellow;
             border-radius: 50%;
             color:yellow;
         }
 
-        &.low{
+        &.low {
             border: 1px solid red;
             border-radius: 50%;
             color:red;
         }
     }
-}
-
-.building-components__buttons {
-    width: 14rem;
 }
