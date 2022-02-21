@@ -4,7 +4,7 @@
             type="radio"
             :name="component.attributes.name"
             :id="element.id"
-            @change="$emit('updateSelection', element.id)"
+            @change="$emit('updateSelection', element)"
         />
         <div class="building-components__comp-row | p-body">
             <div class="relative pb-300">
@@ -14,7 +14,7 @@
                 </p>
             </div>
             <!-- <p class="border-2 border-solid rounded-full border-current">A+</p> -->
-            <p>{{ element.attributes.sustainability }}</p>
+            <p :class="sustainabilityClass">{{ element.attributes.sustainability }}</p>
             <p>{{ element.attributes.cradleToSite }}</p>
             <p>{{ element.attributes.cradleToLife }}</p>
             <p>{{ element.attributes.cradleToCradle }}</p>
@@ -23,7 +23,14 @@
 </template>
 
 <script setup>
-defineEmits(['updateSelection'])
+import { computed } from 'vue';
 
 const props = defineProps(['component', 'element', 'componentState']);
+
+defineEmits(['updateSelection']);
+
+const sustainabilityClass = computed(()=>{
+    return props.element.attributes.sustainability;
+})
+
 </script>

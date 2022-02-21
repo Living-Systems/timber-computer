@@ -38,6 +38,24 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
+        &.high{
+            border: 1px solid green;
+            border-radius: 50%;
+            color:green;
+        }
+
+        &.medium{
+            border: 1px solid yellow;
+            border-radius: 50%;
+            color:yellow;
+        }
+
+        &.low{
+            border: 1px solid red;
+            border-radius: 50%;
+            color:red;
+        }
     }
 }
 
