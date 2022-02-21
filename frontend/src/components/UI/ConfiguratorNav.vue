@@ -17,7 +17,7 @@
                         v-for="component in construction.components"
                         :key="component"
                     >
-                        <a href="#" class="subnav__item is-set">
+                        <a href="#" class="subnav__item">
                             <div class="subnav__item-title">
                                 {{ component.attributes.name }}
                             </div>
