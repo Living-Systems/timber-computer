@@ -32,6 +32,7 @@ export async function getBuildingByName(name) {
                                     name
                                     components {
                                         data {
+                                            id
                                             attributes {
                                                 name
                                                 area
@@ -58,4 +59,55 @@ export async function getBuildingByName(name) {
         }
     `);
 	return data?.buildings;
+}
+
+// get a single building by its name
+export async function getAllPagesWithSlugs() {
+	const data = await fetchAPI(`
+        {
+            pages {
+                data {
+                    attributes {
+                        slug
+                    }
+                }
+            }
+        }
+    `);
+	return data?.pages;
+}
+
+export async function getPageBySlug(slug) {
+	const data = await fetchAPI(`
+		{
+			pages(filters: { slug: { eq: "${slug}" } }) {
+				data {
+                    attributes {
+                        title
+                        slug
+                        content {
+                            __typename
+                            ... on ComponentPageText {
+                                markdown
+                            }
+                            ... on ComponentPageImage {
+                                image {
+                                    data {
+                                        attributes {
+                                            formats
+                                            alternativeText
+                                            caption
+                                        }
+                                    }
+                                }
+                                caption
+                                url
+                            }
+                        }
+                    }
+                }
+			}
+		}
+	`);
+	return data?.pages;
 }
