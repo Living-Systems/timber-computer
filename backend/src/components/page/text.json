@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_page_texts",
+  "info": {
+    "displayName": "text",
+    "icon": "align-justify"
+  },
+  "options": {},
+  "attributes": {
+    "markdown": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}
