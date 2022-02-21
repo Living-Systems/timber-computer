@@ -43,6 +43,7 @@ export async function getBuildingByName(name) {
                                                             cradleToSite
                                                             cradleToLife
                                                             cradleToCradle
+                                                            sustainability
                                                         }
                                                     }
                                                 }
@@ -61,8 +62,14 @@ export async function getBuildingByName(name) {
 }
 
 const fetchBuilding = await getBuildingByName(buildingType);
-const constructions = atom(fetchBuilding.data[0].attributes.constructions.data);
+const selectedConstructions = atom(fetchBuilding.data[0].attributes.constructions.data);
+
+const updateConstructions = function updateConstructions(component) {
+    console.log(component);
+    console.log(constructions);
+	// constructions.set(constructions.get().filter((item) => item.attributes.title !== title ));
+};
 
 export { 
-    constructions
+    selectedConstructions
 };
