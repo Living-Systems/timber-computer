@@ -23,12 +23,7 @@
 </template>
 
 <script setup>
-import { ref, onUpdated } from 'vue';
-
 defineEmits(['updateSelection'])
 
 const props = defineProps(['component', 'element', 'componentState']);
-
-const selection = ref()
-
 </script>

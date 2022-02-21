@@ -10,13 +10,7 @@
         </div>
 
             <!-- back and forwards buttons -->
-        <div
-            class="
-                building-components__buttons
-                |
-                cluster cluster--x-50 cluster--stretched
-            "
-        >
+        <div class="building-components__buttons | cluster cluster--x-50 cluster--stretched">
             <button id="backwards" class="btn btn--md">←</button>
             <button id="forwards" class="btn btn--md">→</button>
         </div>
@@ -38,6 +32,4 @@ for (const construction of props.building.constructions.data) {
         });
     }
 }
-
-console.log(props.building.constructions.data[0].attributes.components.data[0]);
 </script>

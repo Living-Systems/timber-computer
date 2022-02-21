@@ -1,3 +1,4 @@
+
 .configurator-wrapper {
     height: calc(100vh - var(--size-900) - var(--size-200) - var(--header-h)); // TODO: das geht noch besser (ohne vh)
     margin-bottom: var(--size-900);
@@ -32,11 +33,6 @@
 .building-components__comp-row {
     border: 1px solid transparent;
     cursor:pointer;
-
-    &.is-chosen {
-        border: 1px solid var(--border-default);
-        border-radius: var(--radius-sm);
-    }
 
     & > p {
         display: flex;

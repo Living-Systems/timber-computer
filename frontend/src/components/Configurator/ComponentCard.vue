@@ -21,13 +21,7 @@
             <li class="text-center">Cradle to life</li>
             <li class="text-center">Cradle to cradle</li>
         </ul>
-        <div
-            class="
-                building-components__card
-                cluster cluster--stretched
-                flex-col
-            "
-        >
+        <div class="building-components__card cluster cluster--stretched flex-col" >
             <ComponentCardItem
                 v-for="element in component.attributes.elements.data"
                 :key="element.id"
@@ -44,12 +38,11 @@
 import { ref } from 'vue';
 import ComponentCardItem from "./ComponentCardItem.vue";
 
+const props = defineProps(['building', 'component']);
+
 const componentState = ref(null);
 
 const updateSelection = (val) => {
-    console.log(val);
     componentState.value = val;
 }
-
-const props = defineProps(['building', 'component']);
 </script>

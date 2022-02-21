@@ -68,6 +68,4 @@ for (const construction of constructions.value) {
         }
     }
 }
-
-console.log("enhancedConstructions", enhancedConstructions);
 </script>
