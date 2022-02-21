@@ -18,7 +18,8 @@
       "unique": true
     },
     "cradleToSite": {
-      "type": "float"
+      "type": "float",
+      "required": true
     },
     "cradleToLife": {
       "type": "float",
