@@ -5,6 +5,10 @@
     }
 }
 
+.computer-components__head-row {
+    z-index: map-get($z-index, comp-header);
+}
+
 .computer-components__head-row,
 .computer-components__comp-row { // TODO: in cluster element umbauen?
     display: grid;

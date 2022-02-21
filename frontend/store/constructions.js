@@ -61,8 +61,10 @@ export async function getBuildingByName(name) {
 	return data?.buildings;
 }
 
+// * Construction Selection
+
 const fetchBuilding = await getBuildingByName(buildingType);
-const selectedConstructions = atom(fetchBuilding.data[0].attributes.constructions.data);
+export const selectedConstructions = atom(fetchBuilding.data[0].attributes.constructions.data);
 
 const updateConstructions = function updateConstructions(component) {
     console.log(component);
@@ -70,8 +72,35 @@ const updateConstructions = function updateConstructions(component) {
 	// constructions.set(constructions.get().filter((item) => item.attributes.title !== title ));
 };
 
-export const activeComponentId = atom('1');
 
-export { 
-    selectedConstructions
+// * Calculation
+
+
+
+
+// * Count all Components
+
+const componentCounter = atom(0);
+
+for (const construction of selectedConstructions.get()) {
+    for (const component of construction.attributes.components.data) {
+        componentCounter.set(componentCounter.get() + 1);
+    }
+}
+
+
+// * Active Component 
+
+export const activeComponentId = atom(1);
+
+export const changeActive = (operation) => {
+    if (operation === 'increment') {
+        if (activeComponentId.get() < componentCounter.get()){
+            activeComponentId.set(activeComponentId.get() + 1);
+        }
+    } else if (operation === 'decrement') {
+        if (activeComponentId.get() > 1) {
+            activeComponentId.set(activeComponentId.get() - 1);
+        }
+    }
 };

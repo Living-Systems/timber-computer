@@ -7,9 +7,9 @@
                 :key="component.id"
                 class="computer-component | flow-100"
                 :class="
-                    component.id === activeComponent.value ? 'is-active' : null
+                    component.id == activeComponent.value ? 'is-active' : null
                 "
-                :aria-hidden="component.id !== activeComponent.value"
+                :aria-hidden="component.id != activeComponent.value"
             >
                 <ComputerComponent :building="building" :component="component" />
             </div>
@@ -19,11 +19,11 @@
         <nav
             class="configurator__nav | cluster cluster--x-50 cluster--stretched"
         >
-            <button class="btn btn--md" @click="changeActive">
+            <button class="btn btn--md" @click="changeActive('decrement')">
                 <span class="sr-only">previous</span>
                 <span aria-hidden="true">←</span>
             </button>
-            <button class="btn btn--md">
+            <button class="btn btn--md" @click="changeActive('increment')">
                 <span class="sr-only">next</span>
                 <span aria-hidden="true">→</span>
             </button>
