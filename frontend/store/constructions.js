@@ -64,36 +64,33 @@ export async function getBuildingByName(name) {
 // * Construction Selection
 
 const fetchBuilding = await getBuildingByName(buildingType);
-const fetchedConstructions = atom(fetchBuilding.data[0].attributes.constructions.data);
+export const selectedConstructions = atom(fetchBuilding.data[0].attributes.constructions.data);
 
-
+console.log('selectedConstructions', selectedConstructions.get());
 
 // * Calculation
 
-export const calculation = computed(fetchedConstructions, ()=>{
-    const allConstructions = fetchedConstructions.get();
+export const calculation = computed(selectedConstructions, ()=>{
+    const allConstructions = selectedConstructions.get();
 
     let counter = 0;
 
     for (const construction of allConstructions) {
-        console.log('construction', construction);
+
         for (const component of construction.attributes.components.data){
-            // console.log('component', component.attributes.area);
-            // console.log('component', component);
             counter += component.attributes.area * component.attributes.element.data.attributes.cradleToLife;
         }
     }
 
-    // return selectedConstructions.get()[0].attributes.components.data;
     return counter;
 });
 
 
 // * Count all Components
 
-const componentCounter = atom(0);
+export const componentCounter = atom(0);
 
-for (const construction of fetchedConstructions.get()) {
+for (const construction of selectedConstructions.get()) {
     for (const component of construction.attributes.components.data) {
         componentCounter.set(componentCounter.get() + 1);
     }
@@ -105,7 +102,6 @@ for (const construction of fetchedConstructions.get()) {
 export const activeComponentId = atom(1);
 
 export const changeActive = (operation) => {
-    console.log('operation', operation);
 
     if (operation === 'increment') {
         if (activeComponentId.get() < componentCounter.get()){

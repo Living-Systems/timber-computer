@@ -1,7 +1,7 @@
 <template>
     <nav class="subnav">
 
-        <ol class="cluster items-start" :style="'--total-items: ' + componentCounter">
+        <ol class="cluster items-start" :style="'--total-items: ' + numberOfComponents">
 
             <!-- first loop: constructions -->
             <li
@@ -48,33 +48,29 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useStore } from "@nanostores/vue";
-import { activeComponentId, changeActive } from "../../../store/constructions";
+import { activeComponentId, changeActive, componentCounter } from "../../../store/constructions";
 
 const props = defineProps(["building"]);
 
 const activeComponent = useStore(activeComponentId);
-
+const numberOfComponents = useStore(componentCounter);
 
 
 // * Calculation for Styling
-// componentCounter / enhancedConstructions.counter to calculate width
+// numberOfComponents / enhancedConstructions.counter to calculate width
 
 const constructions = ref(props.building.constructions.data);
 
-let componentCounter = 0;
 let enhancedConstructions = [];
 
 for (const construction of constructions.value) {
     for (const component of construction.attributes.components.data) {
-        componentCounter++;
 
         let found = enhancedConstructions.find((element) => {
             return element.construction === construction.attributes.name;
         });
 
-        if (found) {
-            found.counter++;
-        } else {
+        if (!found) {
             enhancedConstructions.push({
                 name: construction.attributes.name,
                 counter: 1,
