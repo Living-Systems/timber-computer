@@ -1,4 +1,7 @@
 ---
+// Import content function
+import { getSingleTypeHome } from '../lib/api';
+
 // Component Imports
 import BaseLayout from '../layouts/BaseLayout.astro';
 
@@ -14,11 +17,8 @@ import TextBox from '../components/UI/TextBox.vue';
 // It will run during the build, but never in the browser.
 // All variables are available to use in the HTML template below.
 let title = 'Timber Computer';
-
-// TextBox input
-let textBoxHeading = 'Welcome';
-
-let textBoxContent = 'Timber Computer helps you understand the potential carbon impact of a future design by configuring a reference building.';
+const getHome  = await getSingleTypeHome();
+const home     = getHome.data.attributes
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
@@ -33,7 +33,7 @@ let textBoxContent = 'Timber Computer helps you understand the potential carbon 
     </div> -->
 
     <div slot="main" class="flex flex-col flex-1 px-body h-full">
-        <TextBox heading={textBoxHeading} content={textBoxContent}/>
+        <TextBox heading={ home.title } content={ home.intro }/>
 
         <!-- @raffael : mb-800 warum hier? ↓ -->
         <div class="mt-auto pb-body">

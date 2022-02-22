@@ -117,3 +117,28 @@ export async function getPageBySlug(slug) {
 	`);
 	return data?.pages;
 }
+
+export async function getSingleTypeHome() {
+	const data = await fetchAPI(`
+        {
+            home {
+                data {
+                    attributes {
+                        title
+                        intro
+                        backgroundImage {
+                            data {
+                                attributes {
+                                    formats
+                                    caption
+                                    alternativeText
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+	`);
+	return data?.home;
+}
