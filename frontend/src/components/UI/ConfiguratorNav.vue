@@ -18,7 +18,15 @@
                         :key="component"
                         @click="changeActive(component.id)"
                     >
-                        <a href="#" class="subnav__item">
+                        <a 
+                            href="#" 
+                            class="subnav__item"
+                            :class="
+                                activeComponent == component.id ? 'is-current'
+                                : activeComponent > component.id ? 'is-set'
+                                : null
+                            "
+                        >
                             <div class="subnav__item-title">
                                 {{ component.attributes.name }}
                             </div>
@@ -38,11 +46,13 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useStore } from "@nanostores/vue";
 import { activeComponentId, changeActive } from "../../../store/constructions";
 
 const props = defineProps(["building"]);
+
+const activeComponent = useStore(activeComponentId);
 
 const constructions = ref(props.building.constructions.data);
 
