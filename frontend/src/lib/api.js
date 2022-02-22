@@ -107,7 +107,6 @@ export async function getPageBySlug(slug) {
                                         }
                                     }
                                 }
-                                caption
                                 url
                             }
                         }
