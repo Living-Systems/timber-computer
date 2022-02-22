@@ -54,6 +54,4 @@ for (const construction of props.building.constructions.data) {
         });
     }
 }
-
-console.log("component ID", allComponents[0].id);
 </script>

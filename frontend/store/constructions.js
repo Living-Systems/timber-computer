@@ -1,4 +1,4 @@
-import { atom } from 'nanostores';
+import { atom, computed } from 'nanostores';
 
 const API_URL      = import.meta.env.PUBLIC_STRAPI_URL;
 const API_TOKEN    = import.meta.env.PUBLIC_STRAPI_TOKEN;
@@ -64,25 +64,36 @@ export async function getBuildingByName(name) {
 // * Construction Selection
 
 const fetchBuilding = await getBuildingByName(buildingType);
-export const selectedConstructions = atom(fetchBuilding.data[0].attributes.constructions.data);
+const fetchedConstructions = atom(fetchBuilding.data[0].attributes.constructions.data);
 
-const updateConstructions = function updateConstructions(component) {
-    console.log(component);
-    console.log(constructions);
-	// constructions.set(constructions.get().filter((item) => item.attributes.title !== title ));
-};
 
 
 // * Calculation
 
+export const calculation = computed(fetchedConstructions, ()=>{
+    const allConstructions = fetchedConstructions.get();
 
+    let counter = 0;
+
+    for (const construction of allConstructions) {
+        console.log('construction', construction);
+        for (const component of construction.attributes.components.data){
+            // console.log('component', component.attributes.area);
+            // console.log('component', component);
+            counter += component.attributes.area * component.attributes.element.data.attributes.cradleToLife;
+        }
+    }
+
+    // return selectedConstructions.get()[0].attributes.components.data;
+    return counter;
+});
 
 
 // * Count all Components
 
 const componentCounter = atom(0);
 
-for (const construction of selectedConstructions.get()) {
+for (const construction of fetchedConstructions.get()) {
     for (const component of construction.attributes.components.data) {
         componentCounter.set(componentCounter.get() + 1);
     }

@@ -54,11 +54,12 @@ const props = defineProps(["building"]);
 
 const activeComponent = useStore(activeComponentId);
 
-const constructions = ref(props.building.constructions.data);
 
 
 // * Calculation for Styling
 // componentCounter / enhancedConstructions.counter to calculate width
+
+const constructions = ref(props.building.constructions.data);
 
 let componentCounter = 0;
 let enhancedConstructions = [];
@@ -81,6 +82,7 @@ for (const construction of constructions.value) {
             });
         }
     }
-    console.table('enhancedConstructions', enhancedConstructions)
 }
+
+console.log('enhancedConstructions', enhancedConstructions[0].components[0].attributes);
 </script>
