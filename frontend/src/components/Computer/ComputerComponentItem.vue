@@ -5,6 +5,7 @@
             :name="component.attributes.name"
             :id="element.id"
             @change="$emit('updateSelection', element)"
+            :checked="props.component.attributes.element.data.id === element.id"
         />
         <div class="computer-components__comp-row | p-body">
             <div class="relative pb-300">

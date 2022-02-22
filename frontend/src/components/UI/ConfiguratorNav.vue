@@ -71,5 +71,6 @@ for (const construction of constructions.value) {
             });
         }
     }
+    console.table('enhancedConstructions', enhancedConstructions)
 }
 </script>
