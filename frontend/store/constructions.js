@@ -94,6 +94,8 @@ for (const construction of selectedConstructions.get()) {
 export const activeComponentId = atom(1);
 
 export const changeActive = (operation) => {
+    console.log('operation', operation);
+
     if (operation === 'increment') {
         if (activeComponentId.get() < componentCounter.get()){
             activeComponentId.set(activeComponentId.get() + 1);
@@ -102,5 +104,7 @@ export const changeActive = (operation) => {
         if (activeComponentId.get() > 1) {
             activeComponentId.set(activeComponentId.get() - 1);
         }
+    } else {
+        activeComponentId.set(operation);
     }
 };

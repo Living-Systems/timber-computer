@@ -16,6 +16,7 @@
                     <li
                         v-for="component in construction.components"
                         :key="component"
+                        @click="changeActive(component.id)"
                     >
                         <a href="#" class="subnav__item">
                             <div class="subnav__item-title">
@@ -38,12 +39,15 @@
 
 <script setup>
 import { ref } from "vue";
+import { useStore } from "@nanostores/vue";
+import { activeComponentId, changeActive } from "../../../store/constructions";
 
 const props = defineProps(["building"]);
 
 const constructions = ref(props.building.constructions.data);
 
-// calculation for styling
+
+// * Calculation for Styling
 // componentCounter / enhancedConstructions.counter to calculate width
 
 let componentCounter = 0;
