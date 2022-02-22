@@ -54,6 +54,16 @@ export async function getBuildingByName(name) {
                                                         id
                                                     }
                                                 }
+                                                backgroundImage {
+                                                    data {
+                                                        attributes{
+                                                            url
+                                                            formats
+                                                            alternativeText
+                                                            caption
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -101,6 +111,7 @@ export async function getPageBySlug(slug) {
                                 image {
                                     data {
                                         attributes {
+                                            url
                                             formats
                                             alternativeText
                                             caption
@@ -129,6 +140,7 @@ export async function getSingleTypeHome() {
                         backgroundImage {
                             data {
                                 attributes {
+                                    url
                                     formats
                                     caption
                                     alternativeText

@@ -28,6 +28,13 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::element.element"
+    },
+    "backgroundImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
