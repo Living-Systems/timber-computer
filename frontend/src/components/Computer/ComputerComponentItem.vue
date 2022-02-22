@@ -4,7 +4,7 @@
             type="radio"
             :name="component.attributes.name"
             :id="element.id"
-            @change="$emit('updateSelection', element)"
+            @change="updateSelection(component.id, element)"
             :checked="props.component.attributes.element.data.id === element.id"
         />
         <div class="computer-components__comp-row | p-body">
@@ -25,6 +25,8 @@
 
 <script setup>
 import { computed } from 'vue';
+import { useStore } from "@nanostores/vue";
+import { updateSelection } from "../../../store/constructions";
 
 const props = defineProps(['component', 'element', 'componentState']);
 
@@ -34,4 +36,5 @@ const sustainabilityClass = computed(()=>{
     return props.element.attributes.sustainability;
 })
 
+// @change="$emit('updateSelection', element)"
 </script>

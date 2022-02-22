@@ -5,6 +5,7 @@
         </h1>
         <p class="p-box rounded-md smoked-glass text-style-600">
             {{ content }}
+            {{ result }}
         </p>
     </section>
 </template>
@@ -12,7 +13,7 @@
 <script setup>
 import {ref} from 'vue';
 
-const props = defineProps(['heading', 'content']);
+const props = defineProps(['heading', 'content', 'result']);
 
 const heading = ref(props.heading);
 const content = ref(props.content);

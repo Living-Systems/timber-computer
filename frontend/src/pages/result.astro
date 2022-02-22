@@ -1,26 +1,32 @@
 ---
 // Import content function
 import { getBuildingByName } from '../lib/api';
+import { useStore } from "@nanostores/vue";
+import { calculation } from "../../store/constructions.js";
+
 // Component Imports
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 
 // You can import components from any supported Framework here!
 // import Index from './index.vue';
-import ConfiguratorNav from '../components/UI/ConfiguratorNav.vue'
+import ConfiguratorNav from '../components/UI/ConfiguratorNav.vue';
 
-import LiveGraph from '../components/Computer/LiveGraph.vue';
-import Computer from '../components/Computer/Computer.vue';
+import ButtonNavigation from '../components/UI/ButtonNavigation.vue';
+import TextBox from '../components/UI/TextBox.vue';
 
 // Component Script:
 // You can write any JavaScript/TypeScript that you'd like here.
 // It will run during the build, but never in the browser.
 // All variables are available to use in the HTML template below.
-
-const title    = "Configurator";
+const title        = "Result";
 const buildingType = "Typenhaus";
 const getBuilding  = await getBuildingByName( buildingType );
 const building     = getBuilding.data[0].attributes;
+
+
+// TextBox input
+let textBoxHeading = 'Computation complete';
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
@@ -35,11 +41,11 @@ const building     = getBuilding.data[0].attributes;
     </div>
 
     <div slot="main" class="flex flex-col flex-1 px-body h-full">
-        <h1 class="sr-only">
-            Timber Computer
-        </h1>
-        <Computer building={ building } client:load/>
-        <LiveGraph client:idle/>
+        <TextBox heading={textBoxHeading} result={useStore(calculation)}/>
+
+        <div class="mt-auto pb-body">
+            <ButtonNavigation button-l="Start again" href-l="#" button-r="Mail complete report" href-r="#"/>
+        </div>
     </div>
 
 </BaseLayout>

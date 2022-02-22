@@ -29,15 +29,18 @@ export async function getBuildingByName(name) {
                     attributes {
                         constructions {
                             data {
+                                id
                                 attributes {
                                     name
                                     components {
                                         data {
+                                            id
                                             attributes {
                                                 name
                                                 area
                                                 element {
                                                     data {
+                                                        id
                                                         attributes {
                                                             frontendName
                                                             cradleToSite
@@ -61,28 +64,43 @@ export async function getBuildingByName(name) {
 	return data?.buildings;
 }
 
-// * Construction Selection
+// * Construction Fetch & Selection
 
 const fetchBuilding = await getBuildingByName(buildingType);
-export const selectedConstructions = atom(fetchBuilding.data[0].attributes.constructions.data);
+const selectedConstructions = atom(fetchBuilding.data[0].attributes.constructions.data);
 
-console.log('selectedConstructions', selectedConstructions.get());
+
+// * Change Selection
+
+export const updateSelection = (componentId, element) => {
+    const allConstructions = selectedConstructions.get();
+    for (const construction of allConstructions) {
+        for (const component of construction.attributes.components.data){
+            if (component.id == componentId) {
+                component.attributes.element.data.attributes = element.attributes;
+            }
+        }
+    };
+
+    selectedConstructions.set(allConstructions);
+};
+
 
 // * Calculation
 
 export const calculation = computed(selectedConstructions, ()=>{
     const allConstructions = selectedConstructions.get();
 
-    let counter = 0;
+    let calculationCounter = 0;
 
     for (const construction of allConstructions) {
 
         for (const component of construction.attributes.components.data){
-            counter += component.attributes.area * component.attributes.element.data.attributes.cradleToLife;
+            calculationCounter += component.attributes.area * component.attributes.element.data.attributes.cradleToLife;
         }
     }
 
-    return counter;
+    return calculationCounter;
 });
 
 
