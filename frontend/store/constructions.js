@@ -112,13 +112,14 @@ export const calculation = computed(selectedConstructions, ()=>{
 
 // * Rating
 
-console.log('fetchBuilding.data[0].attributes', fetchBuilding.data[0].attributes.threshold);
-
 export const rating = computed(calculation, ()=> {
     const threshold = fetchBuilding.data[0].attributes.threshold;
     threshold.sort((a, b) => b.value - a.value);
 
-    let finalRating = {value:0, rating:'F'};
+    let finalRating = {
+        value:0,
+        rating:'F'
+    };
 
     for (const [index, trsh] of threshold.entries()) {
         if (trsh.value < calculation.get()){
@@ -148,7 +149,6 @@ for (const construction of selectedConstructions.get()) {
 export const activeComponentId = atom(1);
 
 export const changeActive = (operation) => {
-    console.log('operation', operation);
 
     if (operation === 'increment') {
         if (activeComponentId.get() < componentCounter.get()){
