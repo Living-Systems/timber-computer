@@ -56,6 +56,12 @@ export async function getBuildingByName(name) {
                                 }
                             }
                         }
+                        threshold {
+                            ... on ComponentBuildingSteps {
+                              rating
+                              value
+                            }
+                          }
                     }
                 }
             }
