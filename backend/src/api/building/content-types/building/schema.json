@@ -4,7 +4,8 @@
   "info": {
     "singularName": "building",
     "pluralName": "buildings",
-    "displayName": "Building"
+    "displayName": "Building",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -19,6 +20,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::construction.construction"
+    },
+    "threshold": {
+      "displayName": "steps",
+      "type": "component",
+      "repeatable": true,
+      "component": "building.steps"
     }
   }
 }

@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_building_steps",
+  "info": {
+    "displayName": "steps",
+    "icon": "calculator",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "rating": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "biginteger"
+    }
+  }
+}
