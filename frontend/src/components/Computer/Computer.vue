@@ -27,7 +27,10 @@
                 <span class="sr-only">previous</span>
                 <span aria-hidden="true">←</span>
             </button>
-            <button class="btn btn--md" @click="changeActive('increment')">
+            <button 
+                class="btn btn--md" 
+                @click="changeActive('increment')"
+            >
                 <span class="sr-only">next</span>
                 <span aria-hidden="true">→</span>
             </button>
@@ -38,11 +41,13 @@
 <script setup>
 import { computed } from "vue";
 import { useStore } from "@nanostores/vue";
-import { activeComponentId, changeActive } from "../../../store/constructions";
+import { activeComponentId, componentCounter, changeActive } from "../../../store/constructions";
 
 import ComputerComponent from "./ComputerComponent.vue";
 
 const props = defineProps(["building"]);
+
+const numberOfComponents = useStore(componentCounter);
 
 const activeComponent = computed(() => {
     return useStore(activeComponentId);

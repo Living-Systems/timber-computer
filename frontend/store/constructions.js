@@ -110,6 +110,28 @@ export const calculation = computed(selectedConstructions, ()=>{
 });
 
 
+// * Rating
+
+console.log('fetchBuilding.data[0].attributes', fetchBuilding.data[0].attributes.threshold);
+
+export const rating = computed(calculation, ()=> {
+    const threshold = fetchBuilding.data[0].attributes.threshold;
+    threshold.sort((a, b) => b.value - a.value);
+
+    let finalRating = {value:0, rating:'F'};
+
+    for (const [index, trsh] of threshold.entries()) {
+        if (trsh.value < calculation.get()){
+            finalRating.value = threshold[index-1].value;
+            finalRating.rating = threshold[index-1].rating;
+            break;
+        }
+    }
+
+    return finalRating.rating;
+});
+
+
 // * Count all Components
 
 export const componentCounter = atom(0);
