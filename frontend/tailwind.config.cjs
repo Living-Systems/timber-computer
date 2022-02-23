@@ -36,6 +36,7 @@ module.exports = {
             '1000': 'var(--size-1000)',
             'body': 'var(--body-p)',
             'box': 'var(--box-p)',
+            'item': 'var(--item-p)',
             'auto': 'auto',
         },
         minHeight: {
@@ -53,6 +54,10 @@ module.exports = {
             'md': 'var(--radius-md)',
             'full': '100%',
         },
+        borderWidth: {
+            DEFAULT: '1px',
+            '0': '0',
+        },
         extend: {
             inset: {
                 '25': 'var(--size-25)',
@@ -64,6 +69,9 @@ module.exports = {
                 '500': 'var(--size-500)',
                 '600': 'var(--size-600)',
                 '700': 'var(--size-700)',
+            },
+            zIndex: {
+                '1': '1',
             }
         }
     },

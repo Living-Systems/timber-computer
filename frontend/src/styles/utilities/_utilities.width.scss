@@ -21,7 +21,7 @@
 $width-props: (
     'width': (
         // Helper widths
-        // w-full: calc(100% - var(--cluster-gap)),
+        w-full: calc(100% + var(--cluster-gap)),
         // w-screen: calc(100vw),
         w-auto: auto,
         // w-px: 1px,
