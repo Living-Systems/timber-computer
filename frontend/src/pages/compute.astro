@@ -7,7 +7,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 // You can import components from any supported Framework here!
 // import Index from './index.vue';
-import ConfiguratorNav from '../components/UI/ConfiguratorNav.vue';
+import ComputerNav from '../components/Computer/ComputerNav.vue';
 
 import ButtonNavigation from '../components/UI/ButtonNavigation.vue';
 import TextBox from '../components/UI/TextBox.vue';
@@ -38,14 +38,14 @@ let textBoxContent = 'We will now take you through a series of multiple choice o
 
     <!-- todo @time: Brauchen wir hier nicht, richtig? -->
     <div slot="subnav">
-        <ConfiguratorNav client:load building={ building } inactive/>
+        <ComputerNav client:load building={ building } inactive/>
     </div>
 
     <div slot="main" class="flex flex-col flex-1 px-body h-full">
         <TextBox heading={textBoxHeading} content={textBoxContent}/>
 
         <div class="mt-auto pb-body">
-            <ButtonNavigation button-l="Start" href-l="/configurator"/>
+            <ButtonNavigation button-l="Start" href-l="/computer"/>
         </div>
     </div>
 
