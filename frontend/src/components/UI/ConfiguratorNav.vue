@@ -63,7 +63,6 @@ const constructions = ref(props.building.constructions.data);
 let enhancedConstructions = [];
 
 for (const construction of constructions.value) {
-    console.log('construction', construction);
     enhancedConstructions.push({
         name: construction.attributes.name,
         id: construction.id,

@@ -27,13 +27,24 @@
                 <span class="sr-only">previous</span>
                 <span aria-hidden="true">←</span>
             </button>
-            <button 
+            
+            <button
+                v-if="activeComponent.value < numberOfComponents"
                 class="btn btn--md" 
                 @click="changeActive('increment')"
             >
                 <span class="sr-only">next</span>
                 <span aria-hidden="true">→</span>
             </button>
+
+            <a
+                v-else
+                href="/result"
+                class="btn btn--md"
+            >
+                <span class="sr-only">next</span>
+                <span aria-hidden="true">→</span>
+            </a>
         </nav>
     </section>
 </template>
