@@ -1,6 +1,6 @@
 <template>
-    <section class="configurator | flow-100">
-        <div class="configurator__components flex">
+    <section class="computer | flow-100">
+        <div class="computer__components flex">
             <!-- Konstruktion -->
             <div
                 v-for="component in allComponents"
@@ -17,20 +17,20 @@
 
         <!-- back and forwards buttons -->
         <nav
-            class="configurator__nav | cluster cluster--x-50 cluster--stretched"
+            class="computer__nav | cluster cluster--x-50 cluster--stretched"
         >
-            <button 
-                class="btn btn--md" 
+            <button
+                class="btn btn--md"
                 @click="changeActive('decrement')"
                 :disabled="activeComponent.value == 1"
             >
                 <span class="sr-only">previous</span>
                 <span aria-hidden="true">←</span>
             </button>
-            
+
             <button
                 v-if="activeComponent.value < numberOfComponents"
-                class="btn btn--md" 
+                class="btn btn--md"
                 @click="changeActive('increment')"
             >
                 <span class="sr-only">next</span>

@@ -1,5 +1,5 @@
 <template>
-    <label class="computer-components__label">
+    <label class="computer-component__label">
         <input
             type="radio"
             :name="component.attributes.name"
@@ -7,7 +7,7 @@
             @change="updateSelection(component.id, element)"
             :checked="props.component.attributes.element.data.id === element.id"
         />
-        <div class="computer-components__comp-row | p-body">
+        <div class="computer-component__comp-row">
             <div class="relative pb-300">
                 <img src="../../../public/assets/dummy-component.png" alt="" />
                 <p class="whitespace-nowrap absolute bottom-0 left-0">

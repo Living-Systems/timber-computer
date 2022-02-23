@@ -23,6 +23,7 @@ const building     = getBuilding.data[0].attributes;
 
 
 // TextBox input
+// Todo @Adrian: das sollten wir auch noch als single ins cms aufnehmen
 let textBoxHeading = 'Compute';
 
 let textBoxContent = 'We will now take you through a series of multiple choice options for all components of a reference building. Along the way, we will update the carbon footprint calculation in real-time, making impacts of decisions visible. At the end of the process, we provide you a report that can serve as a basis of actual planning.';
@@ -35,6 +36,7 @@ let textBoxContent = 'We will now take you through a series of multiple choice o
 <!-- Use defined layout component like in vue -->
 <BaseLayout title={ title }>
 
+    <!-- todo @time: Brauchen wir hier nicht, richtig? -->
     <div slot="subnav">
         <ConfiguratorNav client:load building={ building } inactive/>
     </div>

@@ -1,60 +1,19 @@
-.computer-component {
-    &:not(.is-active){
-        width: 0;
-        overflow: hidden;
+.computer {
+    height: calc(100vh - var(--size-900) - var(--size-200) - var(--header-h)); // TODO: das geht noch besser (ohne vh)
+    margin-bottom: var(--size-900);
+    width: 45%; // TODO: Wert ermitteln / entscheiden
+    min-width: 32rem;
+}
+
+.computer__components {
+    height: 100%;
+}
+
+.computer__nav {
+    max-width: 14rem;
+
+    button:disabled {
+        pointer-events: none;
     }
 }
 
-.computer-components__head-row {
-    z-index: map-get($z-index, comp-header);
-}
-
-.computer-components__head-row,
-.computer-components__comp-row { // TODO: in cluster element umbauen?
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 1fr;
-}
-
-.computer-components__label{
-    input[type=radio] { 
-        position: absolute;
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
-
-    input[type=radio]:checked + .computer-components__comp-row{
-        border: 1px solid var(--border-default);
-        border-radius: var(--radius-sm);
-    }
-}
-
-.computer-components__comp-row {
-    border: 1px solid transparent;
-    cursor:pointer;
-
-    & > p {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        &.high {
-            border: 1px solid green;
-            border-radius: 50%;
-            color:green;
-        }
-
-        &.medium {
-            border: 1px solid yellow;
-            border-radius: 50%;
-            color:yellow;
-        }
-
-        &.low {
-            border: 1px solid red;
-            border-radius: 50%;
-            color:red;
-        }
-    }
-}
