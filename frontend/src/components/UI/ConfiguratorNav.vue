@@ -5,11 +5,14 @@
 
             <!-- first loop: constructions -->
             <li
-                class="subnav__construction-item"
-                :style="'--group-items: ' + construction.counter"
+                class="subnav__construction"
                 v-for="construction in enhancedConstructions"
+                :style="'--group-items: ' + construction.counter"
                 :key="construction.id"
             >
+                <div class="subnav__construction-title">
+                    {{ construction.name }}
+                </div>
                 <ol class="cluster cluster--stretched items-start">
 
                     <!-- second loop: components -->
@@ -18,8 +21,8 @@
                         :key="component"
                         @click="changeActive(component.id)"
                     >
-                        <div
-                            class="subnav__item"
+                        <button
+                            class="subnav__item | btn uppercase"
                             :class="
                                 !inactive && activeComponent == component.id ? 'is-current'
                                 : !inactive && activeComponent > component.id ? 'is-set'
@@ -29,10 +32,7 @@
                             <div class="subnav__item-title">
                                 {{ component.attributes.name }}
                             </div>
-                            <div class="subnav__group-title">
-                                {{ construction.name }}
-                            </div>
-                        </div>
+                        </button>
                     </li>
 
                 </ol>
@@ -49,10 +49,7 @@ import { ref } from "vue";
 import { useStore } from "@nanostores/vue";
 import { activeComponentId, changeActive, componentCounter } from "../../../store/constructions";
 
-const props = defineProps({
-    building: String,
-    inactive: Boolean
-});
+const props = defineProps(['building', 'inactive']);
 
 const activeComponent = useStore(activeComponentId);
 const numberOfComponents = useStore(componentCounter);
@@ -66,19 +63,18 @@ const constructions = ref(props.building.constructions.data);
 let enhancedConstructions = [];
 
 for (const construction of constructions.value) {
+    console.log('construction', construction);
+    enhancedConstructions.push({
+        name: construction.attributes.name,
+        id: construction.id,
+        counter: 1,
+        components: []
+    })
     for (const component of construction.attributes.components.data) {
+        const foundConstruction = enhancedConstructions.find(element => element.id == construction.id);
 
-        let found = enhancedConstructions.find((element) => {
-            return element.construction === construction.attributes.name;
-        });
-
-        if (!found) {
-            enhancedConstructions.push({
-                name: construction.attributes.name,
-                counter: 1,
-                components: [component],
-            });
-        }
+        foundConstruction.counter += 1;
+        foundConstruction.components.push({...component});
     }
 }
 </script>
