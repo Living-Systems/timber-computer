@@ -11,5 +11,9 @@
 
 .configurator__nav {
     max-width: 14rem;
+
+    button:disabled {
+        pointer-events: none;
+    }
 }
 

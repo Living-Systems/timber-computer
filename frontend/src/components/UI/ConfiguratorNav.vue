@@ -18,12 +18,11 @@
                         :key="component"
                         @click="changeActive(component.id)"
                     >
-                        <a 
-                            href="#" 
+                        <div
                             class="subnav__item"
                             :class="
-                                activeComponent == component.id ? 'is-current'
-                                : activeComponent > component.id ? 'is-set'
+                                !inactive && activeComponent == component.id ? 'is-current'
+                                : !inactive && activeComponent > component.id ? 'is-set'
                                 : null
                             "
                         >
@@ -33,7 +32,7 @@
                             <div class="subnav__group-title">
                                 {{ construction.name }}
                             </div>
-                        </a>
+                        </div>
                     </li>
 
                 </ol>
@@ -46,11 +45,14 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { useStore } from "@nanostores/vue";
 import { activeComponentId, changeActive, componentCounter } from "../../../store/constructions";
 
-const props = defineProps(["building"]);
+const props = defineProps({
+    building: String,
+    inactive: Boolean
+});
 
 const activeComponent = useStore(activeComponentId);
 const numberOfComponents = useStore(componentCounter);

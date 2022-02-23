@@ -19,7 +19,11 @@
         <nav
             class="configurator__nav | cluster cluster--x-50 cluster--stretched"
         >
-            <button class="btn btn--md" @click="changeActive('decrement')">
+            <button 
+                class="btn btn--md" 
+                @click="changeActive('decrement')"
+                :disabled="activeComponent.value == 1"
+            >
                 <span class="sr-only">previous</span>
                 <span aria-hidden="true">←</span>
             </button>
