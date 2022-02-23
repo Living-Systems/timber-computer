@@ -8,6 +8,9 @@ module.exports = {
     // purge: [
     //     './src/**/*.{astro,js,jsx,svelte,ts,tsx,vue}',
     // ],
+    corePlugins: {
+        width: false,
+    },
     theme: {
         screens: {
             'md': '37.5em', // keep synced with _settings.breakpoints.scss

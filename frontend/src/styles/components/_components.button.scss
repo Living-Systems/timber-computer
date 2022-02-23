@@ -28,24 +28,6 @@
     background: none; // [4]
     appearance: none; // [7]
     white-space: nowrap; // [8]
-    @include smoked-glass;
-    padding: 0.4rem;
-}
-
-
-// * Big Round Buttons
-
-.btn--xl {
-    @include text-style('600');
-    height: var(--btn-xl-h);
-    border-radius: calc(var(--btn-xl-h) / 2);
-}
-
-.big-button-container {
-    display: grid;                     // fixme: build as cluster?
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
-    grid-gap: var(--column-gap, 1rem); // same as cluster gap
 }
 
 
@@ -62,4 +44,15 @@
         outline: none;
         box-shadow: 0 0 0 1px var(--border-default);
     }
+}
+
+
+// * Big Round Buttons
+
+.btn--xl {
+    padding: var(--body-p);
+    @include smoked-glass;
+    @include text-style('600');
+    height: var(--btn-xl-h);
+    border-radius: calc(var(--btn-xl-h) / 2);
 }
