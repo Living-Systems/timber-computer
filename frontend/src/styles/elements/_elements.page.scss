@@ -56,4 +56,7 @@ body {
     @include text-style('default');
     color: var(--text-default);
     background-color: var(--bg-default);
+
+
+    background: url('../../public/assets/dummy-bg.png') no-repeat center / cover  var(--bg-default); // todo: remove as we have real images
 }
