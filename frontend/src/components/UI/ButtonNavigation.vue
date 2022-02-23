@@ -1,9 +1,9 @@
 <template>
-    <nav class="pt-300 big-button-container">
-        <a :href="hrefL" class="btn btn--xl">
+    <nav class="cluster | pt-300">
+        <a :href="hrefL" class="btn btn--xl w-1/2">
             <span>{{ buttonL }}</span>
         </a>
-        <a v-if="hrefR && buttonR" :href="hrefR" class="btn btn--xl">
+        <a v-if="hrefR && buttonR" :href="hrefR" class="btn btn--xl  w-1/2">
             <span>{{ buttonR }}</span>
         </a>
     </nav>
