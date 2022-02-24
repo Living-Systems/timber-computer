@@ -61,28 +61,6 @@
         max-height: 4rem;
         width: auto;
     }
-
-    i {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        width: var(--badge-w);
-        height: var(--badge-w);
-        border: 1px solid currentColor;
-
-        &.high {
-            color: green;
-        }
-
-        &.medium {
-            color: yellow;
-        }
-
-        &.low {
-            color: red;
-        }
-    }
 }
 
 .computer-component__item-content {

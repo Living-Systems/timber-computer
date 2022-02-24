@@ -1,0 +1,24 @@
+/*------------------------------------*\
+  #badge
+\*------------------------------------*/
+
+.badge {
+    font-size: 1.4em;
+    display: inline-block;
+
+    &:after {
+        content: "●";
+    }
+}
+
+.badge--high {
+    color: var(--text-green);
+}
+
+.badge--medium {
+    color: var(--text-orange);
+}
+
+.badge--low {
+    color: var(--text-red);
+}
