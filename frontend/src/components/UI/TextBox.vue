@@ -6,7 +6,7 @@
         <div class="p-box rounded-md smoked-glass text-style-600">
             <p v-if="props.content">{{ props.content }}</p>
             <p v-if="result">
-                {{ saving / 1000 }}t CO2 gespart
+                {{ kgTonCalculator(saving) }} gespart
             </p>
             <p v-if="result" v-for="value of compare" :key="value">
                 {{ saving / value.value }} {{ value.description }}
@@ -18,7 +18,7 @@
 <script setup>
 import {ref} from 'vue';
 import { useStore } from "@nanostores/vue";
-import { savedCO2, compareValues } from "../../../store/constructions";
+import { savedCO2, compareValues, kgTonCalculator } from "../../../store/constructions";
 
 const props = defineProps(['heading', 'content', 'result']);
 const result = ref(props.result);
