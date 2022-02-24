@@ -10,6 +10,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ComputerNav from '../components/Computer/ComputerNav.vue';
 
 import ButtonNavigation from '../components/UI/ButtonNavigation.vue';
+import Header from '../components/UI/Header.vue';
 import TextBox from '../components/UI/TextBox.vue';
 
 // Component Script:
@@ -35,6 +36,10 @@ let textBoxContent = 'We will now take you through a series of multiple choice o
 
 <!-- Use defined layout component like in vue -->
 <BaseLayout title={ title }>
+
+    <div slot="header">
+        <Header link-to="/learn" link-name="learn"/>
+    </div>
 
     <div slot="main" class="flex flex-col flex-1 px-body h-full">
         <TextBox heading={textBoxHeading} content={textBoxContent}/>
