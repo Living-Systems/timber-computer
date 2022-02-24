@@ -5,7 +5,8 @@ import { getAllPagesWithSlugs, getPageBySlug } from '../../lib/api';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 // Component Script:
-import LearnNav from '../../components/UI/LearnNav.vue'
+import LearnNav       from '../../components/UI/LearnNav.vue'
+import ContentModules from '../../components/UI/ContentModules.vue'
 
 // generate URLs for pages using the slug
 export async function getStaticPaths() {
@@ -35,9 +36,7 @@ let title = page.title;
 
     <div slot="main">
         <section class="flow-200 px-body">
-            <h1 class="">
-                { title }
-            </h1>
+            <ContentModules content={ page.content }></ContentModules>
         </section>
     </div>
 
