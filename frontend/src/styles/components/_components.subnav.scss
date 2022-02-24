@@ -9,7 +9,6 @@
     left: 0;
     right: 0;
     padding: 0 var(--body-p);
-    overflow: hidden;
     z-index: map-get($z-index, subnav);
 
     ol {

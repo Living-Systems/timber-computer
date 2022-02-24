@@ -22,7 +22,7 @@
             <button
                 class="btn btn--md"
                 @click="changeActive('decrement')"
-                :disabled="activeComponent.value == 1"
+                v-if="activeComponent.value != 1"
             >
                 <span class="sr-only">previous</span>
                 <span aria-hidden="true">←</span>
@@ -42,8 +42,7 @@
                 href="/result"
                 class="btn btn--md"
             >
-                <span class="sr-only">next</span>
-                <span aria-hidden="true">→</span>
+                See Results
             </a>
         </nav>
     </section>

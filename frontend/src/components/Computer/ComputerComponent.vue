@@ -5,11 +5,12 @@
     </h2>
 
     <!-- //  component types -->
-    <div class="computer-component__content | clear-glass rounded-sm uppercase text-style-200 overflow-y-auto">
+    <div class="computer-component__content | clear-glass rounded-sm uppercase text-style-200 overflow-y-auto self-start is-collapsed">
         <div class="computer-component__table-header">
-            <div class="computer-component__table-title | p-item">
+            <div class="computer-component__table-title | p-item grow">
                 <p aria-hidden="true">Type</p>
-                <button class="btn"> <!-- Todo: add expand interaction -->
+                <button class="btn | cluster cluster--x-50"> <!-- Todo: add expand interaction -->
+                    <span class="uppercase">Details</span>
                     <span>←</span>
                 </button>
             </div>
@@ -25,7 +26,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="computer-component__table-body | flex flex-col">
             <ComputerComponentItem
                 v-for="element in component.attributes.elements.data"

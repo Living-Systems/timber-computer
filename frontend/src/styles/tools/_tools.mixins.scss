@@ -21,6 +21,20 @@
     backdrop-filter: blur(20px); // todo @tim: should be rem here as well
 }
 
+// hover and active styles for buttons
+@mixin active-btn() {
+    &:active {
+        box-shadow: 0 0 0 1px var(--border-default);
+        transform: scale(0.98);
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            box-shadow: 0 0 0 1px var(--border-default);
+        }
+    }
+}
+
 // Mixin for input placeholder styling
 @mixin placeholder() {
     ::placeholder {

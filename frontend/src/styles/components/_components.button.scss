@@ -28,31 +28,26 @@
     background: none; // [4]
     appearance: none; // [7]
     white-space: nowrap; // [8]
+    transition: box-shadow $trans-time--s $trans-func--default,
+                transform $trans-time--xs $trans-func--default;
 }
 
-
-// * Small boxy Buttons for component navigation
-
+// Small boxy Buttons
 .btn--md {
-    padding: var(--body-p);
+    padding: 0.2rem;
     @include text-style('200');
     @include smoked-glass;
+    height: var(--btn-md-h);
     border-radius: var(--radius-sm);
-
-    &:focus-visible,
-    &:active{
-        outline: none;
-        box-shadow: 0 0 0 1px var(--border-default);
-    }
+    @include active-btn();
 }
 
-
-// * Big Round Buttons
-
+// Big Round Buttons
 .btn--xl {
-    padding: var(--body-p);
+    padding: var(--box-p);
     @include smoked-glass;
     @include text-style('600');
     height: var(--btn-xl-h);
     border-radius: calc(var(--btn-xl-h) / 2);
+    @include active-btn();
 }

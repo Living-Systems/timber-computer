@@ -17,6 +17,7 @@ $ui-props: (
         'header-h': 3rem,
 
         // buttons
+        'btn-md-h': 2rem,
         'btn-xl-h': 14rem,
 
         // Default definition for .page-grid
@@ -32,6 +33,7 @@ $ui-props: (
 
         // computer
         'computer-item-w': 20vw,
+        'computer-item-expanded-w': 80vw,
 
         // badge
         'badge-w': 3.4rem,
@@ -52,6 +54,7 @@ $ui-props: (
         'body-p': var(--size-200),
 
         // computer
-        'computer-item-w': 20rem,
+        'computer-item-w': 10rem,
+        'computer-item-expanded-w': 34rem,
     ),
 );
