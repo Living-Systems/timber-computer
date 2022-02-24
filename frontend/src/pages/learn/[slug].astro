@@ -28,10 +28,11 @@ const getPages = await getAllPagesWithSlugs();
 const pages    = getPages.data;
 
 let title = page.title;
+let bodyClass = 'bg-gold';
 ---
 
 
-<BaseLayout title={ title }>
+<BaseLayout title={ title } bodyClass={bodyClass}>
 
     <div slot="header">
         <Header link-to="/" link-name="home" header-class="border-b"/>
