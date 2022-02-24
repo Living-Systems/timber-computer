@@ -1,10 +1,14 @@
 .results-graph {
     width: var(--results-graph-w);
+}
+
+.results-graph--fixed {
     position: fixed;
     bottom: 0;
     right: 0;
     margin: 0 var(--body-p) var(--size-900) 0;
 }
+
 
 .results-graph__rating-item {
     span {
