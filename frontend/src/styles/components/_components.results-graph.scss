@@ -1,0 +1,48 @@
+.results-graph {
+    width: var(--results-graph-w);
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 0 var(--body-p) var(--size-900) 0;
+}
+
+.results-graph__rating-item {
+    span {
+        display: inline-block;
+        border-radius: var(--radius-sm);
+        background: var(--rating-color, var(--text-red));
+        padding: 0.1rem 0.3rem;
+        width: var(--rating-item-w, 50%);
+
+        --start-w: 1rem;
+        --end-w: var(--rating-item-w);
+        animation: show-rating-item $trans-time--m $trans-func--default var(--animation-delay, 0s) backwards;
+    }
+
+    @for $i from 1 through 10 {
+        &:nth-child(#{$i}) {
+            --animation-delay: #{$i * 0.1s};
+            --rating-item-w: #{25% + $i * 7.5%};
+        }
+    }
+
+    &:nth-child(1) {
+        --rating-color: var(--text-green);
+    }
+
+    &:nth-child(2) {
+        --rating-color: var(--text-green-secondary);
+    }
+
+    &:nth-child(3) {
+        --rating-color: var(--text-orange);
+    }
+
+    &:nth-child(4) {
+        --rating-color: var(--text-orange-secondary);
+    }
+
+    &:nth-child(5) {
+        --rating-color: var(--text-red-secondary);
+    }
+}

@@ -15,6 +15,7 @@ import ComputerNav from '../components/Computer/ComputerNav.vue';
 import ButtonNavigation from '../components/UI/ButtonNavigation.vue';
 import Header from '../components/UI/Header.vue';
 import TextBox from '../components/UI/TextBox.vue';
+import ResultsGraph from '../components/Computer/ResultsGraph.vue';
 import BgImage from '../components/UI/BgImage.vue';
 
 // Component Script:
@@ -43,6 +44,8 @@ let textBoxHeading = 'Computation complete';
 
     <div slot="main" class="flex flex-col flex-1 px-body h-full">
         <TextBox heading={textBoxHeading} result/>
+
+        <ResultsGraph client:load simpleRating/>
 
         <div class="mt-auto pb-body">
             <ButtonNavigation button-l="Revise Selections" href-l="/computer" button-r="Mail complete report" href-r="#"/>

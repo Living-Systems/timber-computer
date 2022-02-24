@@ -10,7 +10,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/UI/Header.vue'
 
 import ComputerNav from '../components/Computer/ComputerNav.vue'
-import LiveGraph from '../components/Computer/LiveGraph.vue';
+import ResultsGraph from '../components/Computer/ResultsGraph.vue';
 import Computer from '../components/Computer/Computer.vue';
 import BgImage from '../components/UI/BgImage.vue';
 
@@ -45,7 +45,7 @@ const building     = getBuilding.data[0].attributes;
             Timber Computer
         </h1>
         <Computer building={ building } client:load/>
-        <LiveGraph client:load/>
+        <ResultsGraph client:load/>
         <BgImage/>
     </div>
 

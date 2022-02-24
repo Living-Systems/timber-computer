@@ -17,3 +17,13 @@
     }
 }
 
+@keyframes show-rating-item {
+    from {
+        opacity: 0;
+        width: var(--start-w, 0px);
+    }
+    to {
+        opacity: 1;
+        width: var(--end-w, 100%);
+    }
+}
