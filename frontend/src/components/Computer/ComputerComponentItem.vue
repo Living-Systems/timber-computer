@@ -1,5 +1,5 @@
 <template>
-    <label class="computer-components__label">
+    <label class="computer-component__item">
         <input
             type="radio"
             :name="component.attributes.name"
@@ -7,18 +7,30 @@
             @change="updateSelection(component.id, element)"
             :checked="props.component.attributes.element.data.id === element.id"
         />
-        <div class="computer-components__comp-row | p-body">
-            <div class="relative pb-300">
-                <img src="../../../public/assets/dummy-component.png" alt="" />
-                <p class="whitespace-nowrap absolute bottom-0 left-0">
+
+        <div class="computer-component__item-content | flex p-item">
+            <div class="computer-component__item-head | cluster cluster--y-gap cluster--y-300">
+                <p class="w-full order-last">
                     {{ element.attributes.frontendName }}
                 </p>
+                <img src="../../../public/assets/dummy-component.png" alt="" />
+                <i :class="sustainabilityClass">{{ element.attributes.sustainability }}</i>
             </div>
-            <!-- <p class="border-2 border-solid rounded-full border-current">A+</p> -->
-            <p :class="sustainabilityClass">{{ element.attributes.sustainability }}</p>
-            <p>{{ element.attributes.cradleToSite }}</p>
-            <p>{{ element.attributes.cradleToLife }}</p>
-            <p>{{ element.attributes.cradleToCradle }}</p>
+
+            <div class="computer-component__item-info | cluster cluster--stretched grow text-center" aria-hidden="true">
+                <dl>
+                    <dt class="sr-only">Cradle to Site</dt>
+                    <dd>{{ element.attributes.cradleToSite }}</dd>
+                </dl>
+                <dl>
+                    <dt class="sr-only">Cradle to Life</dt>
+                    <dd>{{ element.attributes.cradleToLife }}</dd>
+                </dl>
+                <dl>
+                    <dt class="sr-only">Cradle to Cradle</dt>
+                    <dd>{{ element.attributes.cradleToCradle }}</dd>
+                </dl>
+            </div>
         </div>
     </label>
 </template>

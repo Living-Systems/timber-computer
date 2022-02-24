@@ -78,6 +78,57 @@ export async function getBuildingByName(name) {
 	return data?.buildings;
 }
 
+
+// get a single building by its name
+export async function getBuildingByNameStore(name) {
+	const data = await fetchAPI(`
+        {
+            buildings(filters: { name: { eq: "${name}" } } ) {
+                data {
+                    attributes {
+                        constructions {
+                            data {
+                                id
+                                attributes {
+                                    name
+                                    components {
+                                        data {
+                                            id
+                                            attributes {
+                                                name
+                                                area
+                                                element {
+                                                    data {
+                                                        id
+                                                        attributes {
+                                                            frontendName
+                                                            cradleToSite
+                                                            cradleToLife
+                                                            cradleToCradle
+                                                            sustainability
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        threshold {
+                            ... on ComponentBuildingSteps {
+                              rating
+                              value
+                            }
+                          }
+                    }
+                }
+            }
+        }
+    `);
+	return data?.buildings;
+}
+
 // get a single building by its name
 export async function getAllPagesWithSlugs() {
 	const data = await fetchAPI(`

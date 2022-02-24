@@ -10,7 +10,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 // You can import components from any supported Framework here!
 // import Index from './index.vue';
-import ConfiguratorNav from '../components/UI/ConfiguratorNav.vue';
+import ComputerNav from '../components/Computer/ComputerNav.vue';
 
 import ButtonNavigation from '../components/UI/ButtonNavigation.vue';
 import TextBox from '../components/UI/TextBox.vue';
@@ -36,15 +36,11 @@ let textBoxHeading = 'Computation complete';
 <!-- Use defined layout component like in vue -->
 <BaseLayout title={ title }>
 
-    <div slot="subnav">
-        <ConfiguratorNav building={ building } client:load/>
-    </div>
-
     <div slot="main" class="flex flex-col flex-1 px-body h-full">
         <TextBox heading={textBoxHeading} result={useStore(calculation)}/>
 
         <div class="mt-auto pb-body">
-            <ButtonNavigation button-l="Start again" href-l="#" button-r="Mail complete report" href-r="#"/>
+            <ButtonNavigation button-l="Revise Selections" href-l="/computer" button-r="Mail complete report" href-r="#"/>
         </div>
     </div>
 

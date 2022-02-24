@@ -88,13 +88,11 @@
 
 // COMPONENTS
 // Component Styles for VUE components should not be listed here
-// TODO: Add custom components if needed
-@import "components/components.content-box"; // TODO: move bgc somewhere else + delete this file
 @import "components/components.live-graph";
-@import "components/components.computer";
-@import "components/components.subnav";
 @import "components/components.button";
-@import "components/components.configurator";
+@import "components/components.subnav";
+@import "components/components.computer";
+@import "components/components.computer-component";
 
 // SCOPES
 @import "scopes/scopes.prose";

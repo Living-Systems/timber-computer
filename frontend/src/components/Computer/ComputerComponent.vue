@@ -1,19 +1,32 @@
 <template>
     <!-- // component heading -->
-    <h2 class="p-box rounded-sm smoked-glass self-start">
+    <h2 class="computer-component__title | p-box rounded-sm smoked-glass self-start">
         {{ component.attributes.name }}
     </h2>
 
     <!-- //  component types -->
-    <div class="clear-glass rounded-sm uppercase text-style-200 overflow-y-scroll overflow-x-hidden">
-        <ul class="computer-components__head-row p-body sticky top-0">
-            <li>Type</li>
-            <li class="text-right">←</li>
-            <li class="text-center">Cradle to site</li>
-            <li class="text-center">Cradle to life</li>
-            <li class="text-center">Cradle to cradle</li>
-        </ul>
-        <div class="computer-components__card cluster cluster--stretched flex-col" >
+    <div class="computer-component__content | clear-glass rounded-sm uppercase text-style-200 overflow-y-auto">
+        <div class="computer-component__table-header">
+            <div class="computer-component__table-title | p-item">
+                <p aria-hidden="true">Type</p>
+                <button class="btn"> <!-- Todo: add expand interaction -->
+                    <span>←</span>
+                </button>
+            </div>
+
+            <div class="computer-component__table-info | flow-50 p-item text-center" aria-hidden="true">
+                <ul class="cluster cluster--stretched | border-b pb-50">
+                    <li>Cradle to site</li>
+                    <li>Cradle to life</li>
+                    <li>Cradle to cradle</li>
+                </ul>
+                <div>
+                    (all in kg CO₂e/m²)
+                </div>
+            </div>
+        </div>
+        
+        <div class="computer-component__table-body | flex flex-col">
             <ComputerComponentItem
                 v-for="element in component.attributes.elements.data"
                 :key="element.id"
