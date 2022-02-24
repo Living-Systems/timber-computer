@@ -3,12 +3,12 @@
         <h1 class="p-box rounded-sm smoked-glass self-start">
             {{ props.heading }}
         </h1>
-        <div class="p-box rounded-md smoked-glass text-style-600">
+        <div class="p-box rounded-md smoked-glass text-style-600 flow flow-600">
             <p v-if="props.content">{{ props.content }}</p>
 
             <!-- if it's result page  -->
-            <p v-if="result && saving === 0">
-                // todo: Text for default values or even worse values
+            <p v-if="result && saving <= 0">
+                // todo: Text for default values or even lower values
             </p>
             <p v-if="result && saving > 0">
                 Well done! Your design ranks above average and you are working towards a greener future. Your building uses {{ percentageCalculated }}% less carbon than a conventional building, which is equivalent to:
