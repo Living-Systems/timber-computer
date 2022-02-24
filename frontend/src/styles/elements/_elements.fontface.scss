@@ -27,16 +27,18 @@
 // selected font but with all glyphs containing no "ink." This value should only be
 // used if rendering text in a particular typeface is required for the page to be useable.
 
-// 2. Subset Unicode range to decrease file size
-// https://markoskon.com/creating-font-subsets/
-
-// Fallback static fonts
-/*
 @font-face {
-    font-family: 'Atak';
-    src: url('../fonts/AtakRegular.woff2') format('woff2'),
-    url('../fonts/AtakRegular.woff') format('woff');
-    font-weight: 200;
+    font-family: 'Monument Grotesk';
+    src: url('../../public/fonts/ABCMonumentGrotesk-Regular.woff2') format('woff2'),
+         url('../../public/fonts/ABCMonumentGrotesk-Regular.woff') format('woff');
+    font-weight: 400;
     font-display: fallback; // [1]
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2212, U+2215, U+FEFF; // [2]
-}*/
+}
+
+@font-face {
+    font-family: 'Monument Grotesk';
+    src: url('../../public/fonts/ABCMonumentGrotesk-Medium.woff2') format('woff2'),
+         url('../../public/fonts/ABCMonumentGrotesk-Medium.woff') format('woff');
+    font-weight: 800;
+    font-display: fallback; // [1]
+}
