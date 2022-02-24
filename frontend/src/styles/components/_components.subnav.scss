@@ -70,6 +70,7 @@
     opacity: 0;
     transform: translate3d(1rem, 0, 0);
 
+    .subnav--pages &,
     .subnav__item:hover & {
         opacity: 1;
         transform: none;
