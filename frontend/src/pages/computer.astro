@@ -12,6 +12,7 @@ import Header from '../components/UI/Header.vue'
 import ComputerNav from '../components/Computer/ComputerNav.vue'
 import LiveGraph from '../components/Computer/LiveGraph.vue';
 import Computer from '../components/Computer/Computer.vue';
+import BgImage from '../components/UI/BgImage.vue';
 
 // Component Script:
 // You can write any JavaScript/TypeScript that you'd like here.
@@ -32,7 +33,7 @@ const building     = getBuilding.data[0].attributes;
 <BaseLayout title={ title }>
 
     <div slot="header">
-        <Header link-to="/learn" link-name="learn"/>
+        <Header link-to="/learn" link-name="learn" header-class="text-alternate"/>
     </div>
 
     <div slot="subnav">
@@ -45,6 +46,7 @@ const building     = getBuilding.data[0].attributes;
         </h1>
         <Computer building={ building } client:load/>
         <LiveGraph client:load/>
+        <BgImage/>
     </div>
 
 </BaseLayout>

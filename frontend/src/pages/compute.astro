@@ -12,6 +12,7 @@ import ComputerNav from '../components/Computer/ComputerNav.vue';
 import ButtonNavigation from '../components/UI/ButtonNavigation.vue';
 import Header from '../components/UI/Header.vue';
 import TextBox from '../components/UI/TextBox.vue';
+import BgImage from '../components/UI/BgImage.vue';
 
 // Component Script:
 // You can write any JavaScript/TypeScript that you'd like here.
@@ -38,7 +39,7 @@ let textBoxContent = 'We will now take you through a series of multiple choice o
 <BaseLayout title={ title }>
 
     <div slot="header">
-        <Header link-to="/learn" link-name="learn"/>
+        <Header link-to="/learn" link-name="learn" header-class="text-alternate"/>
     </div>
 
     <div slot="main" class="flex flex-col flex-1 px-body h-full">
@@ -47,6 +48,8 @@ let textBoxContent = 'We will now take you through a series of multiple choice o
         <div class="mt-auto pb-body">
             <ButtonNavigation button-l="Start" href-l="/computer"/>
         </div>
+
+        <BgImage/>
     </div>
 
 </BaseLayout>

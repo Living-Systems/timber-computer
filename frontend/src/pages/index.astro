@@ -11,6 +11,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ButtonNavigation from '../components/UI/ButtonNavigation.vue'
 import Header from '../components/UI/Header.vue'
 import TextBox from '../components/UI/TextBox.vue';
+import BgImage from '../components/UI/BgImage.vue';
 
 // Component Script:
 // You can write any JavaScript/TypeScript that you'd like here.
@@ -29,7 +30,7 @@ const home     = getHome.data.attributes
 <BaseLayout title={ title }>
 
     <div slot="header">
-        <Header link-to="/learn" link-name="learn"/>
+        <Header link-to="/learn" link-name="learn" header-class="text-alternate"/>
     </div>
 
     <div slot="main" class="flex flex-col flex-1 px-body h-full">
@@ -38,6 +39,8 @@ const home     = getHome.data.attributes
         <div class="mt-auto pb-body">
             <ButtonNavigation button-l="Compute" button-r="Learn" href-l="/compute" href-r="/learn"/>
         </div>
+
+        <BgImage/>
     </div>
 
 </BaseLayout>
