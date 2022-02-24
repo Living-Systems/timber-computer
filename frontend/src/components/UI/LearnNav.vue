@@ -3,10 +3,10 @@
 
         <ol class="cluster cluster--stretched items-start">
 
-            <li v-for="step in learnSteps" :key="step.id">
-                <a href="/" class="subnav__item is-set">
+            <li v-for="page in pages" :key="page.slug">
+                <a :href="'/learn/' + page.attributes.slug" class="subnav__item is-set">
                     <div class="subnav__group-title">
-                        {{ step.title }}
+                        {{ page.attributes.title }}
                     </div>
                 </a>
             </li>
@@ -16,36 +16,8 @@
     </nav>
 </template>
 
-// <script setup>
+<script setup>
 
-import {reactive} from 'vue';
-
-const learnSteps = reactive({
-    step1: {
-        id: 'step1',
-        title: 'Background',
-
-    },
-    step2: {
-        id: 'step2',
-        title: 'Clean building',
-
-    },
-    step3: {
-        id: 'step3',
-        title: 'Lifecycle Assessment',
-
-    },
-    step4: {
-        id: 'step4',
-        title: 'Application',
-
-    },
-    step5: {
-        id: 'step5',
-        title: 'Scaling',
-
-    }
-});
+const props = defineProps(['pages']);
 
 </script>

@@ -1,4 +1,6 @@
 ---
+
+import { getAllPagesWithSlugs } from '../../lib/api';
 // Component Imports
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
@@ -10,9 +12,8 @@ import LearnNav from '../../components/UI/LearnNav.vue'
 import Header from '../../components/UI/Header.vue'
 
 let title = 'Learn';
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/core-concepts/astro-components/
+const getPages = await getAllPagesWithSlugs();
+const pages    = getPages.data; 
 ---
 
 
@@ -24,7 +25,7 @@ let title = 'Learn';
     </div>
 
     <div slot="subnav">
-        <LearnNav/>
+        <LearnNav pages={ pages }/>
     </div>
 
     <div slot="main">

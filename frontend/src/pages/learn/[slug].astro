@@ -23,6 +23,9 @@ const { slug } = Astro.request.params;
 const getPage = await getPageBySlug(slug);
 const page = getPage.data[0].attributes;
 
+const getPages = await getAllPagesWithSlugs();
+const pages    = getPages.data;
+
 let title = page.title;
 ---
 
@@ -31,7 +34,7 @@ let title = page.title;
 <BaseLayout title={ title }>
 
     <div slot="subnav">
-        <LearnNav/>
+        <LearnNav pages={ pages }/>
     </div>
 
     <div slot="main">

@@ -129,7 +129,7 @@ export async function getBuildingByNameStore(name) {
 	return data?.buildings;
 }
 
-// get a single building by its name
+// get the slugs of all pages
 export async function getAllPagesWithSlugs() {
 	const data = await fetchAPI(`
         {
@@ -137,6 +137,7 @@ export async function getAllPagesWithSlugs() {
                 data {
                     attributes {
                         slug
+                        title
                     }
                 }
             }
