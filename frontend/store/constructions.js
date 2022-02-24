@@ -50,7 +50,11 @@ export const calculatedCO2 = computed(selectedConstructions, getCO2);
 
 // * Comparison Calculation
 
-export const standardC02 = atom(getCO2());
+const standardC02 = atom(getCO2());
+
+export const savedCO2 = computed(calculatedCO2, () => {
+    return standardC02.get() - calculatedCO2.get();
+})
 
 export const compareValues = atom({
     'electricity': {
