@@ -135,3 +135,10 @@ export const changeActive = (operation) => {
         activeComponentId.set(+operation);
     }
 };
+
+
+// * Helper
+
+export const kgTonCalculator = (kgValue) => {
+    return (kgValue / 1000).toFixed(1) + 't CO₂';
+}
