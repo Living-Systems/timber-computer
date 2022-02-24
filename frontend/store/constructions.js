@@ -56,16 +56,17 @@ export const savedCO2 = computed(calculatedCO2, () => {
     return standardC02.get() - calculatedCO2.get();
 })
 
+// todo: put fields for this in database
 export const compareValues = atom({
     'electricity': {
         value: 475,
         interval: 'year',
-        description: 'facher Stromverbrauch einer Person pro Jahr'
+        description: 'times the electricity consumption of one person per year'
     },
     'berlin-paris': {
         value: 195,
         interval: 'single',
-        description: 'Flüge Berlin-Paris Economy Class'
+        description: 'flights Berlin-Paris Economy Class'
     }
 });
 
