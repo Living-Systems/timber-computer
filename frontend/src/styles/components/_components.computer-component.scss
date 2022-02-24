@@ -1,7 +1,10 @@
 .computer-component {
+    flex-shrink: 1;
+
     &:not(.is-active) {
         width: 0;
         overflow: hidden;
+        display: none;
     }
 }
 
@@ -27,9 +30,12 @@
     align-items: flex-start;
 }
 
-.computer-component__table-info  {
-    &[aria-hidden="true"] {
-        // display: none:
+.computer-component__table-info,
+.computer-component__item-info {
+    width: calc(var(--computer-item-expanded-w) - var(--computer-item-w));
+
+    .is-collapsed & {
+        display: none;
     }
 }
 
@@ -85,5 +91,4 @@
     input[type=radio]:checked ~ & {
         border: 1px solid var(--border-default);
     }
-
 }

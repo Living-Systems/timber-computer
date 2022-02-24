@@ -1,16 +1,14 @@
 .computer {
-    height: calc(100vh - var(--size-900) - var(--size-200) - var(--header-h)); // TODO: das geht noch besser (ohne vh)
-    margin-bottom: var(--size-900);
-    width: 45%; // TODO: Wert ermitteln / entscheiden
-    min-width: 32rem;
+    max-height: calc(100vh - var(--size-200) - var(--header-h)); // TODO: das geht noch besser (ohne vh)
+    padding-bottom: var(--size-900);
 }
 
 .computer__components {
-    height: 100%;
+    // height: 100%;
 }
 
 .computer__nav {
-    max-width: 14rem;
+    max-width: calc(var(--computer-item-w) + var(--item-p) + 2px);
 
     button:disabled {
         pointer-events: none;

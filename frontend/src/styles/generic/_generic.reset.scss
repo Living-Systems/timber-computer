@@ -93,7 +93,7 @@ select {
 
 // Show focus only when focusing with keyboard
 :focus-visible {
-  box-shadow: 0 0 0 0.1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 var(--focus-ring-s, 1px) var(--focus-ring-w, 2px) var(--focus-ring-color, rgba(0, 0, 0, 0.1));
 }
 
 /* Remove all animations and transitions for people that prefer not to see them */

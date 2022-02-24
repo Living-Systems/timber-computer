@@ -7,8 +7,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 // You can import components from any supported Framework here!
 // import Index from './index.vue';
-import ComputerNav from '../components/Computer/ComputerNav.vue'
+import Header from '../components/UI/Header.vue'
 
+import ComputerNav from '../components/Computer/ComputerNav.vue'
 import LiveGraph from '../components/Computer/LiveGraph.vue';
 import Computer from '../components/Computer/Computer.vue';
 
@@ -29,6 +30,10 @@ const building     = getBuilding.data[0].attributes;
 
 <!-- Use defined layout component like in vue -->
 <BaseLayout title={ title }>
+
+    <div slot="header">
+        <Header link-to="/learn" link-name="learn"/>
+    </div>
 
     <div slot="subnav">
         <ComputerNav building={ building } client:load/>

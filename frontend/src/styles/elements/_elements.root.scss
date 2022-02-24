@@ -20,4 +20,7 @@
 
     // Add border radius
     @include create-custom-properties($border-radius, false, 'radius-');
+
+    // Add focus style
+    --focus-ring-color: #{$focus-ring-color};
 }

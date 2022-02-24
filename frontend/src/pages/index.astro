@@ -9,7 +9,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 // You can import components from any supported Framework here!
 // import Index from './index.vue';
 import ButtonNavigation from '../components/UI/ButtonNavigation.vue'
-// import SubNav from '../components/UI/SubNav.vue'
+import Header from '../components/UI/Header.vue'
 import TextBox from '../components/UI/TextBox.vue';
 
 // Component Script:
@@ -28,9 +28,9 @@ const home     = getHome.data.attributes
 <!-- Use defined layout component like in vue -->
 <BaseLayout title={ title }>
 
-    <!-- <div slot="subnav">
-        <SubNav/>
-    </div> -->
+    <div slot="header">
+        <Header link-to="/learn" link-name="learn"/>
+    </div>
 
     <div slot="main" class="flex flex-col flex-1 px-body h-full">
         <TextBox heading={ home.title } content={ home.intro }/>
