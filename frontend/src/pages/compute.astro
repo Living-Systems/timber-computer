@@ -36,11 +36,6 @@ let textBoxContent = 'We will now take you through a series of multiple choice o
 <!-- Use defined layout component like in vue -->
 <BaseLayout title={ title }>
 
-    <!-- todo @time: Brauchen wir hier nicht, richtig? -->
-    <div slot="subnav">
-        <ComputerNav client:load building={ building } inactive/>
-    </div>
-
     <div slot="main" class="flex flex-col flex-1 px-body h-full">
         <TextBox heading={textBoxHeading} content={textBoxContent}/>
 
