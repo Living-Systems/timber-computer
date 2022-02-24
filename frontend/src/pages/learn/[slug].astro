@@ -5,8 +5,9 @@ import { getAllPagesWithSlugs, getPageBySlug } from '../../lib/api';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 // Component Script:
-import LearnNav       from '../../components/UI/LearnNav.vue'
-import ContentModules from '../../components/UI/ContentModules.vue'
+import Header from '../../components/UI/Header.vue';
+import LearnNav from '../../components/UI/LearnNav.vue';
+import ContentModules from '../../components/UI/ContentModules.vue';
 
 // generate URLs for pages using the slug
 export async function getStaticPaths() {
@@ -30,8 +31,11 @@ let title = page.title;
 ---
 
 
-<!-- Use defined layout component like in vue -->
 <BaseLayout title={ title }>
+
+    <div slot="header">
+        <Header link-to="/" link-name="home"/>
+    </div>
 
     <div slot="subnav">
         <LearnNav pages={ pages }/>
