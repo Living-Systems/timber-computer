@@ -21,8 +21,7 @@
     top: 0;
     z-index: 1;
     white-space: nowrap;
-
-    min-height:2.9rem;
+    min-height: 2.6rem;
 }
 
 .computer-component__table-title {
@@ -39,6 +38,10 @@
     .is-collapsed & {
         display: none;
     }
+}
+
+.computer-component__table-info {
+    margin-bottom: calc(var(--item-p) * -1);
 }
 
 .computer-component__table-body {

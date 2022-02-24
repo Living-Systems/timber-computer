@@ -9,8 +9,12 @@
         />
 
         <div class="computer-component__item-content | flex">
-            <div class="computer-component__item-head | flow-300 p-item">
-                <img src="../../../public/assets/dummy-component.png" alt="" />
+            <div class="computer-component__item-head | flow-300 items-center p-item">
+                <div class="media-box">
+                    <img src="../../../public/assets/dummy-component.png"
+                         class="object-contain"
+                         alt="" />
+                </div>
                 <div class="text-center truncate">
                     <span :class="'badge badge--' + [sustainabilityClass]"><!--{{ element.attributes.sustainability }}--></span>
                     {{ element.attributes.frontendName }}

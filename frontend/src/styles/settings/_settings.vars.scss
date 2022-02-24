@@ -28,5 +28,5 @@ $trans-func--logo: cubic-bezier(.33,.01,.04,.99);
 $portrait-ratio: (math.div(3, 2) * 100%); // 2:3
 // $landscape-ratio: (math.div(3, 4) * 100%); // 4:3
 // $wide-ratio: (math.div(1, 2) * 100%); // 2:1
-// $cube-ratio: 100%;
+$square-ratio: 100%;
 
