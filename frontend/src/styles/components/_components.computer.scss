@@ -8,7 +8,7 @@
 }
 
 .computer__nav {
-    max-width: calc(var(--computer-item-w) + var(--item-p) + 2px);
+    width: calc(var(--computer-item-w) + var(--cluster-gap));
 
     button:disabled {
         pointer-events: none;

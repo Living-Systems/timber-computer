@@ -55,7 +55,7 @@
 }
 
 .computer-component__item-head {
-    width: var(--computer-item-w);
+    width: calc(var(--computer-item-w) - 2px); // remove border from calced width
 
     img {
         max-height: 4rem;

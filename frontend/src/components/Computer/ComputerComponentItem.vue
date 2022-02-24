@@ -8,8 +8,8 @@
             :checked="props.component.attributes.element.data.id === element.id"
         />
 
-        <div class="computer-component__item-content | flex p-item">
-            <div class="computer-component__item-head | flow-300">
+        <div class="computer-component__item-content | flex">
+            <div class="computer-component__item-head | flow-300 p-item">
                 <img src="../../../public/assets/dummy-component.png" alt="" />
                 <div class="text-center truncate">
                     <span :class="'badge badge--' + [sustainabilityClass]"><!--{{ element.attributes.sustainability }}--></span>
