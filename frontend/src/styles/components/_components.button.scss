@@ -30,6 +30,7 @@
     white-space: nowrap; // [8]
     transition: box-shadow $trans-time--s $trans-func--default,
                 transform $trans-time--xs $trans-func--default;
+    padding: 0;
 }
 
 // Small boxy Buttons

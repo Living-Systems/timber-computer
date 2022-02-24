@@ -40,7 +40,7 @@
             <a
                 v-else
                 href="/result"
-                class="btn btn--md"
+                class="btn btn--md uppercase"
             >
                 See Results
             </a>

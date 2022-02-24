@@ -13,10 +13,11 @@
             <div class="computer-component__table-title | p-item grow">
                 <p aria-hidden="true">Type</p>
                 <button 
-                    class="btn"
+                    class="btn | cluster cluster--x-50"
                     @click="toggleDetailsCollapsed"
                 > <!-- Todo: add expand interaction -->
-                    <span class="uppercase">{{ isCollapsed ? 'Details →' : '←' }}</span>
+                    <span class="uppercase" v-show="isCollapsed">Details</span>
+                    <span>{{ isCollapsed ? '→' : '←' }}</span>
                 </button>
             </div>
 
