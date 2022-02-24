@@ -11,8 +11,8 @@
 
 <script setup>
 import { useStore } from "@nanostores/vue";
-import { calculation, rating } from "../../../store/constructions";
+import { calculatedCO2, rating } from "../../../store/constructions";
 
-const computedCalculation = useStore(calculation);
+const computedCalculation = useStore(calculatedCO2);
 const computedRating = useStore(rating);
 </script>

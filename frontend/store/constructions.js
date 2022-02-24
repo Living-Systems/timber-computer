@@ -8,6 +8,7 @@ const buildingType = "Typenhaus"
 // * Construction Fetch & Selection
 
 const fetchBuilding = await getBuildingByNameStore(buildingType);
+
 const selectedConstructions = atom(fetchBuilding.data[0].attributes.constructions.data);
 
 
@@ -27,9 +28,9 @@ export const updateSelection = (componentId, element) => {
 };
 
 
-// * Calculation
+// * CO2 Number Calculation
 
-export const calculation = computed(selectedConstructions, ()=>{
+const getCO2 = () => {
     const allConstructions = selectedConstructions.get();
 
     let calculationCounter = 0;
@@ -42,12 +43,40 @@ export const calculation = computed(selectedConstructions, ()=>{
     }
 
     return calculationCounter;
+}
+
+export const calculatedCO2 = computed(selectedConstructions, getCO2);
+
+
+// * Comparison Calculation
+
+const standardC02 = atom(getCO2());
+
+export const savedCO2 = computed(calculatedCO2, () => {
+    return standardC02.get() - calculatedCO2.get();
+})
+
+export const compareValues = atom({
+    'electricity': {
+        value: 475,
+        interval: 'year',
+        description: 'facher Stromverbrauch einer Person pro Jahr'
+    },
+    'berlin-paris': {
+        value: 195,
+        interval: 'single',
+        description: 'Flüge Berlin-Paris Economy Class'
+    }
 });
 
+console.log('standardC02', standardC02);
 
-// * Rating
 
-export const rating = computed(calculation, ()=> {
+
+
+// * Rating Calculation
+
+export const rating = computed(calculatedCO2, ()=> {
     const threshold = fetchBuilding.data[0].attributes.threshold;
     threshold.sort((a, b) => b.value - a.value);
 
@@ -57,7 +86,7 @@ export const rating = computed(calculation, ()=> {
     };
 
     for (const [index, trsh] of threshold.entries()) {
-        if (trsh.value < calculation.get()){
+        if (trsh.value < calculatedCO2.get()){
             finalRating.value = threshold[index-1].value;
             finalRating.rating = threshold[index-1].rating;
             break;
