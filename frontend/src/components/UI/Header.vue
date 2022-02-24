@@ -1,6 +1,6 @@
 <template>
     <nav :class="headerClass"
-        class="px-body min-h-header flex justify-between items-center">
+        class="mx-body min-h-header flex justify-between items-center">
         <a href="/">Timber Computer</a>
         <a :href="linkTo">{{ linkName }} →</a>
     </nav>
