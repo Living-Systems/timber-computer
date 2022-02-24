@@ -1,7 +1,7 @@
 <template>
     <section class="live-graph p-body smoked-glass rounded-sm text-style-200">
         <div class="flow flow-200">
-            <p class="uppercase">Zwischenstand</p>
+            <p class="uppercase">Preliminary Result</p>
             <img src="../../../public/assets/dummy-graph.png" alt="">
             <p class="text-center text-style-400">{{ kgTonCalculator(computedCalculation) }}</p>
             <p class="text-center text-style-400">{{ computedRating }}</p>

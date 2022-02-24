@@ -50,29 +50,26 @@ export const calculatedCO2 = computed(selectedConstructions, getCO2);
 
 // * Comparison Calculation
 
-const standardC02 = atom(getCO2());
+export const standardC02 = atom(getCO2());
 
 export const savedCO2 = computed(calculatedCO2, () => {
     return standardC02.get() - calculatedCO2.get();
 })
 
+
 // todo: put fields for this in database
-export const compareValues = atom({
-    'electricity': {
-        value: 475,
-        interval: 'year',
-        description: 'times the electricity consumption of one person per year'
-    },
-    'berlin-paris': {
-        value: 195,
-        interval: 'single',
-        description: 'flights Berlin-Paris Economy Class'
-    }
-});
-
-console.log('standardC02', standardC02);
-
-
+// export const compareValues = atom({
+//     'electricity': {
+//         value: 475,
+//         interval: 'year',
+//         description: 'times the electricity consumption of one person per year'
+//     },
+//     'berlin-paris': {
+//         value: 195,
+//         interval: 'single',
+//         description: 'flights Berlin-Paris Economy Class'
+//     }
+// });
 
 
 // * Rating Calculation
