@@ -5,13 +5,18 @@
     </h2>
 
     <!-- //  component types -->
-    <div class="computer-component__content | clear-glass rounded-sm uppercase text-style-200 overflow-y-auto self-start is-collapsed">
+    <div 
+        class="computer-component__content | clear-glass rounded-sm uppercase text-style-200 overflow-y-auto self-start"
+        :class="isCollapsed ? 'is-collapsed' : null"    
+    >
         <div class="computer-component__table-header">
             <div class="computer-component__table-title | p-item grow">
                 <p aria-hidden="true">Type</p>
-                <button class="btn | cluster cluster--x-50"> <!-- Todo: add expand interaction -->
-                    <span class="uppercase">Details</span>
-                    <span>←</span>
+                <button 
+                    class="btn"
+                    @click="toggleDetailsCollapsed"
+                > <!-- Todo: add expand interaction -->
+                    <span class="uppercase">{{ isCollapsed ? 'Details →' : '←' }}</span>
                 </button>
             </div>
 
@@ -42,7 +47,12 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useStore } from "@nanostores/vue";
+import { detailsCollapsed, toggleDetailsCollapsed } from "../../../store/constructions";
+
 import ComputerComponentItem from "./ComputerComponentItem.vue";
+
+const isCollapsed = useStore(detailsCollapsed);
 
 const props = defineProps(['building', 'component']);
 

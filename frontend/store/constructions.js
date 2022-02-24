@@ -79,6 +79,15 @@ for (const construction of selectedConstructions.get()) {
 }
 
 
+// * Collapse Component Details
+
+export const detailsCollapsed = atom(false);
+
+export const toggleDetailsCollapsed = () => {
+    detailsCollapsed.set(!detailsCollapsed.get());
+};
+
+
 // * Active Component 
 
 export const activeComponentId = atom(1);
