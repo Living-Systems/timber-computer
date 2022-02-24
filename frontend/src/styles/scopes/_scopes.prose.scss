@@ -5,6 +5,11 @@
 .prose {
     word-break: break-word;
 
+    p,
+    li {
+        --measure: 80ex;
+    }
+
     h1,
     h2 {
         @include text-style('600');
