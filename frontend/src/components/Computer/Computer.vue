@@ -1,7 +1,7 @@
 <template>
     <section class="computer | flow-100">
         <div class="computer__components flex">
-            <!-- Konstruktion -->
+            <!-- Construction -->
             <div
                 v-for="component in allComponents"
                 :key="component.id"

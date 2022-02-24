@@ -25,6 +25,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="computer-component__table-body | flex flex-col">
             <ComputerComponentItem
                 v-for="element in component.attributes.elements.data"
