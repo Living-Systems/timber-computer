@@ -10,9 +10,4 @@ h5,
 h6 {
     font-weight: 400; // overwrite browser style
     @include text-style('600');
-    max-width: var(--measure); // force max line-length
-}
-
-p {
-    max-width: var(--measure); // force max line-length
 }

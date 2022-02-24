@@ -1,5 +1,5 @@
 <template>
-    <section class="flow-200">
+    <section class="flow-200 measure">
         <h1 class="p-box rounded-sm smoked-glass self-start">
             {{ props.heading }}
         </h1>

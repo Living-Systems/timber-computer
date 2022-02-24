@@ -43,7 +43,9 @@ $ui-props: (
         'subnav-item-p': 1rem,
 
         // measure for max line length
-        'measure': 52ex,
+        // usually ex would be the right choice
+        // but for this design system we are going for rem
+        'measure': 38rem,
     ),
 
     // breakpoint md values
