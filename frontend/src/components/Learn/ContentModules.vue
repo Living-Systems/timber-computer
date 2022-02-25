@@ -1,19 +1,22 @@
 <template>
-    <section class="learn-wrapper | measure px-body flow-600">
+    <section class="learn | px-body pb-600 flow-600">
         <template v-for="item in content" :key="item">
             <div
                 v-if="item.markdown"
                 v-html="micromark(item.markdown)"
-                class="flow-200 prose"
+                class="flow-200 prose measure"
             ></div>
 
-            <figure v-if="item.image">
+            <figure v-if="item.image"
+                    class="learn__figure"
+                    :class="item.style ? 'learn__figure--' + item.style : null">
                 <a v-if="item.url" :href="item.url">
                     <img
                         :src="root + item.image.data.attributes.url"
                         :alt="item.image.data.attributes.alternativeText"
                     >
                 </a>
+
 
                 <img
                     v-else
@@ -24,6 +27,7 @@
                 <figcaption v-if="item.image.data.attributes.caption.length">
                     {{ item.image.data.attributes.caption }}
                 </figcaption>-->
+                {{ style }}
             </figure>
         </template>
     </section>
