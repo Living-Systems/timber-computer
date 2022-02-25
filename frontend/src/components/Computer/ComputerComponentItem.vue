@@ -36,7 +36,6 @@
                 </dl>
                 <dl>
                     <dt class="sr-only">Renewable Material</dt>
-                    <!-- // todo: change to value from databank -->
                     <dd>{{ element.attributes.renewableMaterial }}</dd>
                 </dl>
             </div>
