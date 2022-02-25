@@ -6,7 +6,7 @@
 
     <!-- //  component types -->
     <div
-        class="computer-component__content | clear-glass rounded-sm uppercase text-style-200 overflow-y-auto self-start"
+        class="computer-component__content | clear-glass rounded-sm uppercase text-style-200 flex flex-col flex-1 self-start"
         :class="isCollapsed ? 'is-collapsed' : null"
     >
         <div class="computer-component__table-header">
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div class="computer-component__table-body | flex flex-col">
+        <div class="computer-component__table-body | flex flex-col flex-1">
             <ComputerComponentItem
                 v-for="element in component.attributes.elements.data"
                 :key="element.id"

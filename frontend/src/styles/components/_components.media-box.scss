@@ -26,6 +26,19 @@
     }
 }
 
+.media-box--contain {
+    img,
+    video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+        object-position: 50% 50%;
+    }
+}
+
 // media boxes with aspect ratios have a specific ratio
 /*
 .media-box--square {

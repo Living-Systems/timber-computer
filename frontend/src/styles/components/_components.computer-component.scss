@@ -1,18 +1,14 @@
 .computer-component {
-    flex-shrink: 1;
-
     &:not(.is-active) {
         width: 0;
         overflow: hidden;
-        display: none;
     }
 }
 
-.computer-component__header,
-.computer-component__item-content { // TODO: in cluster element umbauen?
-    // display: grid;
-    // grid-template-columns: repeat(5, 1fr);
-    // grid-template-rows: 1fr;
+.computer-component__content {
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
 }
 
 .computer-component__table-header {
@@ -44,25 +40,12 @@
     margin-bottom: calc(var(--item-p) * -1);
 }
 
-.computer-component__table-body {
-
-}
-
 .computer-component__item {
     input[type=radio] {
         position: absolute;
         opacity: 0;
         width: 0;
         height: 0;
-    }
-}
-
-.computer-component__item-head {
-    width: calc(var(--computer-item-w) - 2px); // remove border from calced width
-
-    img {
-        max-height: 4rem;
-        width: auto;
     }
 }
 
@@ -73,5 +56,13 @@
 
     input[type=radio]:checked ~ & {
         border: 1px solid var(--border-default);
+    }
+}
+
+.computer-component__item-head {
+    width: calc(var(--computer-item-w) - 2px); // remove border from calced width
+
+    .media-box {
+        min-height: 2.6rem;
     }
 }

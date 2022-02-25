@@ -1,5 +1,5 @@
 <template>
-    <section class="computer | flow-100">
+    <section class="computer | flow-100 mb-900">
         <div class="computer__components flex">
             <!-- Construction -->
             <div

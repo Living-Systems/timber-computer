@@ -1,5 +1,5 @@
 <template>
-    <label class="computer-component__item">
+    <label class="computer-component__item | grow">
         <input
             type="radio"
             :name="component.attributes.name"
@@ -8,9 +8,9 @@
             :checked="props.component.attributes.element.data.id === element.id"
         />
 
-        <div class="computer-component__item-content | flex">
+        <div class="computer-component__item-content | flex h-full">
             <div class="computer-component__item-head | flow-300 items-center p-item">
-                <div class="media-box">
+                <div class="media-box media-box--contain w-full grow">
                     <img src="../../../public/assets/dummy-component.png"
                          class="object-contain"
                          alt="" />
