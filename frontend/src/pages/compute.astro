@@ -38,9 +38,7 @@ let textBoxContent = 'We will now take you through a series of multiple choice o
 
 <BaseLayout title={ title }>
 
-    <div slot="header">
-        <Header link-to="/learn" link-name="learn" header-class="text-alternate"/>
-    </div>
+    <Header slot="header" link-to="/learn" link-name="learn" header-class="text-alternate"/>
 
     <div slot="main" class="flex flex-col flex-1 px-body h-full">
         <TextBox heading={textBoxHeading} content={textBoxContent}/>

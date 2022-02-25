@@ -32,9 +32,7 @@ const building     = getBuilding.data[0].attributes;
 
 <BaseLayout title={ title }>
 
-    <div slot="header">
-        <Header link-to="/learn" link-name="learn" header-class="text-alternate"/>
-    </div>
+    <Header slot="header" slot="header" link-to="/learn" link-name="learn" header-class="text-alternate"/>
 
     <div slot="subnav">
         <ComputerNav building={ building } client:load/>

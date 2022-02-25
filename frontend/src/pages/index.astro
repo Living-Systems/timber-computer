@@ -26,13 +26,9 @@ const home     = getHome.data.attributes;
 // https://docs.astro.build/core-concepts/astro-components/
 ---
 
-
-
 <BaseLayout title={ title }>
 
-    <div slot="header">
-        <Header link-to="/learn" link-name="learn" header-class="text-alternate"/>
-    </div>
+    <Header slot="header" link-to="/learn" link-name="learn" header-class="text-alternate"/>
 
     <div slot="main" class="flex flex-col flex-1 px-body h-full">
         <TextBox heading={ home.title } content={ home.intro } boxClass="text-style-600"/>
