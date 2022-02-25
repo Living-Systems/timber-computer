@@ -19,7 +19,7 @@ import BgImage from '../components/UI/BgImage.vue';
 // All variables are available to use in the HTML template below.
 let title = 'Timber Computer';
 const getHome  = await getSingleTypeHome();
-const home     = getHome.data.attributes
+const home     = getHome.data.attributes;
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
@@ -40,7 +40,7 @@ const home     = getHome.data.attributes
             <ButtonNavigation button-l="Compute" button-r="Learn" href-l="/compute" href-r="/learn"/>
         </div>
 
-        <BgImage/>
+        <BgImage image={ home.backgroundImage }/>
     </div>
 
 </BaseLayout>
