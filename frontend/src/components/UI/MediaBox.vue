@@ -1,5 +1,6 @@
 <template>
-    <div class="media-box"
+    <div v-if="image"
+         class="media-box"
          :class="boxClass">
         <img :srcset="root + image.data.attributes.formats.small.url + ' 500w,' +
                     root + image.data.attributes.formats.medium.url + ' 720w,' +
