@@ -5,17 +5,15 @@
     </h2>
 
     <!-- //  component types -->
-    <div 
+    <div
         class="computer-component__content | clear-glass rounded-sm uppercase text-style-200 overflow-y-auto self-start"
-        :class="isCollapsed ? 'is-collapsed' : null"    
+        :class="isCollapsed ? 'is-collapsed' : null"
     >
         <div class="computer-component__table-header">
             <div class="computer-component__table-title | p-item grow">
                 <p aria-hidden="true">Type</p>
-                <button 
-                    class="btn | cluster cluster--x-50"
-                    @click="toggleDetailsCollapsed"
-                > <!-- Todo: add expand interaction -->
+                <button class="btn | cluster cluster--x-50"
+                        @click="toggleDetailsCollapsed">
                     <span class="uppercase" v-show="isCollapsed">Details</span>
                     <span>{{ isCollapsed ? '→' : '←' }}</span>
                 </button>
