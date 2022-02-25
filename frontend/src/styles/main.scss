@@ -62,7 +62,7 @@
 // TOOLS
 @import "tools/tools.functions";
 @import "tools/tools.mixins";
-@import "tools/tools.animations"; // TODO: Create some animations if needed
+@import "tools/tools.animations";
 
 // GENERIC
 @import "generic/generic.box-sizing";
@@ -73,7 +73,7 @@
 // Add Vendor files if needed
 
 // ELEMENTS
-@import "elements/elements.fontface"; // TODO: Add correct webfont
+@import "elements/elements.fontface";
 @import "elements/elements.root";
 @import "elements/elements.page";
 @import "elements/elements.main";
