@@ -15,7 +15,8 @@
     h2,
     h3 {
         & + p {
-            --flow-space: 0.1rem;
+            // --flow-space: 0.1rem; // warum?
+            --flow-space: var(--size-600);
         }
     }
 
