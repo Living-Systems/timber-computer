@@ -6,15 +6,30 @@ const API_TOKEN    = import.meta.env.PUBLIC_STRAPI_TOKEN;
 const buildingType = "Typenhaus"
 
 // * Construction Fetch & Selection
+let selectedConstructions = atom([]);
+let buildingThreshold = atom([]);
+const fetchBuilding = ()=> {
+    return new Promise( resolve => {
+        resolve(getBuildingByNameStore(buildingType))
+    })
+};
 
-const fetchBuilding = await getBuildingByNameStore(buildingType);
-
-const selectedConstructions = atom(fetchBuilding.data[0].attributes.constructions.data);
+const setSelectedConstructions = async ()=> {
+    const building = await fetchBuilding();
+    return new Promise( resolve => {
+        selectedConstructions.set(building.data[0].attributes.constructions.data)
+        buildingThreshold.set(building.data[0].attributes.threshold)
+        resolve(selectedConstructions.get())
+    })
+}
 
 
 // * Change Selection
 
-export const updateSelection = (componentId, element) => {
+export const updateSelection = async (componentId, element) => {
+    if ( selectedConstructions.get().length == 0 ) {
+        await setSelectedConstructions();
+    }
     const allConstructions = selectedConstructions.get();
     for (const construction of allConstructions) {
         for (const component of construction.attributes.components.data){
@@ -31,6 +46,9 @@ export const updateSelection = (componentId, element) => {
 // * CO2 Number Calculation
 
 const getCO2 = () => {
+    if ( selectedConstructions.get().length == 0 ) {
+        return 0;
+    }
     const allConstructions = selectedConstructions.get();
 
     let calculationCounter = 0;
@@ -41,7 +59,6 @@ const getCO2 = () => {
             calculationCounter += component.attributes.area * component.attributes.element.data.attributes.cradleToLife;
         }
     }
-
     return calculationCounter;
 }
 
@@ -75,7 +92,10 @@ export const savedCO2 = computed(calculatedCO2, () => {
 // * Rating Calculation
 
 export const rating = computed(calculatedCO2, ()=> {
-    const threshold = fetchBuilding.data[0].attributes.threshold;
+    if ( buildingThreshold.get().length === 0) {
+        return 0
+    }
+    const threshold = buildingThreshold.get();
     threshold.sort((a, b) => b.value - a.value);
 
     let finalRating = {
@@ -90,7 +110,6 @@ export const rating = computed(calculatedCO2, ()=> {
             break;
         }
     }
-
     return finalRating.rating;
 });
 
@@ -99,11 +118,22 @@ export const rating = computed(calculatedCO2, ()=> {
 
 export const componentCounter = atom(0);
 
-for (const construction of selectedConstructions.get()) {
-    for (const component of construction.attributes.components.data) {
-        componentCounter.set(componentCounter.get() + 1);
+const countComponents = async ()=> {
+    if ( selectedConstructions.get().length == 0 ) {
+        await setSelectedConstructions();
+    }
+    for (const construction of selectedConstructions.get()) {
+        for (const component of construction.attributes.components.data) {
+            componentCounter.set(componentCounter.get() + 1);
+        }
     }
 }
+countComponents();
+// for (const construction of selectedConstructions.get()) {
+//     for (const component of construction.attributes.components.data) {
+//         componentCounter.set(componentCounter.get() + 1);
+//     }
+// }
 
 
 // * Collapse Component Details
