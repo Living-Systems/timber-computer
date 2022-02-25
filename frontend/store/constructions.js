@@ -91,7 +91,7 @@ export const savedCO2 = computed(calculatedCO2, () => {
 
 // * Rating Calculation
 
-export const rating = computed(calculatedCO2, ()=> {
+export const rating = computed([buildingThreshold, calculatedCO2], ()=> {
     if ( buildingThreshold.get().length === 0) {
         return 0
     }
