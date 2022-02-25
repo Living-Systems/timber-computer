@@ -1,31 +1,31 @@
 <template>
-    <section class="learn-wrapper | measure px-body flow flow-600">
-        <div v-for="item in content" :key="item">
+    <section class="learn-wrapper | measure px-body flow-600">
+        <template v-for="item in content" :key="item">
             <div
                 v-if="item.markdown"
                 v-html="micromark(item.markdown)"
-                class="flow flow-200 prose"
+                class="flow-200 prose"
             ></div>
 
-            <div v-if="item.image">
-                <figure class="flow flow-200">
-                    <a v-if="item.url" :href="item.url">
-                        <img
-                            :src="root + item.image.data.attributes.url"
-                            :alt="item.image.data.attributes.alternativeText"
-                        >
-                    </a>
-
+            <figure v-if="item.image">
+                <a v-if="item.url" :href="item.url">
                     <img
-                        v-else
                         :src="root + item.image.data.attributes.url"
                         :alt="item.image.data.attributes.alternativeText"
                     >
-        
-                    <figcaption>{{ item.image.data.attributes.caption }}</figcaption>
-                </figure>
-            </div>
-        </div>
+                </a>
+
+                <img
+                    v-else
+                    :src="root + item.image.data.attributes.url"
+                    :alt="item.image.data.attributes.alternativeText"
+                >
+                <!--
+                <figcaption v-if="item.image.data.attributes.caption.length">
+                    {{ item.image.data.attributes.caption }}
+                </figcaption>-->
+            </figure>
+        </template>
     </section>
 </template>
 
