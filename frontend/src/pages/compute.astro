@@ -1,6 +1,8 @@
 ---
 // Import content function
 import { getBuildingByName } from '../lib/api';
+import { getSingleTypeHome } from '../lib/api';
+
 // Component Imports
 import BaseLayout from '../layouts/BaseLayout.astro';
 
@@ -12,7 +14,7 @@ import ComputerNav from '../components/Computer/ComputerNav.vue';
 import ButtonNavigation from '../components/UI/ButtonNavigation.vue';
 import Header from '../components/UI/Header.vue';
 import TextBox from '../components/UI/TextBox.vue';
-import BgImage from '../components/UI/BgImage.vue';
+import MediaBox from '../components/UI/MediaBox.vue';
 
 // Component Script:
 // You can write any JavaScript/TypeScript that you'd like here.
@@ -23,12 +25,13 @@ const buildingType = "Typenhaus";
 const getBuilding  = await getBuildingByName( buildingType );
 const building     = getBuilding.data[0].attributes;
 
-
 // TextBox input
-// Todo @Adrian: das sollten wir auch noch als single ins cms aufnehmen
+// TODO @Adrian: das sollten wir auch noch als single ins cms aufnehmen
 let textBoxHeading = 'Compute';
-
 let textBoxContent = 'We will now take you through a series of multiple choice options for all components of a reference building. Along the way, we will update the carbon footprint calculation in real-time, making impacts of decisions visible. At the end of the process, we provide you a report that can serve as a basis of actual planning.';
+
+const getHome  = await getSingleTypeHome();
+const home     = getHome.data.attributes;
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
@@ -47,7 +50,7 @@ let textBoxContent = 'We will now take you through a series of multiple choice o
             <ButtonNavigation button-l="Start" href-l="/computer"/>
         </div>
 
-        <BgImage/>
+        <MediaBox image={ home.backgroundImage } boxClass="media-box--background"/>
     </div>
 
 </BaseLayout>
