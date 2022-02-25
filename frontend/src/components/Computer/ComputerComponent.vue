@@ -20,10 +20,10 @@
             </div>
 
             <div class="computer-component__table-info | flow-50 p-item text-center" aria-hidden="true">
-                <ul class="cluster cluster--stretched | border-b pb-50">
-                    <li>Cradle to site</li>
-                    <li>Cradle to life</li>
-                    <li>Cradle to cradle</li>
+                <ul class="flex | border-b pb-50">
+                    <li class="flex-1 px-100">Cradle to site</li>
+                    <li class="flex-1 px-100">Cradle to life</li>
+                    <li class="flex-1 px-100">Cradle to cradle</li>
                 </ul>
                 <div>
                     (all in kg CO₂e/m²)
