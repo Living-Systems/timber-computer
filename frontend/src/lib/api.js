@@ -171,6 +171,7 @@ export async function getPageBySlug(slug) {
                                     }
                                 }
                                 url
+                                style
                             }
                         }
                     }
