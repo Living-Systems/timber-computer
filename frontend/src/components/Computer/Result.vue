@@ -3,31 +3,32 @@
         <h1 class="p-box rounded-sm smoked-glass self-start">
             Computation complete
         </h1>
-        <div class="p-box rounded-md smoked-glass text-style-600 flow flow-600">
+        <div class="p-box rounded-md smoked-glass text-style-400 flex flex-row">
 
-            <p v-if="saving <= 0">
-                // todo: Text for default values or even lower values
-            </p>
+            <section class="flow flow-400">
+                <!-- // todo: Text for default values or even lower values -->
+                <!-- <p v-if="saving === 0"></p> -->
 
-            <p v-if="saving > 0">
-                Well done! Your design ranks above average and you are working towards a greener future. Your building uses {{ percentageCalculated }}% less carbon than a conventional building, which is equivalent to:
-            </p>
+                <p>
+                    Well done! Your design ranks above average and you are working towards a greener future. Your building uses {{ percentageCalculated }}% less carbon than a conventional building, which is equivalent to:
+                </p>
 
-            <ul v-if="saving > 0">
-                <li>
-                    the CO₂ intake of <u>{{ forestCalculated }} ha forest</u>, or
-                </li>
+                <ul>
+                    <li>
+                        the CO₂ intake of <u>{{ forestCalculated }} ha forest</u>, or
+                    </li>
+                    <li>
+                        the annual household <u>electricity use × {{ electricityCalculated }}</u>, or
+                    </li>
+                    <li>
+                        <u>{{ flightCalculated }} economy flights</u> (Berlin–Paris)
+                    </li>
+                </ul>
+            </section>
 
-                <li>
-                    the annual household <u>electricity use × {{ electricityCalculated }}</u>, or
-                </li>
-
-                <li>
-                    <u>{{ flightCalculated }} economy flights</u> (Berlin–Paris)
-                </li>
-            </ul>
-
-            <ResultsGraph simpleRating/>
+            <section class="flex">
+                <ResultsGraph simpleRating/>
+            </section>
         </div>
     </section>
 </template>
