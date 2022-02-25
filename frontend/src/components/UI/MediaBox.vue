@@ -4,7 +4,7 @@
          :class="boxClass">
         <img :srcset="root + image.data.attributes.formats.small.url + ' 500w,' +
                     root + image.data.attributes.formats.medium.url + ' 720w,' +
-                    root + image.data.attributes.formats.large.url + ' 992w,'"
+                    root + image.data.attributes.formats.large.url + ' 1000w,'"
              :src="root +image.data.attributes.formats.small.url"
              :sizes="sizes ? sizes : '100vw'"
              :alt="alt ? alt : ''"
