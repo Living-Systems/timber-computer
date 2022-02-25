@@ -1,8 +1,9 @@
 <template>
     <div class="bg-image" aria-hidden="true">
-        <img :srcset="root + image.data.attributes.formats.small.url + ' 500w,' +
-                    root + image.data.attributes.formats.medium.url + ' 720w,' +
-                    root + image.data.attributes.formats.large.url + ' 992w,'"
+        <img v-if="image"
+             :srcset="root + image.data.attributes.formats.small.url + ' 500w,' +
+                      root + image.data.attributes.formats.medium.url + ' 720w,' +
+                      root + image.data.attributes.formats.large.url + ' 992w,'"
              :src="root +image.data.attributes.url" alt=""
              sizes=""
              loading="lazy"
