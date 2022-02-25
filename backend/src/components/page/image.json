@@ -17,6 +17,14 @@
     },
     "url": {
       "type": "string"
+    },
+    "style": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "centered",
+        "full"
+      ]
     }
   }
 }
