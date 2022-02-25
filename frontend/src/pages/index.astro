@@ -34,7 +34,7 @@ const home     = getHome.data.attributes;
     </div>
 
     <div slot="main" class="flex flex-col flex-1 px-body h-full">
-        <TextBox heading={ home.title } content={ home.intro }/>
+        <TextBox heading={ home.title } content={ home.intro } boxClass="text-style-600"/>
 
         <div class="mt-auto pb-body">
             <ButtonNavigation button-l="Compute" button-r="Learn" href-l="/compute" href-r="/learn"/>
