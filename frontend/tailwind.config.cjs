@@ -34,6 +34,8 @@ module.exports = {
             '800': 'var(--size-800)',
             '900': 'var(--size-900)',
             '1000': 'var(--size-1000)',
+            '1100': 'var(--size-1100)',
+            '1200': 'var(--size-1200)',
             'body': 'var(--body-p)',
             'box': 'var(--box-p)',
             'item': 'var(--item-p)',

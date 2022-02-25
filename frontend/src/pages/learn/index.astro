@@ -21,9 +21,7 @@ let bodyClass = 'bg-gold';
 
 <BaseLayout title={ title } bodyClass={bodyClass}>
 
-    <div slot="header">
-        <Header link-to="/computer" link-name="Start to Compute" header-class="border-b"/>
-    </div>
+    <Header slot="header" link-to="/computer" link-name="Start to Compute" header-class="border-b"/>
 
     <div slot="subnav">
         <LearnNav pages={ pages }/>

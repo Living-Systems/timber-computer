@@ -10,6 +10,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 // import Index from './index.vue';
 import ButtonNavigation from '../components/UI/ButtonNavigation.vue'
 import Header from '../components/UI/Header.vue'
+import Footer from '../components/UI/Footer.vue'
 import TextBox from '../components/UI/TextBox.vue';
 import MediaBox from '../components/UI/MediaBox.vue';
 
@@ -42,5 +43,7 @@ const home     = getHome.data.attributes;
 
         <MediaBox image={ home.backgroundImage } boxClass="media-box--background"/>
     </div>
+
+    <Footer slot="footer" simple-footer/>
 
 </BaseLayout>
