@@ -8,20 +8,21 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 // You can write any JavaScript/TypeScript that you'd like here.
 // It will run during the build, but never in the browser.
 // All variables are available to use in the HTML template below.
-import LearnNav from '../../components/UI/LearnNav.vue'
+import LearnNav from '../../components/Learn/LearnNav.vue'
 import Header from '../../components/UI/Header.vue'
 
 let title = 'Learn';
 const getPages = await getAllPagesWithSlugs();
 const pages    = getPages.data;
+let bodyClass = 'bg-gold';
 ---
 
 
 
-<BaseLayout title={ title }>
+<BaseLayout title={ title } bodyClass={bodyClass}>
 
     <div slot="header">
-        <Header link-to="/computer" link-name="Start to Compute"/>
+        <Header link-to="/computer" link-name="Start to Compute" header-class="border-b"/>
     </div>
 
     <div slot="subnav">
@@ -30,7 +31,7 @@ const pages    = getPages.data;
 
     <div slot="main">
         <section class="flow-200 px-body">
-            <h1 class="p-box rounded-sm smoked-glass self-start">
+            <h1>
                 Let’s learn
             </h1>
         </section>

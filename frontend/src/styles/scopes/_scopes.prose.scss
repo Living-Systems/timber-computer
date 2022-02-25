@@ -3,6 +3,19 @@
 \*------------------------------------*/
 
 .prose {
+
+    // Overwrite default flow logic to overcome vue wrapping
+    > * {
+        margin-top: var(--flow-space);
+    }
+
+    &:first-child {
+        > *:first-child {
+            margin-top: 0;
+        }
+    }
+
+    // prevent overflows
     word-break: break-word;
 
     h1,
@@ -15,7 +28,7 @@
     h2,
     h3 {
         & + p {
-            --flow-space: 0.1rem;
+            --flow-space: var(--size-600);
         }
     }
 
@@ -26,7 +39,7 @@
     hr {
         background: none;
         border: none;
-        --flow-space: var(--size-1200);
+        --flow-space: var(--size-1000);
     }
 
     a {

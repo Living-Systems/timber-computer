@@ -1,7 +1,7 @@
 <template>
     <div class="results-graph | text-style-200"
              :class="!simpleRating ? 'results-graph--fixed p-body smoked-glass rounded-sm' : ''">
-        <div class="flow flow-200">
+        <div class="flow-200">
             <div v-if="!simpleRating" class="uppercase">
                 Preliminary Result
             </div>

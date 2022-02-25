@@ -6,8 +6,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 // Component Script:
 import Header from '../../components/UI/Header.vue';
-import LearnNav from '../../components/UI/LearnNav.vue';
-import ContentModules from '../../components/UI/ContentModules.vue';
+import LearnNav from '../../components/Learn/LearnNav.vue';
+import LearnAbout from '../../components/Learn/LearnAbout.vue';
+import ContentModules from '../../components/Learn/ContentModules.vue';
 
 // generate URLs for pages using the slug
 export async function getStaticPaths() {
@@ -43,9 +44,10 @@ let bodyClass = 'bg-gold';
     </div>
 
     <div slot="main">
-        <section class="flow-600 prose measure px-body">
-            <ContentModules content={ page.content } client:load/>
-        </section>
+
+        <ContentModules content={ page.content } client:load/>
+        <LearnAbout />
+
     </div>
 
 </BaseLayout>

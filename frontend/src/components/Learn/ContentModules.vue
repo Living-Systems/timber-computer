@@ -1,9 +1,13 @@
 <template>
-    <div v-for="item in content" :key="item">
-        <div v-if="item.markdown" v-html="micromark(item.markdown)"></div>
+    <section class="learn-wrapper | measure px-body flow-600">
+        <template v-for="item in content" :key="item">
+            <div
+                v-if="item.markdown"
+                v-html="micromark(item.markdown)"
+                class="flow-200 prose"
+            ></div>
 
-        <div v-if="item.image">
-            <figure>
+            <figure v-if="item.image">
                 <a v-if="item.url" :href="item.url">
                     <img
                         :src="root + item.image.data.attributes.url"
@@ -16,15 +20,17 @@
                     :src="root + item.image.data.attributes.url"
                     :alt="item.image.data.attributes.alternativeText"
                 >
-                
-                <figcaption>{{ item.image.data.attributes.caption }}</figcaption>
+                <!--
+                <figcaption v-if="item.image.data.attributes.caption.length">
+                    {{ item.image.data.attributes.caption }}
+                </figcaption>-->
             </figure>
-        </div>
-    </div>
+        </template>
+    </section>
 </template>
 
 <script setup>
-    import {micromark} from 'micromark';
+    import { micromark } from 'micromark';
 
     console.log(props.content);
 
