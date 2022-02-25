@@ -2,9 +2,13 @@
     <div v-if="image"
          class="media-box"
          :class="boxClass">
-        <img :srcset="root + image.data.attributes.formats.small.url + ' 500w,' +
-                    root + image.data.attributes.formats.medium.url + ' 720w,' +
-                    root + image.data.attributes.formats.large.url + ' 1000w,'"
+        <img :srcset="root + image.data.attributes.formats.xxsmall.url + ' 160w,' +
+                    root + image.data.attributes.formats.xsmall.url + ' 320w,' +
+                    root + image.data.attributes.formats.small.url + ' 640w,' +
+                    root + image.data.attributes.formats.medium.url + ' 800w,' +
+                    root + image.data.attributes.formats.large.url + ' 1024w,' +
+                    root + image.data.attributes.formats.xlarge.url + ' 1440w,' +
+                    root + image.data.attributes.formats.xxlarge.url + ' 1920w,'"
              :src="root +image.data.attributes.formats.small.url"
              :sizes="sizes ? sizes : '100vw'"
              :alt="alt ? alt : ''"
