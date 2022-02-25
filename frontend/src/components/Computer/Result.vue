@@ -9,11 +9,15 @@
                 <!-- // todo: Text for default values or even lower values -->
                 <!-- <p v-if="saving === 0"></p> -->
 
-                <p>
+                <p v-if="saving <= 0">
+                    Unfortunately, your design is just average and you are not working towards a greener future.
+                </p>
+
+                <p v-if="saving > 0">
                     Well done! Your design ranks above average and you are working towards a greener future. Your building uses {{ percentageCalculated }}% less carbon than a conventional building, which is equivalent to:
                 </p>
 
-                <ul>
+                <ul v-if="saving > 0">
                     <li>
                         the CO₂ intake of <u>{{ forestCalculated }} ha forest</u>, or
                     </li>
@@ -49,12 +53,10 @@ const electricityValue = 475;
 const berlinParisValue = 195;
 
 const percentageCalculated = computed(() => {
-    console.log('');
     return Math.floor((100 * saving.value) / standard.value);
 });
 
 const forestCalculated = computed(() => {
-    console.log('forestCalculated', saving, forestValue);
     return saving / forestValue;
 });
 
