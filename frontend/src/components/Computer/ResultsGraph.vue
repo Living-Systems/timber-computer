@@ -27,7 +27,7 @@
 import { useStore } from "@nanostores/vue";
 import { calculatedCO2, rating, kgTonCalculator } from "../../../store/constructions";
 
-const props = defineProps(['simpleRating']);
+const props = defineProps({simpleRating: Boolean});
 
 const computedCalculation = useStore(calculatedCO2);
 const computedRating = useStore(rating);
