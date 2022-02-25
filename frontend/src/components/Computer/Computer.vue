@@ -28,6 +28,15 @@
                 <span aria-hidden="true">←</span>
             </button>
 
+            <a
+                class="btn btn--md"
+                href="/compute"
+                v-if="activeComponent.value === 1"
+            >
+                <span class="sr-only">previous</span>
+                <span aria-hidden="true">←</span>
+            </a>
+
             <button
                 v-if="activeComponent.value < numberOfComponents"
                 class="btn btn--md"

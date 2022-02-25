@@ -24,9 +24,17 @@
                     <li class="flex-1 px-100">Cradle to site</li>
                     <li class="flex-1 px-100">Cradle to life</li>
                     <li class="flex-1 px-100">Cradle to cradle</li>
+                    <li class="flex-1 px-100">Renewable Material</li>
                 </ul>
-                <div>
-                    (all in kg CO₂e/m²)
+                <div class="cluster cluster--stretched">
+                    <div></div>
+                    <div>
+                        (all in kg CO₂e/m²)
+                    </div>
+                    <div></div>
+                    <div>
+                        (% of Mass)
+                    </div>
                 </div>
             </div>
         </div>
