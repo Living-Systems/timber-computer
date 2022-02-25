@@ -1,5 +1,5 @@
 <template>
-    <section class="flow flow-600">
+    <section class="learn-wrapper | measure px-body flow flow-600">
         <div v-for="item in content" :key="item">
             <div
                 v-if="item.markdown"
