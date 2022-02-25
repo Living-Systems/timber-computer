@@ -26,7 +26,7 @@
                 </ul>
             </section>
 
-            <section class="flex">
+            <section class="flex ml-600">
                 <ResultsGraph simpleRating/>
             </section>
         </div>
