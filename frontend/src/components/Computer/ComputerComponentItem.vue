@@ -34,6 +34,11 @@
                     <dt class="sr-only">Cradle to Cradle</dt>
                     <dd>{{ element.attributes.cradleToCradle }}</dd>
                 </dl>
+                <dl>
+                    <dt class="sr-only">Renewable Material</dt>
+                    <!-- // todo: change to value from databank -->
+                    <dd>{{ element.attributes.renewableMaterial }}</dd>
+                </dl>
             </div>
         </div>
     </label>
