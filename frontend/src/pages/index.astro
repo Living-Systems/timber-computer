@@ -11,7 +11,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ButtonNavigation from '../components/UI/ButtonNavigation.vue'
 import Header from '../components/UI/Header.vue'
 import TextBox from '../components/UI/TextBox.vue';
-import BgImage from '../components/UI/BgImage.vue';
+import MediaBox from '../components/UI/MediaBox.vue';
 
 // Component Script:
 // You can write any JavaScript/TypeScript that you'd like here.
@@ -40,7 +40,7 @@ const home     = getHome.data.attributes;
             <ButtonNavigation button-l="Compute" button-r="Learn" href-l="/compute" href-r="/learn"/>
         </div>
 
-        <BgImage image={ home.backgroundImage }/>
+        <MediaBox image={ home.backgroundImage } boxClass="bg-image"/>
     </div>
 
 </BaseLayout>
