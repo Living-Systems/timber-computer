@@ -6,11 +6,11 @@
 
     <!-- //  component types -->
     <div
-        class="computer-component__content | clear-glass rounded-sm uppercase text-style-200 flex flex-col flex-1 self-start"
+        class="computer-component__content | clear-glass rounded-sm uppercase text-style-200 self-start"
         :class="isCollapsed ? 'is-collapsed' : null"
     >
         <div class="computer-component__table-header">
-            <div class="computer-component__table-title | p-item grow">
+            <div class="computer-component__table-title | p-item">
                 <p aria-hidden="true">Type</p>
                 <button class="btn | cluster cluster--x-50"
                         @click="toggleDetailsCollapsed">
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div class="computer-component__table-body | flex flex-col flex-1">
+        <div class="computer-component__table-body">
             <ComputerComponentItem
                 v-for="element in component.attributes.elements.data"
                 :key="element.id"

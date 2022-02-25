@@ -3,6 +3,7 @@
 }
 
 .computer__components {
+    display: flex;
     flex-grow: 1; // stretch to full height
     max-height: calc(100vh - var(--size-200) - var(--size-900) - 3rem - var(--header-h));
 }
