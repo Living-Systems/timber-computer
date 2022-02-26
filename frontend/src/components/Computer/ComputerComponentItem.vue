@@ -11,7 +11,11 @@
         <div class="computer-component__item-content">
             <div class="computer-component__item-head | flow-300 p-item">
                 <div class="media-box media-box--contain">
-                    <img src="../../../public/assets/dummy-component.png"
+                    <img v-if="element.attributes.thumbnail.data" 
+                         :src="root + element.attributes.thumbnail.data.attributes.url"
+                         class="object-contain"
+                         alt="" />
+                    <img v-else src="../../../public/assets/dummy-component.png"
                          class="object-contain"
                          alt="" />
                 </div>
@@ -48,6 +52,8 @@ import { computed } from 'vue';
 import { useStore } from "@nanostores/vue";
 import { updateSelection } from "../../../store/constructions";
 
+// TODO: replace with Astro resolve when on production server
+const root  = import.meta.env.PUBLIC_SERVER_URL;
 const props = defineProps(['component', 'element', 'componentState']);
 
 defineEmits(['updateSelection']);

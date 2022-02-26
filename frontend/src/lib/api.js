@@ -47,6 +47,14 @@ export async function getBuildingByName(name) {
                                                             cradleToCradle
                                                             sustainability
                                                             renewableMaterial
+                                                            thumbnail {
+                                                                data {
+                                                                    attributes {
+                                                                        formats
+                                                                        url
+                                                                    }
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                 }
