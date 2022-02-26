@@ -216,3 +216,29 @@ export async function getSingleTypeHome() {
 	`);
 	return data?.home;
 }
+
+export async function getSingleTypeCompute() {
+	const data = await fetchAPI(`
+        {
+            compute {
+                data {
+                    attributes {
+                        title
+                        intro
+                        backgroundImage {
+                            data {
+                                attributes {
+                                    url
+                                    formats
+                                    caption
+                                    alternativeText
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+	`);
+	return data?.compute;
+}

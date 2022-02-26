@@ -1,7 +1,7 @@
 ---
 // Import content function
 import { getBuildingByName } from '../lib/api';
-import { getSingleTypeHome } from '../lib/api';
+import { getSingleTypeCompute } from '../lib/api';
 
 // Component Imports
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -25,13 +25,8 @@ const buildingType = "Typenhaus";
 const getBuilding  = await getBuildingByName( buildingType );
 const building     = getBuilding.data[0].attributes;
 
-// TextBox input
-// TODO @Adrian: das sollten wir auch noch als single ins cms aufnehmen
-let textBoxHeading = 'Compute';
-let textBoxContent = 'We will now take you through a series of multiple choice options for all components of a reference building. Along the way, we will update the carbon footprint calculation in real-time, making impacts of decisions visible. At the end of the process, we provide you a report that can serve as a basis of actual planning.';
-
-const getHome  = await getSingleTypeHome();
-const home     = getHome.data.attributes;
+const getCompute  = await getSingleTypeCompute();
+const compute     = getCompute.data.attributes;
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
@@ -44,13 +39,13 @@ const home     = getHome.data.attributes;
     <Header slot="header" link-to="/learn" link-name="learn" header-class="text-alternate"/>
 
     <div slot="main" class="flex flex-col flex-1 px-body h-full">
-        <TextBox heading={textBoxHeading} content={textBoxContent}/>
+        <TextBox heading={compute.title} content={compute.intro}/>
 
         <div class="mt-auto pb-body">
             <ButtonNavigation button-l="Start" href-l="/computer"/>
         </div>
 
-        <MediaBox image={ home.backgroundImage } boxClass="media-box--background"/>
+        <MediaBox image={ compute.backgroundImage } boxClass="media-box--background"/>
     </div>
 
 </BaseLayout>
