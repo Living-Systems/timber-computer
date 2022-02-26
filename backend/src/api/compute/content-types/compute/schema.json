@@ -4,7 +4,7 @@
   "info": {
     "singularName": "compute",
     "pluralName": "computes",
-    "displayName": "compute"
+    "displayName": "Compute"
   },
   "options": {
     "draftAndPublish": true
