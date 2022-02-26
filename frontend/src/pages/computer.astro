@@ -12,7 +12,6 @@ import Header from '../components/UI/Header.vue'
 import ComputerNav from '../components/Computer/ComputerNav.vue'
 import ResultsGraph from '../components/Computer/ResultsGraph.vue';
 import Computer from '../components/Computer/Computer.vue';
-import BgImage from '../components/UI/BgImage.vue';
 
 // Component Script:
 // You can write any JavaScript/TypeScript that you'd like here.
@@ -44,7 +43,6 @@ const building     = getBuilding.data[0].attributes;
         </h1>
         <Computer building={ building } client:load/>
         <ResultsGraph client:load/>
-        <BgImage/>
     </div>
 
 </BaseLayout>

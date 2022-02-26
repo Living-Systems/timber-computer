@@ -55,6 +55,18 @@
             </a>
         </nav>
     </section>
+
+    <!-- Display component image and preload next one upcoming -->
+    <template
+        v-for="component in allComponents"
+        :key="component.id">
+        <MediaBox
+            v-if="component.id == activeComponent.value || component.id == activeComponent.value + 1"
+            :image="component.attributes.backgroundImage"
+            class="media-box--background"
+            :class="component.id != activeComponent.value ? 'hidden' : null"/>
+    </template>
+
 </template>
 
 <script setup>
@@ -63,6 +75,7 @@ import { useStore } from "@nanostores/vue";
 import { activeComponentId, componentCounter, changeActive } from "../../../store/constructions";
 
 import ComputerComponent from "./ComputerComponent.vue";
+import MediaBox from "../UI/MediaBox.vue";
 
 const props = defineProps(["building"]);
 
