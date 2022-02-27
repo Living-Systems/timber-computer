@@ -20,13 +20,12 @@ import MediaBox from '../components/UI/MediaBox.vue';
 // You can write any JavaScript/TypeScript that you'd like here.
 // It will run during the build, but never in the browser.
 // All variables are available to use in the HTML template below.
-const title    = "Compute";
 const buildingType = "Typenhaus";
 const getBuilding  = await getBuildingByName( buildingType );
 const building     = getBuilding.data[0].attributes;
 
-const getCompute  = await getSingleTypeCompute();
-const compute     = getCompute.data.attributes;
+const getComputeSingle  = await getSingleTypeCompute();
+const compute           = getComputeSingle.data.attributes;
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
@@ -34,7 +33,7 @@ const compute     = getCompute.data.attributes;
 
 
 
-<BaseLayout title={ title }>
+<BaseLayout title={ compute.title }>
 
     <Header slot="header" link-to="/learn" link-name="learn" header-class="text-alternate"/>
 
@@ -42,6 +41,7 @@ const compute     = getCompute.data.attributes;
         <TextBox heading={compute.title} content={compute.intro}/>
 
         <div class="mt-auto pb-body">
+            <!-- TO DO: add fields for button to single type? -->
             <ButtonNavigation button-l="Start" href-l="/computer"/>
         </div>
 
