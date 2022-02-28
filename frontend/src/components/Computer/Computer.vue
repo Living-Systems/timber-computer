@@ -72,7 +72,7 @@
 <script setup>
 import { computed } from "vue";
 import { useStore } from "@nanostores/vue";
-import { activeComponentId, componentCounter, changeActive } from "../../../store/constructions";
+import { activeComponentId, componentCounter, changeActive, savedCO2 } from "../../../store/constructions";
 
 import ComputerComponent from "./ComputerComponent.vue";
 import MediaBox from "../UI/MediaBox.vue";
@@ -80,6 +80,7 @@ import MediaBox from "../UI/MediaBox.vue";
 const props = defineProps(["building"]);
 
 const numberOfComponents = useStore(componentCounter);
+const savedCO22 = useStore(savedCO2);
 
 const activeComponent = computed(() => {
     return useStore(activeComponentId);

@@ -45,20 +45,41 @@ export const updateSelection = async (componentId, element) => {
 
 // * CO2 Number Calculation
 
-const getCO2 = () => {
+(() => {
     if ( selectedConstructions.get().length == 0 ) {
         return 0;
     }
-    const allConstructions = selectedConstructions.get();
+    const allConstructions =selectedConstructions.get();
 
     let calculationCounter = 0;
 
     for (const construction of allConstructions) {
-
         for (const component of construction.attributes.components.data){
             calculationCounter += component.attributes.area * component.attributes.element.data.attributes.cradleToLife;
         }
     }
+
+    sessionStorage.setItem('standardCO2', calculationCounter);
+
+    return calculationCounter;
+})();
+
+const getCO2 = () => {
+    if ( selectedConstructions.get().length == 0 ) {
+        return 0;
+    }
+    const allConstructions =selectedConstructions.get();
+
+    let calculationCounter = 0;
+
+    for (const construction of allConstructions) {
+        for (const component of construction.attributes.components.data){
+            calculationCounter += component.attributes.area * component.attributes.element.data.attributes.cradleToLife;
+        }
+    }
+
+    sessionStorage.setItem('calculatedCO2', calculationCounter);
+
     return calculationCounter;
 }
 
@@ -70,23 +91,10 @@ export const calculatedCO2 = computed(selectedConstructions, getCO2);
 export const standardC02 = atom(getCO2());
 
 export const savedCO2 = computed(calculatedCO2, () => {
-    return standardC02.get() - calculatedCO2.get();
+    const calculatedValue = standardC02.get() - calculatedCO2.get();
+
+    return calculatedValue;
 })
-
-
-// todo: put fields for this in database
-// export const compareValues = atom({
-//     'electricity': {
-//         value: 475,
-//         interval: 'year',
-//         description: 'times the electricity consumption of one person per year'
-//     },
-//     'berlin-paris': {
-//         value: 195,
-//         interval: 'single',
-//         description: 'flights Berlin-Paris Economy Class'
-//     }
-// });
 
 
 // * Rating Calculation
@@ -110,6 +118,8 @@ export const rating = computed([buildingThreshold, calculatedCO2], ()=> {
             break;
         }
     };
+
+    sessionStorage.setItem('rating', finalRating.rating);
 
     return finalRating.rating;
 });

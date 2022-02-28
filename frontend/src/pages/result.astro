@@ -1,8 +1,6 @@
 ---
 // Import content function
 import { getBuildingByName, getSingleTypeResult } from '../lib/api';
-import { useStore } from "@nanostores/vue";
-import { calculation } from "../../store/constructions.js";
 
 // Component Imports
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -43,7 +41,7 @@ let textBoxHeading = 'Computation complete';
 
     <div slot="main" class="flex flex-col flex-1 px-body h-full">
 
-        <Result client:load/>
+        <Result client:only/>
 
         <div class="mt-auto pb-body">
             <!--<ButtonNavigation button-l="Revise Selections" href-l="/computer" button-r="Mail complete report" href-r="#"/>-->

@@ -31,7 +31,7 @@
             </section>
 
             <section class="flex ml-600">
-                <ResultsGraph simpleRating/>
+                <ResultsGraphSession simpleRating/>
             </section>
         </div>
     </section>
@@ -39,14 +39,17 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-import { useStore } from "@nanostores/vue";
-import { standardC02, savedCO2, rating } from "../../../store/constructions";
 
-import ResultsGraph from './ResultsGraph.vue'
+import ResultsGraphSession from './ResultsGraphSession.vue'
 
-const computedRating = useStore(rating);
-const standard = useStore(standardC02);
-const saving = useStore(savedCO2);
+const calculated = sessionStorage.getItem('calculatedCO2');
+const standard = sessionStorage.getItem('standardC02');
+
+const saving = standard - calculated;
+
+console.log('calculated', calculated);
+console.log('standard', standard);
+console.log('saving', saving);
 
 const forestValue = 10000;
 const electricityValue = 475;
