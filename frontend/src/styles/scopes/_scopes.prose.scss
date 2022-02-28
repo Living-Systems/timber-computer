@@ -24,11 +24,25 @@
         --flow-space: var(--size-800);
     }
 
-    h1,
-    h2,
+    h2 {
+        border-top-width: 1px;
+        padding-top: var(--size-300);
+    }
+
     h3 {
+        --flow-space: var(--size-800);
+    }
+
+    h1,
+    h2 {
         & + p {
             --flow-space: var(--size-600);
+        }
+    }
+
+    h3 {
+        & + p {
+            --flow-space: var(--size-400);
         }
     }
 
