@@ -113,11 +113,17 @@ export const rating = computed([buildingThreshold, calculatedCO2], ()=> {
 
     for (const [index, trsh] of threshold.entries()) {
         if (trsh.value < calculatedCO2.get()){
+            if(index == 0){
+                finalRating.value = threshold[index].value;
+                finalRating.rating = threshold[index].rating;
+                break;
+            }
             finalRating.value = threshold[index-1].value;
             finalRating.rating = threshold[index-1].rating;
             break;
         }
     };
+
 
     sessionStorage.setItem('rating', finalRating.rating);
 
