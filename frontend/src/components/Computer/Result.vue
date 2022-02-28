@@ -39,19 +39,13 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-import { storedResult, storedSaving, storedStandard } from '../../../store/constructions';
+import { storedResult, storedSaving, storedStandard, savedCO2 } from '../../../store/constructions';
 
 import ResultsGraphSession from './ResultsGraphSession.vue'
 
 const calculated = storedResult.get();
 const standard   = storedStandard.get();
-const saving     = storedSaving.get();
-
-// const calculated = sessionStorage.getItem('calculatedCO2');
-// const standard = sessionStorage.getItem('standardCO2');
-console.log('calculated', calculated);
-console.log('standard', standard);
-console.log('saving', saving);
+const saving     = standard - calculated;
 
 const forestValue = 10000;
 const electricityValue = 475;
