@@ -39,14 +39,16 @@
 
 <script setup>
 import { ref, computed } from 'vue';
+import { storedResult, storedSaving, storedStandard } from '../../../store/constructions';
 
 import ResultsGraphSession from './ResultsGraphSession.vue'
 
-const calculated = sessionStorage.getItem('calculatedCO2');
-const standard = sessionStorage.getItem('standardCO2');
+const calculated = storedResult.get();
+const standard   = storedStandard.get();
+const saving     = storedSaving.get();
 
-const saving = standard - calculated;
-
+// const calculated = sessionStorage.getItem('calculatedCO2');
+// const standard = sessionStorage.getItem('standardCO2');
 console.log('calculated', calculated);
 console.log('standard', standard);
 console.log('saving', saving);
@@ -56,7 +58,7 @@ const electricityValue = 475;
 const berlinParisValue = 195;
 
 const percentageCalculated = computed(() => {
-    return Math.floor((100 * saving.value) / standard.value);
+    return Math.floor((100 * saving) / standard);
 });
 
 const forestCalculated = computed(() => {

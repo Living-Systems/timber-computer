@@ -26,9 +26,10 @@
 <script setup>
 
 const props = defineProps({simpleRating: Boolean});
+import { storedResult, storedRating } from '../../../store/constructions';
 
-const computedCalculation = sessionStorage.getItem('calculatedCO2');
-const computedRating = sessionStorage.getItem('rating');
+const computedCalculation = storedResult.get();
+const computedRating = storedRating.get();
 
 const ratings = ['A','B','C','D','E','F'];
 
