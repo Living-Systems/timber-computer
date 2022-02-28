@@ -1,4 +1,5 @@
 import { atom, computed } from 'nanostores';
+import { persistentAtom } from '@nanostores/persistent';
 import { getBuildingByNameStore } from '../src/lib/api';
 
 const API_URL      = import.meta.env.PUBLIC_STRAPI_URL;
@@ -60,8 +61,8 @@ export const setStandard = () => {
         }
     }
 
-    sessionStorage.setItem('standardCO2', calculationCounter);
-
+    // sessionStorage.setItem('standardCO2', calculationCounter);
+    storedStandard.set(calculationCounter);
     return calculationCounter;
 };
 
@@ -79,7 +80,10 @@ const getCO2 = () => {
         }
     }
 
-    sessionStorage.setItem('calculatedCO2', calculationCounter);
+    // sessionStorage.setItem('calculatedCO2', calculationCounter);
+
+    console.log(calculationCounter);
+    storedResult.set(calculationCounter);
 
     return calculationCounter;
 }
@@ -94,6 +98,7 @@ export const standardC02 = atom(getCO2());
 export const savedCO2 = computed(calculatedCO2, () => {
     const calculatedValue = standardC02.get() - calculatedCO2.get();
 
+    storedSaving.set(calculatedValue);
     return calculatedValue;
 })
 
@@ -126,8 +131,9 @@ export const rating = computed([buildingThreshold, calculatedCO2], ()=> {
     };
 
 
-    sessionStorage.setItem('rating', finalRating.rating);
+    // sessionStorage.setItem('rating', finalRating.rating);
 
+    storedRating.set(finalRating.rating)
     return finalRating.rating;
 });
 
@@ -188,3 +194,63 @@ export const changeActive = (operation) => {
 export const kgTonCalculator = (kgValue) => {
     return (kgValue / 1000).toFixed(1) + 't CO₂';
 }
+
+// * store result in persistent atom
+
+export const storedResult = persistentAtom('timberComputerStoredResult',[], {
+    encode (value) {
+      return JSON.stringify(value)
+    },
+    decode (value ) {
+      try {
+        return JSON.parse(value)
+      } catch(value) {
+        return value
+      }
+    }
+});
+
+// * store result in persistent atom
+
+export const storedSaving = persistentAtom('timberComputerStoredSaving',[], {
+    encode (value) {
+      return JSON.stringify(value)
+    },
+    decode (value ) {
+      try {
+        return JSON.parse(value)
+      } catch(value) {
+        return value
+      }
+    }
+});
+
+// * store result in persistent atom
+
+export const storedStandard = persistentAtom('timberComputerStoredStandard',[], {
+    encode (value) {
+      return JSON.stringify(value)
+    },
+    decode (value ) {
+      try {
+        return JSON.parse(value)
+      } catch(value) {
+        return value
+      }
+    }
+});
+
+// * store result in persistent atom
+
+export const storedRating = persistentAtom('timberComputerStoredRating',[], {
+    encode (value) {
+      return JSON.stringify(value)
+    },
+    decode (value ) {
+      try {
+        return JSON.parse(value)
+      } catch(value) {
+        return value
+      }
+    }
+});
