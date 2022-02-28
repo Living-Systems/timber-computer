@@ -43,7 +43,7 @@ import { ref, computed } from 'vue';
 import ResultsGraphSession from './ResultsGraphSession.vue'
 
 const calculated = sessionStorage.getItem('calculatedCO2');
-const standard = sessionStorage.getItem('standardC02');
+const standard = sessionStorage.getItem('standardCO2');
 
 const saving = standard - calculated;
 
