@@ -28,7 +28,8 @@
                 </p>
 
                 <p class="mt-400">
-                    And <a href="https://humans-machines.com">Humans & Machines</a>
+                    And <a href="https://humans-machines.com">Humans & Machines</a><br>
+                    Crew
                 </p>
             </div>
         </section>
