@@ -31,6 +31,7 @@ export const updateSelection = async (componentId, element) => {
     if ( selectedConstructions.get().length == 0 ) {
         await setSelectedConstructions();
     }
+
     const allConstructions = selectedConstructions.get();
     for (const construction of allConstructions) {
         for (const component of construction.attributes.components.data){
@@ -114,6 +115,9 @@ export const rating = computed([buildingThreshold, calculatedCO2], ()=> {
 
     for (const [index, trsh] of threshold.entries()) {
         if (trsh.value < calculatedCO2.get()){
+            console.log('threshold', threshold);
+            console.log('trsh.value', trsh.value);
+            console.log('trsh.rating', trsh.rating);
             if(index == 0){
                 finalRating.value = threshold[index].value;
                 finalRating.rating = threshold[index].rating;
