@@ -19,6 +19,7 @@ const setSelectedConstructions = async ()=> {
     return new Promise( resolve => {
         selectedConstructions.set(building.data[0].attributes.constructions.data)
         buildingThreshold.set(building.data[0].attributes.threshold)
+        setStandard();
         resolve(selectedConstructions.get())
     })
 }
@@ -45,7 +46,7 @@ export const updateSelection = async (componentId, element) => {
 
 // * CO2 Number Calculation
 
-(() => {
+export const setStandard = () => {
     if ( selectedConstructions.get().length == 0 ) {
         return 0;
     }
@@ -62,13 +63,13 @@ export const updateSelection = async (componentId, element) => {
     sessionStorage.setItem('standardCO2', calculationCounter);
 
     return calculationCounter;
-})();
+};
 
 const getCO2 = () => {
     if ( selectedConstructions.get().length == 0 ) {
         return 0;
     }
-    const allConstructions =selectedConstructions.get();
+    const allConstructions = selectedConstructions.get();
 
     let calculationCounter = 0;
 
