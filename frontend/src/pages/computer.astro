@@ -34,15 +34,15 @@ const building     = getBuilding.data[0].attributes;
     <Header slot="header" slot="header" link-to="/learn" link-name="learn" header-class="text-alternate"/>
 
     <div slot="subnav">
-        <ComputerNav building={ building } client:load/>
+        <ComputerNav building={ building } client:only/>
     </div>
 
     <div slot="main" class="flex flex-col flex-1 px-body h-full">
         <h1 class="sr-only">
             Timber Computer
         </h1>
-        <Computer building={ building } client:load/>
-        <ResultsGraph client:load/>
+        <Computer building={ building } client:only/>
+        <ResultsGraph client:only/>
     </div>
 
 </BaseLayout>
