@@ -60,15 +60,15 @@ const percentageCalculated = computed(() => {
 });
 
 const forestCalculated = computed(() => {
-    return saving / forestValue;
+    return Math.round((saving / forestValue) * 10) / 10;
 });
 
 const electricityCalculated = computed(() => {
-    return saving / electricityValue;
+    return Math.floor(saving / electricityValue);
 });
 
 const flightCalculated = computed(() => {
-    return saving / berlinParisValue;
+    return Math.floor(saving / berlinParisValue);
 });
 
 </script>
