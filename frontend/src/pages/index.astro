@@ -28,13 +28,13 @@ const home     = getHome.data.attributes;
 
 <BaseLayout title={ title }>
 
-    <Header slot="header" link-to="/learn" link-name="learn" header-class="text-alternate"/>
+    <Header slot="header" link-to="/learn/background" link-name="learn" header-class="text-alternate"/>
 
     <div slot="main" class="flex flex-col flex-1 px-body h-full">
         <TextBox heading={ home.title } content={ home.intro } boxClass="text-style-600"/>
 
         <div class="mt-auto pb-body">
-            <ButtonNavigation button-l="Compute" button-r="Learn" href-l="/compute" href-r="/learn"/>
+            <ButtonNavigation button-l="Compute" button-r="Learn" href-l="/compute" href-r="/learn/background"/>
         </div>
 
         <MediaBox image={ home.backgroundImage } boxClass="media-box--background"/>
