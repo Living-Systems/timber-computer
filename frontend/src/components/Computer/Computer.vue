@@ -20,7 +20,7 @@
             class="computer__nav | cluster cluster--x-50 cluster--stretched"
         >
             <button
-                class="btn btn--md"
+                class="btn btn--md btn--smoked"
                 @click="changeActive('decrement')"
                 v-if="activeComponent.value != 1"
             >
@@ -29,7 +29,7 @@
             </button>
 
             <a
-                class="btn btn--md"
+                class="btn btn--md btn--smoked"
                 href="/compute"
                 v-if="activeComponent.value === 1"
             >
@@ -39,7 +39,7 @@
 
             <button
                 v-if="activeComponent.value < numberOfComponents"
-                class="btn btn--md"
+                class="btn btn--md btn--smoked"
                 @click="changeActive('increment')"
             >
                 <span class="sr-only">next</span>
@@ -49,7 +49,7 @@
             <a
                 v-else
                 href="/result"
-                class="btn btn--md uppercase"
+                class="btn btn--md btn--smoked uppercase"
             >
                 See Results
             </a>
