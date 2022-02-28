@@ -100,7 +100,7 @@ export const rating = computed([buildingThreshold, calculatedCO2], ()=> {
 
     let finalRating = {
         value:0,
-        rating:'F'
+        rating:'A'
     };
 
     for (const [index, trsh] of threshold.entries()) {
@@ -109,7 +109,8 @@ export const rating = computed([buildingThreshold, calculatedCO2], ()=> {
             finalRating.rating = threshold[index-1].rating;
             break;
         }
-    }
+    };
+
     return finalRating.rating;
 });
 
