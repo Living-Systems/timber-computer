@@ -33,8 +33,10 @@
             </div>
         </section>
 
-        <section class="md:flex flex-row-reverse justify-between border-t text-style-600">
+        <section class="md:flex flex-row-reverse justify-between border-t">
             <nav class="my-400 cluster cluster--x-200">
+                <!-- TODO: Add pages here -->
+                <a href="#">Contact</a>
                 <a href="#">Legal</a>
                 <a href="#">Privacy</a>
             </nav>
