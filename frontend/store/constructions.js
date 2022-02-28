@@ -49,7 +49,7 @@ export const updateSelection = async (componentId, element) => {
     if ( selectedConstructions.get().length == 0 ) {
         return 0;
     }
-    const allConstructions =selectedConstructions.get();
+    const allConstructions = selectedConstructions.get();
 
     let calculationCounter = 0;
 
