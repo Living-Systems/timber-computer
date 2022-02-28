@@ -3,7 +3,7 @@
         <a v-for="page in pages"
            :key="page.slug"
            class="btn btn--xl btn--outline w-1/2"
-           :href="'/learn/background/' + page.attributes.slug">
+           :href="'/learn/' + page.attributes.slug">
             <span>
                 {{ page.attributes.title }}
             </span>
