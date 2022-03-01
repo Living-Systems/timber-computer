@@ -1,0 +1,33 @@
+---
+
+import { getAllLegalsWithSlugs } from '../../lib/api';
+// Component Imports
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Component Script:
+// You can write any JavaScript/TypeScript that you'd like here.
+// It will run during the build, but never in the browser.
+// All variables are available to use in the HTML template below.
+import ButtonNavigation2 from '../../components/UI/ButtonNavigation2.vue';
+import Header from '../../components/UI/Header.vue';
+import Footer from '../../components/UI/Footer.vue';
+
+let title = 'Legal';
+const getLegals = await getAllLegalsWithSlugs();
+const pages    = getLegals.data;
+let bodyClass = 'bg-gold';
+---
+
+<BaseLayout title={ title } bodyClass={bodyClass}>
+
+    <Header slot="header" link-to="/computer" link-name="Start to Compute" header-class="border-b"/>
+
+    <div slot="main">
+        <section class="flow-200 px-body">
+            <ButtonNavigation2 pages={ pages } client:only/>
+        </section>
+    </div>
+
+    <Footer slot="footer" footer-class="mt-1100"/>
+
+</BaseLayout>
