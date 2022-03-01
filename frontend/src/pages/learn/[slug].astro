@@ -54,7 +54,7 @@ let bodyClass = 'bg-gold';
     <Header slot="header" link-to="/computer" link-name="start to compute" header-class="border-b"/>
 
     <div slot="subnav">
-        <LearnNav pages={ allPages }/>
+        <LearnNav pages={ allPages } client:only/>
     </div>
 
     <div slot="main">
