@@ -27,6 +27,12 @@
         "page.image",
         "page.text"
       ]
+    },
+    "order": {
+      "type": "integer",
+      "unique": true,
+      "required": true,
+      "min": 0
     }
   }
 }
