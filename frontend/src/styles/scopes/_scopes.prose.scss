@@ -15,6 +15,16 @@
         }
     }
 
+    // Measure is handled differently
+    // to be able to add full with lines on top of h2
+    &.measure {
+        max-width: 100%;
+
+        > * {
+            max-width: var(--measure);
+        }
+    }
+
     // prevent overflows
     word-break: break-word;
 
@@ -25,8 +35,21 @@
     }
 
     h2 {
-        border-top-width: 1px;
-        padding-top: var(--size-300);
+        // Add full width lines on top  of h2
+        // [1] Overwrite measure preset
+        // [2] Will create a negative and therefore invalid padding
+        //     if smaller than measure
+        //     but add a padding to align with the measure max width
+        //     of all other items
+        max-width: 100% !important;
+        padding-right: calc(100vw - var(--body-p) - var(--measure));
+
+        &:before {
+            content: '';
+            border-top-width: 1px;
+            display: block;
+            padding-bottom: var(--size-300);
+        }
     }
 
     h3 {
