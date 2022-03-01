@@ -19,8 +19,8 @@
                          class="object-contain"
                          alt="" />
                 </div>
-                <div class="text-center truncate">
-                    <span :class="'badge badge--' + [sustainabilityClass]"><!--{{ element.attributes.sustainability }}--></span>
+                <div class="text-center truncate flex items-center">
+                    <span :class="'badge badge--' + [sustainabilityClass] + ' | px-50' "><!--{{ element.attributes.sustainability }}--></span>
                     {{ element.attributes.frontendName }}
                 </div>
             </div>
