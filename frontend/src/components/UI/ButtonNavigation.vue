@@ -16,7 +16,6 @@
 
 
 <script setup>
-import { computed } from 'vue';
 
 const props = defineProps(['pages', 'style', 'computer', 'learn']);
 

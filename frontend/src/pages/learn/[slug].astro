@@ -28,6 +28,9 @@ const page = getPage.data[0];
 const getPages = await getAllPagesWithSlugs();
 const allPages    = getPages.data;
 
+// console.log('getPages', getPages.data);
+
+
 const nextPage = () => {
     const found = allPages.findIndex(item => item.attributes.title == page.attributes.title);
 
@@ -53,18 +56,20 @@ let bodyClass = 'bg-gold';
     <Header slot="header" link-to="/computer" link-name="start to compute" header-class="border-b"/>
 
     <div slot="subnav">
+
         <LearnNav pages={ allPages } client:only/>
+
     </div>
 
     <div slot="main">
 
-        <ContentModules content={ page.attributes.content } client:only/>
+        <ContentModules content={ page.attributes.content } client:load/>
 
     </div>
 
     <div slot="crosslink" class="mx-body mt-800 pt-700 border-t">
 
-        <ButtonNavigation pages={ pages } style={ 'outline' } learn client:only/>
+        <ButtonNavigation pages={ pages } style={ 'outline' } learn client:load/>
     
     </div>
 

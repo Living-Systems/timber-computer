@@ -20,17 +20,12 @@
 const props = defineProps(['pages']);
 
 const getClass=(page)=>{
-    console.log('LearNav loop page', page);
-
     const splitUrl = window.location.href.split('/');
     let foundSlug;
     
     if(splitUrl[splitUrl.length-1] === ''){
         foundSlug = splitUrl[splitUrl.length-2];
     } else foundSlug = splitUrl[splitUrl.length-1];
-
-    console.log("splitUrl = window.location.href.split('/')", window.location.href.split('/'));
-    console.log('foundSlug = splitUrl[splitUrl.length-1]', splitUrl[splitUrl.length-1]);
 
     const foundIndex = props.pages.findIndex(item => item.attributes.slug == page.attributes.slug);
     const slugIndex = props.pages.findIndex(item => item.attributes.slug == foundSlug);
