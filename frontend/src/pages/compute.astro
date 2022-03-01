@@ -1,7 +1,7 @@
 ---
 // Import content function
 import { getBuildingByName } from '../lib/api';
-import { getSingleTypeCompute } from '../lib/api';
+import { getSingleTypeCompute, getAllPagesWithSlugs } from '../lib/api';
 
 // Component Imports
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -27,6 +27,8 @@ const building     = getBuilding.data[0].attributes;
 const getComputeSingle  = await getSingleTypeCompute();
 const compute           = getComputeSingle.data.attributes;
 
+const getPages = await getAllPagesWithSlugs();
+
 const pages = [
     {attributes: {slug: '/computer', title: 'Start'}}
 ];
@@ -39,7 +41,7 @@ const pages = [
 
 <BaseLayout title={ compute.title }>
 
-    <Header slot="header" link-to="/learn/background" link-name="learn" header-class="text-alternate"/>
+    <Header slot="header" link-to={'/learn/' + getPages.data[0].attributes.slug} link-name="learn" header-class="text-alternate"/>
 
     <div slot="main" class="flex flex-col flex-1 px-body h-full">
         <TextBox heading={ compute.title } content={ compute.intro }/>

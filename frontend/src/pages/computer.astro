@@ -1,6 +1,6 @@
 ---
 // Import content function
-import { getBuildingByName } from '../lib/api';
+import { getBuildingByName, getAllPagesWithSlugs } from '../lib/api';
 // Component Imports
 import BaseLayout from '../layouts/BaseLayout.astro';
 
@@ -23,6 +23,8 @@ const buildingType = "Typenhaus";
 const getBuilding  = await getBuildingByName( buildingType );
 const building     = getBuilding.data[0].attributes;
 
+const getPages = await getAllPagesWithSlugs();
+
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
 ---
@@ -31,7 +33,7 @@ const building     = getBuilding.data[0].attributes;
 
 <BaseLayout title={ title }>
 
-    <Header slot="header" slot="header" link-to="/learn/background" link-name="learn" header-class="text-alternate"/>
+    <Header slot="header" slot="header" link-to={'/learn/' + getPages.data[0].attributes.slug} link-name="learn" header-class="text-alternate"/>
 
     <div slot="subnav">
         <ComputerNav building={ building } client:only/>

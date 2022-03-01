@@ -21,7 +21,6 @@ export async function getStaticPaths() {
     });
 }
 
-
 const { slug } = Astro.request.params;
 const getPage = await getPageBySlug(slug);
 const page = getPage.data[0];
