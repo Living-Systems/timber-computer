@@ -12,7 +12,7 @@
         <div class="computer-component__table-header">
             <div class="computer-component__table-title | p-item">
                 <p aria-hidden="true">Type</p>
-                <button class="btn | cluster cluster--x-50"
+                <button class="btn | cluster cluster--x-50 hidden lg:block"
                         @click="toggleDetailsCollapsed">
                     <span class="uppercase" v-show="isCollapsed">Details</span>
                     <span>{{ isCollapsed ? '→' : '←' }}</span>

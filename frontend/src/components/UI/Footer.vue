@@ -34,11 +34,12 @@
             </div>
         </section>
 
-        <section class="md:flex flex-row-reverse justify-between border-t">
+        <section class="flex flex-row-reverse justify-between border-t">
             <nav class="my-400 cluster cluster--x-200">
-                <!-- TODO: Add pages here -->
                 <a href="mailto:mail@timber.computer">Contact</a>
-                <a v-for="page in pages" :href="'/legal/' + page.attributes.slug" :key="page">{{ page.attributes.title }}</a>
+                <a v-for="page in pages" :href="'/legal/' + page.attributes.slug" :key="page">
+                    {{ page.attributes.title }}
+                </a>
             </nav>
             <div class="my-400">
                 ©{{ year }}

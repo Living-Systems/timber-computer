@@ -5,9 +5,9 @@
 // Utilities for text layout formats
 @each $name in map-keys($text-styles) {
     .text-style-#{$name} {
-        // @include responsive-selector(true, md) {
+        @include responsive-selector(true, md lg) {
             @include text-style($name);
-        // }
+        }
     }
 }
 
