@@ -3,7 +3,7 @@
         <h1 class="p-box rounded-sm smoked-glass self-start">
             Computation complete
         </h1>
-        <div class="p-box rounded-md smoked-glass text-style-400 flex flex-row">
+        <div class="p-box rounded-md smoked-glass text-style-400 md:flex flex-row">
 
             <section class="flow flow-400">
                 <!-- // todo: Text for default values or even lower values -->
@@ -30,7 +30,7 @@
                 </ul>
             </section>
 
-            <section class="flex ml-600">
+            <section class="flex mt-600 md:ml-600 md:mt-0">
                 <ResultsGraphSession simpleRating/>
             </section>
         </div>

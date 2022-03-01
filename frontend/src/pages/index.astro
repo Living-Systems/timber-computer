@@ -25,7 +25,7 @@ const home     = getHome.data.attributes;
 const getPages = await getAllPagesWithSlugs();
 
 const pages = [
-    {attributes: {slug: '/compute', title: 'Compute'}}, 
+    {attributes: {slug: '/compute', title: 'Compute'}},
     {attributes: {slug: '/learn/background', title: 'Learn'}}
 ];
 
@@ -38,7 +38,7 @@ const pages = [
     <Header slot="header" link-to={'/learn/' + getPages.data[0].attributes.slug} link-name="learn" header-class="text-alternate"/>
 
     <div slot="main" class="flex flex-col flex-1 px-body h-full">
-        <TextBox heading={ home.title } content={ home.intro } boxClass="text-style-600"/>
+        <TextBox heading={ home.title } content={ home.intro } boxClass="md:text-style-600"/>
 
         <div class="mt-auto pb-body">
             <ButtonNavigation pages={ pages } style={ 'smoked' } computer client:only/>

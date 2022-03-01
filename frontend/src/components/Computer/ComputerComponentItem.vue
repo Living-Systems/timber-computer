@@ -11,7 +11,7 @@
         <div class="computer-component__item-content">
             <div class="computer-component__item-head | flow-300 p-item">
                 <div class="media-box media-box--contain">
-                    <img v-if="element.attributes.thumbnail.data" 
+                    <img v-if="element.attributes.thumbnail.data"
                          :src="root + element.attributes.thumbnail.data.attributes.url"
                          class="object-contain"
                          alt="" />
@@ -25,7 +25,7 @@
                 </div>
             </div>
 
-            <div class="computer-component__item-info | cluster cluster--stretched text-center" aria-hidden="true">
+            <div class="computer-component__item-info | cluster cluster--stretched | hidden lg:block text-center" aria-hidden="true">
                 <dl>
                     <dt class="sr-only">Cradle to Site</dt>
                     <dd>{{ element.attributes.cradleToSite }}</dd>
