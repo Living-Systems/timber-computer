@@ -26,13 +26,13 @@
 // hover and active styles for buttons
 @mixin active-btn() {
     &:active {
-        box-shadow: 0 0 0 1px var(--border-default);
+        box-shadow: inset 0 0 0 1px var(--border-default);
         transform: scale(0.98);
     }
 
     @media (hover: hover) {
         &:hover {
-            box-shadow: 0 0 0 1px var(--border-default);
+            box-shadow: inset 0 0 0 1px var(--border-default);
         }
     }
 }
