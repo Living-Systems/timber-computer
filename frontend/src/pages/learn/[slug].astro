@@ -58,13 +58,13 @@ let bodyClass = 'bg-gold';
 
     <div slot="main">
 
-        <ContentModules content={ page.attributes.content } client:load/>
+        <ContentModules content={ page.attributes.content } client:only/>
 
     </div>
 
     <div slot="crosslink" class="mx-body mt-400 border-t">
 
-        <ButtonNavigation pages={ pages } style={ 'outline' }/>
+        <ButtonNavigation pages={ pages } style={ 'outline' } client:only/>
     
     </div>
 
