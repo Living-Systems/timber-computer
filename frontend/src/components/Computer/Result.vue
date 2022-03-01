@@ -31,7 +31,7 @@
             </section>
 
             <section class="flex ml-600">
-                <ResultsGraph simpleRating/>
+                <ResultsGraphSession simpleRating/>
             </section>
         </div>
     </section>
@@ -39,33 +39,32 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-import { useStore } from "@nanostores/vue";
-import { standardC02, savedCO2, rating } from "../../../store/constructions";
+import { storedResult, storedSaving, storedStandard, savedCO2 } from '../../../store/constructions';
 
-import ResultsGraph from './ResultsGraph.vue'
+import ResultsGraphSession from './ResultsGraphSession.vue'
 
-const computedRating = useStore(rating);
-const standard = useStore(standardC02);
-const saving = useStore(savedCO2);
+const calculated = storedResult.get();
+const standard   = storedStandard.get();
+const saving     = standard - calculated;
 
 const forestValue = 10000;
 const electricityValue = 475;
 const berlinParisValue = 195;
 
 const percentageCalculated = computed(() => {
-    return Math.floor((100 * saving.value) / standard.value);
+    return Math.floor((100 * saving) / standard);
 });
 
 const forestCalculated = computed(() => {
-    return saving / forestValue;
+    return Math.round((saving / forestValue) * 10) / 10;
 });
 
 const electricityCalculated = computed(() => {
-    return saving / electricityValue;
+    return Math.floor(saving / electricityValue);
 });
 
 const flightCalculated = computed(() => {
-    return saving / berlinParisValue;
+    return Math.floor(saving / berlinParisValue);
 });
 
 </script>

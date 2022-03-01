@@ -12,7 +12,6 @@ import Header from '../components/UI/Header.vue'
 import ComputerNav from '../components/Computer/ComputerNav.vue'
 import ResultsGraph from '../components/Computer/ResultsGraph.vue';
 import Computer from '../components/Computer/Computer.vue';
-import BgImage from '../components/UI/BgImage.vue';
 
 // Component Script:
 // You can write any JavaScript/TypeScript that you'd like here.
@@ -32,19 +31,18 @@ const building     = getBuilding.data[0].attributes;
 
 <BaseLayout title={ title }>
 
-    <Header slot="header" slot="header" link-to="/learn" link-name="learn" header-class="text-alternate"/>
+    <Header slot="header" slot="header" link-to="/learn/background" link-name="learn" header-class="text-alternate"/>
 
     <div slot="subnav">
-        <ComputerNav building={ building } client:load/>
+        <ComputerNav building={ building } client:only/>
     </div>
 
     <div slot="main" class="flex flex-col flex-1 px-body h-full">
         <h1 class="sr-only">
             Timber Computer
         </h1>
-        <Computer building={ building } client:load/>
-        <ResultsGraph client:load/>
-        <BgImage/>
+        <Computer building={ building } client:only/>
+        <ResultsGraph client:only/>
     </div>
 
 </BaseLayout>

@@ -54,7 +54,6 @@ const props = defineProps(['building', 'inactive']);
 const activeComponent = useStore(activeComponentId);
 const numberOfComponents = useStore(componentCounter);
 
-
 // * Calculation for Styling
 // numberOfComponents / enhancedConstructions.counter to calculate width
 
@@ -66,7 +65,7 @@ for (const construction of constructions.value) {
     enhancedConstructions.push({
         name: construction.attributes.name,
         id: construction.id,
-        counter: 1,
+        counter: 0,
         components: []
     })
     for (const component of construction.attributes.components.data) {

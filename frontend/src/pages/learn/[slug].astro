@@ -7,6 +7,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 // Component Script:
 import Header from '../../components/UI/Header.vue';
 import Footer from '../../components/UI/Footer.vue';
+import ButtonNavigation from '../../components/UI/ButtonNavigation.vue';
 import LearnNav from '../../components/Learn/LearnNav.vue';
 import ContentModules from '../../components/Learn/ContentModules.vue';
 
@@ -23,10 +24,25 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.request.params;
 const getPage = await getPageBySlug(slug);
-const page = getPage.data[0].attributes;
+const page = getPage.data[0];
 
 const getPages = await getAllPagesWithSlugs();
-const pages    = getPages.data;
+const allPages    = getPages.data;
+
+const nextPage = () => {
+    const found = allPages.findIndex(item => item.attributes.title == page.attributes.title);
+
+    if(found === allPages.length-1){
+        return {...allPages[0], label: 'Revise'};
+    }
+
+    return {...allPages[found+1], label: 'Learn More'};
+}
+
+const pages = [
+    {attributes:{slug: '/computer', title: 'Start Computer'}},
+    nextPage()
+]
 
 let title = page.title;
 let bodyClass = 'bg-gold';
@@ -35,18 +51,24 @@ let bodyClass = 'bg-gold';
 
 <BaseLayout title={ title } bodyClass={bodyClass}>
 
-    <Header slot="header" link-to="/" link-name="start to compute" header-class="border-b"/>
+    <Header slot="header" link-to="/computer" link-name="start to compute" header-class="border-b"/>
 
     <div slot="subnav">
-        <LearnNav pages={ pages }/>
+        <LearnNav pages={ allPages } client:only/>
     </div>
 
     <div slot="main">
 
-        <ContentModules content={ page.content } client:load/>
+        <ContentModules content={ page.attributes.content } client:load/>
 
     </div>
 
-    <Footer slot="footer" footer-class="pb-700 mt-1100"/>
+    <div slot="crosslink" class="mx-body mt-400 border-t">
+
+        <ButtonNavigation pages={ pages } style={ 'outline' }/>
+    
+    </div>
+
+    <Footer slot="footer" footer-class="pb-700"/>
 
 </BaseLayout>

@@ -9,14 +9,16 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "@astrojs/renderer-vue": "^0.3.0",
-    "astro": "^0.22.20",
-    "sass": "^1.49.7"
+    "@astrojs/renderer-vue": "^0.4.0",
+    "astro": "^0.23.2",
+    "cssnano": "^5.0.17"
   },
   "dependencies": {
+    "@nanostores/persistent": "^0.5.1",
     "@nanostores/vue": "^0.5.5",
     "nanostores": "^0.5.10",
     "pinia": "^2.0.11",
-    "tailwindcss": "^3.0.19"
+    "sass": "^1.49.9",
+    "tailwindcss": "^3.0.23"
   }
 }

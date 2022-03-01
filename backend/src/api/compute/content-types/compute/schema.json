@@ -1,0 +1,32 @@
+{
+  "kind": "singleType",
+  "collectionName": "computes",
+  "info": {
+    "singularName": "compute",
+    "pluralName": "computes",
+    "displayName": "Compute"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "intro": {
+      "type": "text",
+      "required": true
+    },
+    "backgroundImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

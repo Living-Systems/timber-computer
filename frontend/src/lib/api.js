@@ -46,6 +46,15 @@ export async function getBuildingByName(name) {
                                                             cradleToLife
                                                             cradleToCradle
                                                             sustainability
+                                                            renewableMaterial
+                                                            thumbnail {
+                                                                data {
+                                                                    attributes {
+                                                                        formats
+                                                                        url
+                                                                    }
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -133,7 +142,7 @@ export async function getBuildingByNameStore(name) {
 export async function getAllPagesWithSlugs() {
 	const data = await fetchAPI(`
         {
-            pages {
+            pages(sort: "order") {
                 data {
                     attributes {
                         slug
@@ -163,6 +172,7 @@ export async function getPageBySlug(slug) {
                                 image {
                                     data {
                                         attributes {
+                                            mime
                                             url
                                             formats
                                             alternativeText
@@ -180,6 +190,60 @@ export async function getPageBySlug(slug) {
 		}
 	`);
 	return data?.pages;
+}
+
+// get the slugs of all legals
+export async function getAllLegalsWithSlugs() {
+	const data = await fetchAPI(`
+        {
+            legals {
+                data {
+                    attributes {
+                        slug
+                        title
+                    }
+                }
+            }
+        }
+    `);
+	return data?.legals;
+}
+
+export async function getLegalBySlug(slug) {
+	const data = await fetchAPI(`
+		{
+			legals(filters: { slug: { eq: "${slug}" } }) {
+				data {
+                    attributes {
+                        title
+                        slug
+                        content {
+                            __typename
+                            ... on ComponentPageText {
+                                markdown
+                            }
+                            ... on ComponentPageImage {
+                                image {
+                                    data {
+                                        attributes {
+                                            mime
+                                            url
+                                            formats
+                                            alternativeText
+                                            caption
+                                        }
+                                    }
+                                }
+                                url
+                                style
+                            }
+                        }
+                    }
+                }
+			}
+		}
+	`);
+	return data?.legals;
 }
 
 export async function getSingleTypeHome() {
@@ -206,4 +270,55 @@ export async function getSingleTypeHome() {
         }
 	`);
 	return data?.home;
+}
+
+export async function getSingleTypeCompute() {
+	const data = await fetchAPI(`
+        {
+            compute {
+                data {
+                    attributes {
+                        title
+                        intro
+                        backgroundImage {
+                            data {
+                                attributes {
+                                    url
+                                    formats
+                                    caption
+                                    alternativeText
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+	`);
+	return data?.compute;
+}
+
+export async function getSingleTypeResult() {
+	const data = await fetchAPI(`
+        {
+            result {
+                data {
+                    attributes {
+                        title
+                        backgroundImage {
+                            data {
+                                attributes {
+                                    url
+                                    formats
+                                    caption
+                                    alternativeText
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+	`);
+	return data?.result;
 }

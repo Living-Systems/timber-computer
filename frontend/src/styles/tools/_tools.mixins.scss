@@ -13,12 +13,14 @@
 @mixin smoked-glass {
     background: rgba(59, 55, 55, 0.3);
     backdrop-filter: blur(1rem);
+    -webkit-backdrop-filter: blur(1rem);
 }
 
 // Mixin for blurry clear glass look
 @mixin clear-glass {
     background: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(1rem);
+    -webkit-backdrop-filter: blur(1rem);
 }
 
 // hover and active styles for buttons

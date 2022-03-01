@@ -1,41 +1,24 @@
 <template>
-    <nav class="cluster | pt-300">
-        <a :href="hrefL" class="btn btn--xl w-1/2">
-            <span>{{ buttonL }}</span>
-        </a>
-        <a v-if="hrefR && buttonR" :href="hrefR" class="btn btn--xl  w-1/2">
-            <span>{{ buttonR }}</span>
+    <nav class="cluster cluster--y-gap | pt-300">
+        <a v-for="page in pages"
+           :key="page.attributes.slug"
+           :class="'w-1/2 btn btn--xl btn--' + style"
+           :href="learn ? '/learn/' + page.attributes.slug : page.attributes.slug">
+            <span v-if="page.label" class="whitespace-pre-line text-center">
+                {{ page.label + ': \n' + page.attributes.title}}
+            </span>
+            <span v-else>
+                {{ page.attributes.title }}
+            </span>
         </a>
     </nav>
 </template>
 
-<script>
+
+<script setup>
 import { computed } from 'vue';
 
-export default {
-    props: [
-        'button-l',
-        'button-r',
-        'href-l',
-        'href-r'
-    ],
-    setup(props){
-        const buttonL = computed(()=>{
-            return props['button-l']
-        });
+const props = defineProps(['pages', 'style', 'computer', 'learn']);
 
-        const buttonR = computed(()=>{
-            return props['button-r']
-        });
-
-        const hrefL = computed(()=>{
-            return props['href-l']
-        });
-
-        const hrefR = computed(()=>{
-            return props['href-r']
-        });
-    }
-}
 </script>
 

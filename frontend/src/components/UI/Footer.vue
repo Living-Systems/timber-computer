@@ -1,6 +1,6 @@
 <template>
     <footer :class="footerClass"
-        class="mx-body mt-400">
+        class="mx-body mt-800">
         <section v-if="!simpleFooter"
             class="md:flex justify-between pb-1000 border-t">
             <dl class="mt-600 md:w-1/4">
@@ -28,15 +28,17 @@
                 </p>
 
                 <p class="mt-400">
-                    And <a href="https://humans-machines.com">Humans & Machines</a>
+                    And <a href="https://humans-machines.com">Humans & Machines</a><br>
+                    Crew
                 </p>
             </div>
         </section>
 
-        <section class="md:flex flex-row-reverse justify-between border-t text-style-600">
+        <section class="md:flex flex-row-reverse justify-between border-t">
             <nav class="my-400 cluster cluster--x-200">
-                <a href="#">Legal</a>
-                <a href="#">Privacy</a>
+                <!-- TODO: Add pages here -->
+                <a href="mailto:mail@timber.computer">Contact</a>
+                <a v-for="page in pages" :href="'/legal/' + page.attributes.slug" :key="page">{{ page.attributes.title }}</a>
             </nav>
             <div class="my-400">
                 ©{{ year }}
@@ -50,4 +52,8 @@
 const props = defineProps(['footerClass', 'simpleFooter']);
 
 const year = new Date().getFullYear();
+
+import { getAllLegalsWithSlugs } from '../../lib/api';
+const getLegals = await getAllLegalsWithSlugs();
+const pages    = getLegals.data;
 </script>

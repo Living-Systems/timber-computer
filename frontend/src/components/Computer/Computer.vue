@@ -20,7 +20,7 @@
             class="computer__nav | cluster cluster--x-50 cluster--stretched"
         >
             <button
-                class="btn btn--md"
+                class="btn btn--md btn--smoked"
                 @click="changeActive('decrement')"
                 v-if="activeComponent.value != 1"
             >
@@ -29,7 +29,7 @@
             </button>
 
             <a
-                class="btn btn--md"
+                class="btn btn--md btn--smoked"
                 href="/compute"
                 v-if="activeComponent.value === 1"
             >
@@ -39,7 +39,7 @@
 
             <button
                 v-if="activeComponent.value < numberOfComponents"
-                class="btn btn--md"
+                class="btn btn--md btn--smoked"
                 @click="changeActive('increment')"
             >
                 <span class="sr-only">next</span>
@@ -49,24 +49,39 @@
             <a
                 v-else
                 href="/result"
-                class="btn btn--md uppercase"
+                class="btn btn--md btn--smoked uppercase"
             >
                 See Results
             </a>
         </nav>
     </section>
+
+    <!-- Display component image and preload next one upcoming -->
+    <template
+        v-for="component in allComponents"
+        :key="component.id">
+        <MediaBox
+            v-if="component.id == activeComponent.value || component.id == activeComponent.value + 1"
+            :image="component.attributes.backgroundImage"
+            class="media-box--background"
+            :class="component.id != activeComponent.value ? 'hidden' : null"/>
+    </template>
+
 </template>
 
 <script setup>
 import { computed } from "vue";
 import { useStore } from "@nanostores/vue";
-import { activeComponentId, componentCounter, changeActive } from "../../../store/constructions";
+import { activeComponentId, componentCounter, changeActive, savedCO2, standardC02 } from "../../../store/constructions";
 
 import ComputerComponent from "./ComputerComponent.vue";
+import MediaBox from "../UI/MediaBox.vue";
 
 const props = defineProps(["building"]);
 
 const numberOfComponents = useStore(componentCounter);
+const savedCO22 = useStore(savedCO2);
+const standardC022 = useStore(standardC02);
 
 const activeComponent = computed(() => {
     return useStore(activeComponentId);
