@@ -8,7 +8,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 // You can write any JavaScript/TypeScript that you'd like here.
 // It will run during the build, but never in the browser.
 // All variables are available to use in the HTML template below.
-import ButtonNavigation2 from '../../components/UI/ButtonNavigation2.vue';
+import ButtonNavigation from '../../components/UI/ButtonNavigation.vue';
 import Header from '../../components/UI/Header.vue';
 import Footer from '../../components/UI/Footer.vue';
 
@@ -24,7 +24,7 @@ let bodyClass = 'bg-gold';
 
     <div slot="main">
         <section class="flow-200 px-body">
-            <ButtonNavigation2 pages={ pages } client:only/>
+            <ButtonNavigation pages={ pages } style={ 'outline' } learn client:only/>
         </section>
     </div>
 

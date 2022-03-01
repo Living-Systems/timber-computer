@@ -27,6 +27,10 @@ const building     = getBuilding.data[0].attributes;
 const getComputeSingle  = await getSingleTypeCompute();
 const compute           = getComputeSingle.data.attributes;
 
+const pages = [
+    {attributes: {slug: '/computer', title: 'Start'}}
+];
+
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
 ---
@@ -38,11 +42,11 @@ const compute           = getComputeSingle.data.attributes;
     <Header slot="header" link-to="/learn/background" link-name="learn" header-class="text-alternate"/>
 
     <div slot="main" class="flex flex-col flex-1 px-body h-full">
-        <TextBox heading={compute.title} content={compute.intro}/>
+        <TextBox heading={ compute.title } content={ compute.intro }/>
 
         <div class="mt-auto pb-body">
             <!-- TO DO: add fields for button to single type? -->
-            <ButtonNavigation button-l="Start" href-l="/computer"/>
+            <ButtonNavigation pages={ pages } style={ 'smoked' } computer client:only/>
         </div>
 
         <MediaBox image={ compute.backgroundImage } boxClass="media-box--background"/>

@@ -30,6 +30,10 @@ const result           = getResultSingle.data.attributes;
 // TextBox input
 let textBoxHeading = 'Computation complete';
 
+const pages = [
+    {attributes: {slug: '/computer', title: 'Revise Selections'}}
+];
+
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
 ---
@@ -45,10 +49,10 @@ let textBoxHeading = 'Computation complete';
 
         <div class="mt-auto pb-body">
             <!--<ButtonNavigation button-l="Revise Selections" href-l="/computer" button-r="Mail complete report" href-r="#"/>-->
-            <ButtonNavigation button-l="Revise Selections" href-l="/computer"/>
+            <ButtonNavigation pages={ pages } style={ 'smoked' } computer client:only/>
         </div>
 
-        <BgImage image={ result.backgroundImage }/>
+        <BgImage image={ result.backgroundImage } />
     </div>
 
 </BaseLayout>
