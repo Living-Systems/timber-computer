@@ -75,6 +75,12 @@
         opacity: 1;
         transform: none;
     }
+
+    // align last item to the right
+    ol ol li:last-child & {
+        right: 0;
+        left: auto;
+    }
 }
 
 .subnav__construction-title {
