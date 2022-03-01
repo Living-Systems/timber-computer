@@ -1,6 +1,6 @@
 ---
 // Import content function
-import { getSingleTypeHome } from '../lib/api';
+import { getSingleTypeHome, getAllPagesWithSlugs } from '../lib/api';
 
 // Component Imports
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -22,6 +22,8 @@ let title = 'Timber Computer';
 const getHome  = await getSingleTypeHome();
 const home     = getHome.data.attributes;
 
+const getPages = await getAllPagesWithSlugs();
+
 const pages = [
     {attributes: {slug: '/compute', title: 'Compute'}}, 
     {attributes: {slug: '/learn/background', title: 'Learn'}}
@@ -33,7 +35,7 @@ const pages = [
 
 <BaseLayout title={ title }>
 
-    <Header slot="header" link-to="/learn/background" link-name="learn" header-class="text-alternate"/>
+    <Header slot="header" link-to={'/learn/' + getPages.data[0].attributes.slug} link-name="learn" header-class="text-alternate"/>
 
     <div slot="main" class="flex flex-col flex-1 px-body h-full">
         <TextBox heading={ home.title } content={ home.intro } boxClass="text-style-600"/>
