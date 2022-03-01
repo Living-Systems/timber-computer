@@ -25,7 +25,7 @@
                 </div>
             </div>
 
-            <div class="computer-component__item-info | cluster cluster--stretched | hidden lg:block text-center" aria-hidden="true">
+            <div class="computer-component__item-info | cluster cluster--stretched | hidden lg:flex text-center" aria-hidden="true">
                 <dl>
                     <dt class="sr-only">Cradle to Site</dt>
                     <dd>{{ element.attributes.cradleToSite }}</dd>
