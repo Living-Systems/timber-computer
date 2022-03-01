@@ -1,0 +1,48 @@
+---
+// Import content function
+import { getAllLegalsWithSlugs, getLegalBySlug } from '../../lib/api';
+// Component Imports
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Component Script:
+import Header from '../../components/UI/Header.vue';
+import Footer from '../../components/UI/Footer.vue';
+import LearnNav from '../../components/Learn/LearnNav.vue';
+import ContentModules from '../../components/Learn/ContentModules.vue';
+
+// generate URLs for pages using the slug
+export async function getStaticPaths() {
+    const legalsWithSlugs = await getAllLegalsWithSlugs();
+    return legalsWithSlugs.data.map(({ attributes }) => {
+        return {
+            params: { slug: attributes.slug },
+        };
+    });
+}
+
+const { slug } = Astro.request.params;
+const getLegal = await getLegalBySlug(slug);
+const page = getLegal.data[0].attributes;
+
+let title = page.title;
+let bodyClass = 'bg-gold';
+---
+
+
+<BaseLayout title={ title } bodyClass={bodyClass}>
+
+    <Header slot="header" link-to="/computer" link-name="start to compute" header-class="border-b"/>
+
+    <!-- <div slot="subnav">
+        <LearnNav pages={ pages }/>
+    </div> -->
+
+    <div slot="main">
+
+        <ContentModules content={ page.content } client:load/>
+
+    </div>
+
+    <Footer slot="footer" footer-class="pb-700 mt-1100"/>
+
+</BaseLayout>

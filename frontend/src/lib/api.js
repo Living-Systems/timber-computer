@@ -191,6 +191,59 @@ export async function getPageBySlug(slug) {
 	return data?.pages;
 }
 
+// get the slugs of all legals
+export async function getAllLegalsWithSlugs() {
+	const data = await fetchAPI(`
+        {
+            legals {
+                data {
+                    attributes {
+                        slug
+                        title
+                    }
+                }
+            }
+        }
+    `);
+	return data?.legals;
+}
+
+export async function getLegalBySlug(slug) {
+	const data = await fetchAPI(`
+		{
+			legals(filters: { slug: { eq: "${slug}" } }) {
+				data {
+                    attributes {
+                        title
+                        slug
+                        content {
+                            __typename
+                            ... on ComponentPageText {
+                                markdown
+                            }
+                            ... on ComponentPageImage {
+                                image {
+                                    data {
+                                        attributes {
+                                            url
+                                            formats
+                                            alternativeText
+                                            caption
+                                        }
+                                    }
+                                }
+                                url
+                                style
+                            }
+                        }
+                    }
+                }
+			}
+		}
+	`);
+	return data?.legals;
+}
+
 export async function getSingleTypeHome() {
 	const data = await fetchAPI(`
         {

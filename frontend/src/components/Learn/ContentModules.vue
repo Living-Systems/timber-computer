@@ -36,8 +36,6 @@
 <script setup>
     import { micromark } from 'micromark';
 
-    console.log(props.content);
-
     const root  = import.meta.env.PUBLIC_SERVER_URL;
     const props = defineProps(['content']);
 </script>
