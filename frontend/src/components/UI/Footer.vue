@@ -1,6 +1,6 @@
 <template>
     <footer :class="footerClass"
-        class="mx-body mt-400">
+        class="mx-body mt-800">
         <section v-if="!simpleFooter"
             class="md:flex justify-between pb-1000 border-t">
             <dl class="mt-600 md:w-1/4">

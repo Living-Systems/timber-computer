@@ -61,10 +61,14 @@ let bodyClass = 'bg-gold';
 
         <ContentModules content={ page.attributes.content } client:load/>
 
-        <ButtonNavigation pages={ pages } style={ 'outline' }/>
-
     </div>
 
-    <Footer slot="footer" footer-class="pb-700 mt-1100"/>
+    <div slot="crosslink" class="mx-body mt-400 border-t">
+
+        <ButtonNavigation pages={ pages } style={ 'outline' }/>
+    
+    </div>
+
+    <Footer slot="footer" footer-class="pb-700"/>
 
 </BaseLayout>
