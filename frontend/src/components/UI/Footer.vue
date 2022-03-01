@@ -38,7 +38,7 @@
             <nav class="my-400 cluster cluster--x-200">
                 <!-- TODO: Add pages here -->
                 <a href="mailto:mail@timber.computer">Contact</a>
-                <a v-for="page in pages" :href="'/learn/' + page.attributes.slug" :key="page">{{ page.attributes.title }}</a>
+                <a v-for="page in pages" :href="'/legal/' + page.attributes.slug" :key="page">{{ page.attributes.title }}</a>
             </nav>
             <div class="my-400">
                 ©{{ year }}
