@@ -172,6 +172,7 @@ export async function getPageBySlug(slug) {
                                 image {
                                     data {
                                         attributes {
+                                            mime
                                             url
                                             formats
                                             alternativeText
@@ -225,6 +226,7 @@ export async function getLegalBySlug(slug) {
                                 image {
                                     data {
                                         attributes {
+                                            mime
                                             url
                                             formats
                                             alternativeText
