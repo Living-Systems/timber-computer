@@ -1,0 +1,52 @@
+---
+// Import content function
+import { getBuildingByName } from '../lib/api';
+import { getSingleTypeCompute } from '../lib/api';
+
+// Component Imports
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+
+// You can import components from any supported Framework here!
+// import Index from './index.vue';
+import ComputerNav from '../components/Computer/ComputerNav.vue';
+
+import ButtonNavigation from '../components/UI/ButtonNavigation.vue';
+import Header from '../components/UI/Header.vue';
+import TextBox from '../components/UI/TextBox.vue';
+import MediaBox from '../components/UI/MediaBox.vue';
+
+// Component Script:
+// You can write any JavaScript/TypeScript that you'd like here.
+// It will run during the build, but never in the browser.
+// All variables are available to use in the HTML template below.
+
+const getComputeSingle  = await getSingleTypeCompute();
+const compute           = getComputeSingle.data.attributes;
+
+const pages = [
+    {attributes: {slug: '/computer', title: 'Go to computer'}},
+    {attributes: {slug: '/learn/background', title: 'Go to learn'}}
+];
+
+// Full Astro Component Syntax:
+// https://docs.astro.build/core-concepts/astro-components/
+---
+
+
+
+<BaseLayout title={ compute.title }>
+
+    <Header slot="header" link-to="/learn/background" link-name="learn" header-class="text-alternate"/>
+
+    <div slot="main" class="flex flex-col flex-1 px-body h-full">
+        <TextBox heading={ '404' } content={ 'There is nothing here...' }/>
+
+        <div class="mt-auto pb-body">
+            <ButtonNavigation pages={ pages } style={ 'smoked' } computer client:only/>
+        </div>
+
+        <MediaBox image={ compute.backgroundImage } boxClass="media-box--background"/>
+    </div>
+
+</BaseLayout>

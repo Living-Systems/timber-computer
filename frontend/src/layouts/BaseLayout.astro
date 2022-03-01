@@ -10,6 +10,7 @@ const { title, bodyClass = '' } = Astro.props;
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <title>{ title } 🌲 Timber Computer</title>
         <style type="text/css" set:html={style}></style>
+        
 	</head>
 
 	<body class={bodyClass}>
@@ -20,6 +21,8 @@ const { title, bodyClass = '' } = Astro.props;
         </header>
         <main>
             <slot name="main" />
+
+            <slot name="crosslink" />
         </main>
         <footer>
             <slot name="footer" />
