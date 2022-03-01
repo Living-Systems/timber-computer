@@ -82,4 +82,8 @@
     a {
         text-decoration: underline;
     }
+
+    blockquote {
+        --flow-space: var(--size-400);
+    }
 }
