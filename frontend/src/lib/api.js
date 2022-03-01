@@ -142,7 +142,7 @@ export async function getBuildingByNameStore(name) {
 export async function getAllPagesWithSlugs() {
 	const data = await fetchAPI(`
         {
-            pages {
+            pages(sort: "order") {
                 data {
                     attributes {
                         slug
