@@ -1,0 +1,32 @@
+.computer {
+    flex-grow: 1; // stretch to full height
+}
+
+.computer__components {
+    display: flex;
+    flex-grow: 1; // stretch to full height
+
+    // Create a max height for the wrapper
+    // by reducing specific sizes from the viewport height
+    // - env(safe-area-inset-bottom) for iOS viewport calculation
+    // - main element top margin
+    // - element bottom margin
+    // - some random spacing value to offset from bottom
+    // - main header height
+    --ios-safe-area: 0;
+    max-height: calc(100vh - var(--ios-safe-area) - var(--size-200) - var(--size-900) - 3rem - var(--header-h));
+
+    // todo: Test if that works with newer ios versions
+    @supports (padding: env(safe-area-inset-bottom)) {
+        --ios-safe-area: env(safe-area-inset-bottom);
+    }
+}
+
+.computer__nav {
+    width: calc(var(--computer-item-w) + var(--cluster-gap));
+
+    button:disabled {
+        pointer-events: none;
+    }
+}
+

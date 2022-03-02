@@ -1,0 +1,57 @@
+---
+// Import content function
+import { getBuildingByName } from '../lib/api';
+import { getSingleTypeCompute, getAllPagesWithSlugs } from '../lib/api';
+
+// Component Imports
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+
+// You can import components from any supported Framework here!
+// import Index from './index.vue';
+import ComputerNav from '../components/Computer/ComputerNav.vue';
+
+import ButtonNavigation from '../components/UI/ButtonNavigation.vue';
+import Header from '../components/UI/Header.vue';
+import TextBox from '../components/UI/TextBox.vue';
+import MediaBox from '../components/UI/MediaBox.vue';
+
+// Component Script:
+// You can write any JavaScript/TypeScript that you'd like here.
+// It will run during the build, but never in the browser.
+// All variables are available to use in the HTML template below.
+const buildingType = "Typenhaus";
+const getBuilding  = await getBuildingByName( buildingType );
+const building     = getBuilding.data[0].attributes;
+
+const getComputeSingle  = await getSingleTypeCompute();
+const compute           = getComputeSingle.data.attributes;
+
+const getPages = await getAllPagesWithSlugs();
+
+const pages = [
+    {attributes: {slug: '/computer', title: 'Start'}}
+];
+
+// Full Astro Component Syntax:
+// https://docs.astro.build/core-concepts/astro-components/
+---
+
+
+
+<BaseLayout title={ compute.title }>
+
+    <Header slot="header" link-to={'/learn/' + getPages.data[0].attributes.slug} link-name="learn" header-class="text-alternate"/>
+
+    <div slot="main" class="flex flex-col flex-1 px-body h-full">
+        <TextBox heading={ compute.title } content={ compute.intro }/>
+
+        <div class="mt-auto pb-body">
+            <!-- TO DO: add fields for button to single type? -->
+            <ButtonNavigation pages={ pages } button-style={ 'btn--smoked' } computer client:only/>
+        </div>
+
+        <MediaBox image={ compute.backgroundImage } boxClass="media-box--background"/>
+    </div>
+
+</BaseLayout>

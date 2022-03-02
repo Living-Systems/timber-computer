@@ -1,0 +1,117 @@
+///*----------------------------------*\
+//  #TOKENS
+//\*----------------------------------*/
+
+// Global design tokens
+
+
+// SIZE SCALE
+//
+// We use a modular scale that powers all the utilities that
+// it is relevant for (text styles/font-size, margin, padding).
+// All items are calculated off these tokens.
+//
+// OUR APPROACH
+// Instead of going into complicated SASS Mixins or Calc operations
+// we use this tool to get the values for a chosen type of scale:
+// https://type-scale.com/
+//
+// NAMING CONVENTION
+// Naming is taken from font weight where a weight of 400 is considered normal
+//
+// This project uses a Major Third scale above 1rem
+// meaning the ratio between values is 1.333
+// Values below are handpicked
+$size-scale: (
+    '25': 0.1rem,
+    '50': 0.2rem,
+    '100': 0.4rem,
+    '200': 0.563rem,   // Label 13px
+    '300': 0.75rem,
+    '400': 1rem,       // Base/Copy 24px
+    '500': 1.333rem,
+    '600': 1.777rem,   // H1 40px
+    '700': 2.369rem,
+    '800': 3.157rem,
+    '900': 4.209rem,
+    '1000': 5.61rem,
+    '1100': 7.78rem,
+    '1200': 10rem,
+);
+
+// COLORS
+// Set up a colour palette which allows us
+// to theme the entire project from one location.
+
+// Text colors
+$text-colors: (
+    'default': #fff,
+    'alternate': #000,
+    'green': #00FF42,
+    'green-secondary': #A2F23C,
+    'orange': #FFC700,
+    'orange-secondary': #FF8900,
+    'red-secondary': #FF3F3A,
+    'red': #FF0000,
+);
+
+// Background colors
+$bg-colors: (
+    'default': #1a1a1a,
+    'gold': #bb9c85,
+);
+
+// Border colors
+$border-colors: (
+    'default': #fff,
+    // 'highlight': #2E1705,
+);
+
+// Focus colors
+$focus-ring-color: rgba(0, 255, 187, 0.6);
+
+// Border radius
+$border-radius: (
+    'sm': 0.2rem,
+    'md': 0.4rem,
+);
+
+// TEXT STYLES
+//
+// Get if item in $text-styles matches size from $size-scale
+// font-size is automatically set to this value
+//
+// .usage {
+//   @include text-style(100);
+// }
+//
+$text-styles: (
+    // Default Font Family
+    'default': (
+        font-weight: 400,
+        line-height: 1.2,
+        font-family: "'Monument Grotesk', system, -apple-system, '.SFNSText-Regular', 'San Francisco', 'Roboto', 'Segoe UI', 'Helvetica Neue', sans-serif;", // TODO: Add webfont
+    ),
+
+    // Label
+    // Figma File: 13pt
+    '200': (
+        line-height: '1.25',
+        letter-spacing: '0.03em',
+    ),
+
+    // Body Text Size
+    // Figma File: 24pt
+    '400': (
+        // line-height: 1.2,
+    ),
+
+    // H1
+    // Figma File: 40pt
+    '600': (
+        line-height: '1.1',
+    ),
+);
+
+
+

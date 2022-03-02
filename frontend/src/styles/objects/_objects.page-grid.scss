@@ -1,0 +1,13 @@
+/*------------------------------------*\
+  #PAGE-GRID
+\*------------------------------------*/
+
+// Provide a grid container with a dedicated setup
+// to define the overall page grid
+.page-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-rows), minmax(0, 1fr));
+    column-gap: var(--column-gap);
+    align-items: start;
+}
+

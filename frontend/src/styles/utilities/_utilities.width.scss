@@ -1,0 +1,94 @@
+
+/*------------------------------------*\
+  #WIDTH
+\*------------------------------------*/
+
+// Custom width classes to deal with our cluster object
+
+// SCSS Map Structure
+// $map-name: (
+//      'property': (
+//          'class-name': value,
+//      ),
+// );
+
+
+// Grid Column Start / End
+// https://tailwindcss.com/docs/width
+//
+// 1. -1px fixed firefox subpixelrender issues
+//
+$width-props: (
+    'width': (
+        // Helper widths
+        w-full: calc(100% + var(--cluster-gap)),
+        // w-screen: calc(100vw),
+        w-auto: auto,
+        // w-px: 1px,
+
+        w-1\/10: calc(10% - var(--cluster-gap) - 1px), // [1]
+
+        // Common widths
+        w-1\/2: calc(50% - var(--cluster-gap) - 1px), // [1]
+        w-1\/3: calc(33.333333% - var(--cluster-gap) - 1px),
+        w-2\/3: calc(66.666667% - var(--cluster-gap) - 1px),
+        w-1\/4: calc(25% - var(--cluster-gap) - 1px),
+        w-2\/4: calc(50% - var(--cluster-gap) - 1px),
+        w-3\/4: calc(75% - var(--cluster-gap) - 1px),
+        w-1\/5: calc(20% - var(--cluster-gap) - 1px),
+        w-2\/5: calc(40% - var(--cluster-gap) - 1px),
+        w-3\/5: calc(60% - var(--cluster-gap) - 1px),
+        w-4\/5: calc(80% - var(--cluster-gap) - 1px),
+        // w-1\/6: calc(16.666667% - var(--cluster-gap) - 1px),
+        // w-2\/6: calc(33.333333% - var(--cluster-gap) - 1px),
+        // w-3\/6: calc(50% - var(--cluster-gap) - 1px),
+        // w-4\/6: calc(66.666667% - var(--cluster-gap) - 1px),
+        // w-5\/6: calc(83.333333% - var(--cluster-gap) - 1px),
+
+        // Widths for grids with 12 cols
+        // w-1\/12: calc(8.333333% - var(--cluster-gap) - 1px),
+        // w-2\/12: calc(16.666667% - var(--cluster-gap) - 1px),
+        // w-3\/12: calc(25% - var(--cluster-gap) - 1px),
+        // w-4\/12: calc(33.333333% - var(--cluster-gap) - 1px),
+        // w-5\/12: calc(41.666667% - var(--cluster-gap) - 1px),
+        // w-6\/12: calc(50% - var(--cluster-gap) - 1px),
+        // w-7\/12: calc(58.333333% - var(--cluster-gap) - 1px),
+        // w-8\/12: calc(66.666667% - var(--cluster-gap) - 1px),
+        // w-9\/12: calc(75% - var(--cluster-gap) - 1px),
+        // w-10\/12: calc(83.333333% - var(--cluster-gap) - 1px),
+        // w-11\/12: calc(91.666667% - var(--cluster-gap) - 1px),
+
+        // Widths for grids with 16 cols
+        // w-1\/16: calc(6.25% - var(--cluster-gap) - 1px),
+        // w-2\/16: calc(12.5% - var(--cluster-gap) - 1px),
+        // w-3\/16: calc(18.75% - var(--cluster-gap) - 1px),
+        // w-4\/16: calc(25% - var(--cluster-gap) - 1px),
+        // w-5\/16: calc(31.25% - var(--cluster-gap) - 1px),
+        // w-6\/16: calc(37.5% - var(--cluster-gap) - 1px),
+        // w-7\/16: calc(43.75% - var(--cluster-gap) - 1px),
+        // w-8\/16: calc(50% - var(--cluster-gap) - 1px),
+        // w-9\/16: calc(56.25% - var(--cluster-gap) - 1px),
+        // w-10\/16: calc(62.5% - var(--cluster-gap) - 1px),
+        // w-11\/16: calc(68.75% - var(--cluster-gap) - 1px),
+        // w-12\/16: calc(75% - var(--cluster-gap) - 1px),
+        // w-13\/16: calc(81.25% - var(--cluster-gap) - 1px),
+        // w-14\/16: calc(87.5% - var(--cluster-gap) - 1px),
+        w-15\/16: calc(93.75% - var(--cluster-gap) - 1px),
+
+        // Widths for grids with 8 cols
+        w-1\/8: calc(12.5% - var(--cluster-gap) - 1px),
+        w-2\/8: calc(25% - var(--cluster-gap) - 1px),
+        w-3\/8: calc(37.5% - var(--cluster-gap) - 1px),
+        w-4\/8: calc(50% - var(--cluster-gap) - 1px),
+        w-5\/8: calc(62.5% - var(--cluster-gap) - 1px),
+        w-6\/8: calc(75% - var(--cluster-gap) - 1px),
+        w-7\/8: calc(87.5% - var(--cluster-gap) - 1px),
+
+        // specific width
+        w-7\/10: calc(70% - var(--cluster-gap) - 1px),
+    ),
+) !default;
+
+// Creating classes
+@include utility-classes($width-props,lg);
+

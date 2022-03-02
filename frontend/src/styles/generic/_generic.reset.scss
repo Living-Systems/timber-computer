@@ -1,0 +1,137 @@
+/*------------------------------------*\
+  #RESET
+\*------------------------------------*/
+
+/**
+ * A modern reset that sits on top of Normalize.css.
+ * Inspired by https://github.com/hankchizljaw/modern-css-reset
+ * and Tailwind preflight
+ */
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+dl,
+dd,
+ol,
+ul,
+form,
+fieldset,
+legend,
+figure,
+table,
+th,
+td,
+caption,
+hr {
+  padding: 0;
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html {
+  scroll-behavior: smooth;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  max-width: 100%;
+  display: block;
+  vertical-align: middle;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove border styles */
+*,
+::before,
+::after {
+  border-width: 0;
+  border-style: solid;
+  border-color: currentColor;
+}
+
+/* Show focus style for keyboard navigation only */
+
+// https://css-tricks.com/the-focus-visible-trick/
+// Remove default focus
+:focus {
+  outline: none;
+}
+
+// Show focus only when focusing with keyboard
+:focus-visible {
+  box-shadow: 0 0 var(--focus-ring-s, 1px) var(--focus-ring-w, 2px) var(--focus-ring-color, rgba(0, 0, 0, 0.1));
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/**
+ * Remove trailing margins from nested lists.
+ */
+li > {
+
+  ul,
+  ol {
+    margin-bottom: 0;
+  }
+
+}
+
+/**
+ * Remove spaces between table cells.
+ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}

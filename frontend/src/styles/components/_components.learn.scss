@@ -1,0 +1,16 @@
+.learn__figure {
+    max-width: var(--measure);
+
+    img {
+        width: 100%;
+    }
+}
+
+.learn__figure--centered {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.learn__figure--full {
+    max-width: 100vw;
+}

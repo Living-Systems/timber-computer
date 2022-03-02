@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "buildings",
+  "info": {
+    "singularName": "building",
+    "pluralName": "buildings",
+    "displayName": "Building",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "constructions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::construction.construction"
+    },
+    "threshold": {
+      "displayName": "steps",
+      "type": "component",
+      "repeatable": true,
+      "component": "building.steps"
+    }
+  }
+}

@@ -1,0 +1,63 @@
+@use "sass:list";
+
+//*----------------------------------*\
+//  #FUNCTIONS
+//\*----------------------------------*/
+
+// Custom functions
+
+// Strips the unit from a size statement
+//
+// @param {number} $value - The number to strip
+// @return {number} - The stripped value
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+// Switches the unit from rem to em
+//
+// @param {number} $value - The number to strip
+// @return {number} - The stripped value
+@function rem-to-em($value) {
+  @return $value / 1rem * 1em;
+}
+
+// Replace `$search` with `$replace` in `$string`
+//
+// @param {String} $string - Initial string
+// @param {String} $search - Substring to replace
+// @param {String} $replace ('') - New value
+// @return {String} - Updated string
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+/// Convert a string to a proper class selector.
+///
+/// @param  {String}   $selector
+/// @return {Selector} Returns the class selector.
+@function to-class($selector) {
+    $separator: list.separator($selector);
+    $result: ();
+
+    @each $selector in $selector {
+        $result: list.append($result, '.#{$selector}', $separator);
+    }
+
+    @return $result;
+}
+
+
+// Get a size from $size-scale
+//
+@function size($size) {
+    $result: map-get($size-scale, $size);
+
+    @return $result;
+}

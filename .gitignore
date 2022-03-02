@@ -1,0 +1,34 @@
+# OS/IDE specific
+/.idea
+.DS_Store
+/.vscode
+
+# Vendor files
+node_modules
+vendor
+
+# build output
+dist
+
+# Lint results
+eslint-result.html
+stylelint-result.txt
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# environment variables
+.env
+.env.production
+
+# GraphQL Settings
+.graphqlconfig
+schema.graphql
+
+# Testing stuff
+cypress/screenshots
+
+# Gitkeep should always be added
+!.gitkeep

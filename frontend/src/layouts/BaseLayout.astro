@@ -1,0 +1,31 @@
+---
+import style from '../styles/main.scss';
+const { title, bodyClass = '' } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <title>{ title } 🌲 Timber Computer</title>
+        <style type="text/css" set:html={style}></style>
+        
+	</head>
+
+	<body class={bodyClass}>
+        <header class="text-style-200 uppercase">
+            <slot name="header" />
+
+            <slot name="subnav"/>
+        </header>
+        <main>
+            <slot name="main" />
+
+            <slot name="crosslink" />
+        </main>
+        <footer>
+            <slot name="footer" />
+        </footer>
+	</body>
+</html>

@@ -1,0 +1,91 @@
+// Subnav Component
+.subnav {
+    --group-items: 1;
+    --total-items: 1;
+
+    @include smoked-glass;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0 var(--body-p);
+    z-index: map-get($z-index, subnav);
+
+    ol {
+        --cluster-gap: 0.2rem;
+    }
+}
+
+.subnav__construction {
+    position: relative;
+    width: calc((var(--group-items) / var(--total-items) * 100%) - var(--cluster-gap));
+}
+
+.subnav__item {
+    cursor: pointer;
+    height: var(--subnav-item-h);
+    position: relative;
+    padding: var(--subnav-item-p) 0;
+    width: 100%;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: var(--subnav-item-p);
+        left: 0;
+        right: 0;
+        height: 0.2rem;
+        opacity: 0.5;
+        background: currentColor;
+        border-radius: var(--border-radius-sm);
+        transform: opacity $trans-time--m $trans-func--default
+    }
+
+    &.is-set {
+        &:before {
+            opacity: 1;
+        }
+    }
+
+    &.is-current {
+        &:before {
+            --pulse-start: 0.5;
+            --pulse-end: 1;
+            animation: pulse $trans-time--xl $trans-func--default infinite backwards;
+        }
+    }
+}
+
+.subnav__construction-title,
+.subnav__item-title {
+    position: absolute;
+    top: calc(0.5rem + var(--subnav-item-p));
+    left: 0;
+    white-space: nowrap;
+    transition: opacity $trans-time--xs $trans-func--default,
+                transform $trans-time--xs $trans-func--default;
+}
+
+.subnav__item-title {
+    opacity: 0;
+    transform: translate3d(1rem, 0, 0);
+
+    .subnav--pages &,
+    .subnav__item:hover & {
+        opacity: 1;
+        transform: none;
+    }
+
+    // align last item to the right
+    ol ol li:last-child & {
+        right: 0;
+        left: auto;
+    }
+}
+
+.subnav__construction-title {
+    .subnav ol:hover & {
+        opacity: 0;
+        transform: translate3d(0, 1rem, 0);
+    }
+}

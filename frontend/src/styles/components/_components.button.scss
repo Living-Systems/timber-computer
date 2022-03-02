@@ -1,0 +1,60 @@
+/*------------------------------------*\
+  #BUTTONS
+\*------------------------------------*/
+
+// Default button
+//
+// 1. Allow us to style box model properties.
+// 2. Line different sized buttons up a little nicer.
+// 3. Make buttons inherit font styles (often necessary when styling `input`s as buttons).
+// 4. Reset/normalize some styles.
+// 5. Force all button-styled elements to appear clickable.
+// 6. Remove default appearance in some native occasions
+// 7. Make buttons inherit font colors (often necessary when styling `a`s as buttons).
+//
+
+
+// * Basic Button Setup
+
+.btn {
+    display: flex; // [1]
+    justify-content: center; // [2]
+    font: inherit; // [3]
+    align-items: center; // [4]
+    cursor: pointer; // [5]
+    color: inherit; // [6]
+    outline: none; // [4]
+    border: none; // [4]
+    background: none; // [4]
+    appearance: none; // [7]
+    white-space: nowrap; // [8]
+    transition: box-shadow $trans-time--s $trans-func--default,
+                transform $trans-time--xs $trans-func--default;
+    padding: 0;
+}
+
+// Small boxy Buttons
+.btn--md {
+    padding: 0.2rem;
+    @include text-style('200');
+    height: var(--btn-md-h);
+    border-radius: var(--radius-sm);
+    @include active-btn();
+}
+
+// Big Round Buttons
+.btn--xl {
+    padding: var(--box-p);
+    @include text-style('600');
+    height: var(--btn-xl-h);
+    border-radius: calc(var(--btn-xl-h) / 2);
+    @include active-btn();
+}
+
+.btn--smoked {
+    @include smoked-glass;
+}
+
+.btn--outline {
+    box-shadow: inset 0 0 0 1px var(--border-default);
+}

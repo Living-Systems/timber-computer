@@ -1,0 +1,79 @@
+/*------------------------------------*\
+  #CLUSTER
+\*------------------------------------*/
+
+/**
+ * Provide a flex container in order to display items side by side
+ *
+ * https://every-layout.dev/layouts/cluster/
+ * Paywall entry: (https://every-layout.dev/login/?email=info@humans.am)
+ *
+ * Can be used for elements with varying width
+ * or adjusted widths via the .width utility class
+ *
+ * 1. Use --column-gap as default for cluster
+ *    Will also be used for children with .width-utility classes
+ * 2. Settles the outer gap margin of inner elements
+ * 3. Lets the cluster be multiline
+ * 4. Centers each row. To change the alignment use a flex utility class
+ * 5. Defines a gap for children
+ */
+
+.cluster {
+    --cluster-gap: var(--column-gap, 1rem); // [1]
+    margin-left: calc(var(--cluster-gap) * 0.5 * -1); // [2]
+    margin-right: calc(var(--cluster-gap) * 0.5 * -1); // [2]
+    display: flex;
+    flex-wrap: wrap; // [3]
+    align-items: center; // [4]
+}
+
+.cluster > * {
+    margin-left: calc(var(--cluster-gap) * 0.5); // [5]
+    margin-right: calc(var(--cluster-gap) * 0.5); // [5]
+}
+
+/** Variation with stretched and equally sized elements
+ *
+ * 1. Force all items on one line
+ * 2. Make all items the same width
+ *    flex: 1; makes flex-basis: 0%;
+ *    https://css-tricks.com/equal-columns-with-flexbox-its-more-complicated-than-you-might-think/
+ */
+.cluster--stretched {
+    flex-wrap: nowrap; // [1]
+
+    > * {
+        flex: 1; // [2]
+    }
+}
+
+// Add vertical spacing
+.cluster--y-gap {
+    --cluster-y-gap: var(--column-gap, 1rem);
+    margin-top: calc(var(--cluster-y-gap) * 0.5 * -1);
+    margin-bottom: calc(var(--cluster-y-gap) * 0.5 * -1);
+}
+
+.cluster--y-gap > * {
+    margin-top: calc(var(--cluster-y-gap) * 0.5);
+    margin-bottom: calc(var(--cluster-y-gap) * 0.5);
+}
+
+.cluster--x-50 { --cluster-gap: #{map-get($size-scale, "50")};}
+.cluster--x-100 { --cluster-gap: #{map-get($size-scale, "100")};}
+.cluster--x-200 { --cluster-gap: #{map-get($size-scale, "200")};}
+.cluster--x-300 { --cluster-gap: #{map-get($size-scale, "300")};}
+.cluster--x-400 { --cluster-gap: #{map-get($size-scale, "400")};}
+
+
+.cluster--y-50 { --cluster-y-gap: #{map-get($size-scale, "50")};}
+.cluster--y-100 { --cluster-y-gap: #{map-get($size-scale, "100")};}
+.cluster--y-200 { --cluster-y-gap: #{map-get($size-scale, "200")};}
+.cluster--y-300 { --cluster-y-gap: #{map-get($size-scale, "300")};}
+.cluster--y-400 { --cluster-y-gap: #{map-get($size-scale, "400")};}
+.cluster--y-500 { --cluster-y-gap: #{map-get($size-scale, "500")};}
+.cluster--y-600 { --cluster-y-gap: #{map-get($size-scale, "600")};}
+.cluster--y-700 { --cluster-y-gap: #{map-get($size-scale, "700")};}
+.cluster--y-800 { --cluster-y-gap: #{map-get($size-scale, "800")};}
+.cluster--y-1000 { --cluster-y-gap: #{map-get($size-scale, "1000")};}

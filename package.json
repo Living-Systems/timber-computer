@@ -1,0 +1,41 @@
+{
+  "name": "timber-computer",
+  "version": "1.0.0",
+  "description": "Timber Computer for Living Systems",
+  "main": "index.js",
+  "engines" : {
+    "npm" : ">=8.0.0",
+    "node" : ">=16.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.humans.am:living-system/timber-computer.git"
+  },
+  "keywords": [
+    "living",
+    "systems",
+    "timber",
+    "computer",
+    "vue3",
+    "astro",
+    "tailwind",
+    "vite",
+    "strapi",
+    "graphql"
+  ],
+  "author": "Humans & Machines",
+  "contributors": [
+    "Stefan Rueschenberg <stefan@humans-machines.com>",
+    "Raffael Stueken <raffael@humans-machines.com>",
+    "Sebastian Schaefer <sebastian@humans-machines.com>",
+    "Tim Jungmann <tim@humans-machines.com>",
+    "Adrian Bahr <adrian@humans-machines.com>"
+  ],
+  "workspaces": [
+    "./frontend/",
+    "./backend/"
+  ]
+}

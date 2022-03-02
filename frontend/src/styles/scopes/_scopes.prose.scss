@@ -1,0 +1,89 @@
+/*------------------------------------*\
+  #PROSE
+\*------------------------------------*/
+
+.prose {
+
+    // Overwrite default flow logic to overcome vue wrapping
+    > * {
+        margin-top: var(--flow-space);
+    }
+
+    &:first-child {
+        > *:first-child {
+            margin-top: 0;
+        }
+    }
+
+    // Measure is handled differently
+    // to be able to add full with lines on top of h2
+    &.measure {
+        max-width: 100%;
+
+        > * {
+            max-width: var(--measure);
+        }
+    }
+
+    // prevent overflows
+    word-break: break-word;
+
+    h1,
+    h2 {
+        @include text-style('600');
+        --flow-space: var(--size-800);
+    }
+
+    h2 {
+        // Add full width lines on top  of h2
+        // [1] Overwrite measure preset
+        // [2] Will create a negative and therefore invalid padding
+        //     if smaller than measure
+        //     but add a padding to align with the measure max width
+        //     of all other items
+        max-width: 100% !important;
+        padding-right: calc(100vw - var(--body-p) - var(--measure));
+
+        &:before {
+            content: '';
+            border-top-width: 1px;
+            display: block;
+            padding-bottom: var(--size-300);
+        }
+    }
+
+    h3 {
+        --flow-space: var(--size-800);
+    }
+
+    h1,
+    h2 {
+        & + p {
+            --flow-space: var(--size-600);
+        }
+    }
+
+    h3 {
+        & + p {
+            --flow-space: var(--size-400);
+        }
+    }
+
+    ul {
+        list-style: disc outside;
+    }
+
+    hr {
+        background: none;
+        border: none;
+        --flow-space: var(--size-1000);
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    blockquote {
+        --flow-space: var(--size-400);
+    }
+}

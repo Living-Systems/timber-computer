@@ -1,0 +1,49 @@
+///*----------------------------------*\
+//  #breakpoints
+//\*----------------------------------*/
+
+/// breakpoint definitions
+//
+// em based media query favors in user set default font size
+$breakpoints: (
+    // default breakpoints are treated as min width screen media queries
+    default: (
+        // 'sm': 0, // 16px * 30em: 480px
+        'md': 37.5em, // 16px * 37.5em: 600px
+        'lg': 64em, // 16px * 64em: 1024px
+    ),
+    // custom breakpoints output the raw definition
+    custom: (
+        'sm-only': 'screen and (max-width: 37.45em)', // 16px * 37.45em: 599.2px -> hopefully smaller than 'md'
+        'md-only': 'screen and (min-width: 37.5em) and (max-width: 63.95em)', // 16px * 63.95em: 1023.2px -> hopefully smaller than 'md'
+        'sm-md-only': 'screen and (max-width: 63.95em)', // 16px * 63.95em: 1023.2px -> hopefully smaller than 'md'
+        'portrait': 'screen and (orientation: portrait)',
+        'landscape': 'screen and (orientation: landscape)',
+        'wide': 'screen and (min-aspect-ratio: 16/9)',
+        'tower': 'screen and (max-aspect-ratio: 2/3)',
+        'print': 'print',
+    ),
+);
+
+// respond-to mixin
+@mixin respond-to($breakpoint) {
+    @each $type in map-keys($breakpoints) {
+        $breakpoint-group: map-get($breakpoints, $type);
+
+        @if map-has-key($breakpoint-group, $breakpoint) {
+            $value: map-get($breakpoint-group, $breakpoint);
+
+            @if $type == default {
+                // default breakpoints are treated as min width screen media queries
+                @media screen and (min-width: $value) {
+                    @content;
+                }
+            } @else {
+                // custom breakpoints output the raw definition
+                @media #{$value} {
+                    @content;
+                }
+            }
+        }
+    }
+}

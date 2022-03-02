@@ -1,0 +1,52 @@
+---
+// Import content function
+import { getSingleTypeHome, getAllPagesWithSlugs } from '../lib/api';
+
+// Component Imports
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+
+// You can import components from any supported Framework here!
+// import Index from './index.vue';
+import ButtonNavigation from '../components/UI/ButtonNavigation.vue'
+import Header from '../components/UI/Header.vue'
+import Footer from '../components/UI/Footer.vue'
+import TextBox from '../components/UI/TextBox.vue';
+import MediaBox from '../components/UI/MediaBox.vue';
+
+// Component Script:
+// You can write any JavaScript/TypeScript that you'd like here.
+// It will run during the build, but never in the browser.
+// All variables are available to use in the HTML template below.
+let title = 'Timber Computer';
+const getHome  = await getSingleTypeHome();
+const home     = getHome.data.attributes;
+
+const getPages = await getAllPagesWithSlugs();
+
+const pages = [
+    {attributes: {slug: '/compute', title: 'Compute'}},
+    {attributes: {slug: '/learn/background', title: 'Learn'}}
+];
+
+// Full Astro Component Syntax:
+// https://docs.astro.build/core-concepts/astro-components/
+---
+
+<BaseLayout title={ title }>
+
+    <Header slot="header" link-to={'/learn/' + getPages.data[0].attributes.slug} link-name="learn" header-class="text-alternate"/>
+
+    <div slot="main" class="flex flex-col flex-1 px-body h-full">
+        <TextBox heading={ home.title } content={ home.intro } boxClass="md:text-style-600"/>
+
+        <div class="mt-auto pb-body">
+            <ButtonNavigation pages={ pages } button-style={ 'btn--smoked' } computer client:only/>
+        </div>
+
+        <MediaBox image={ home.backgroundImage } boxClass="media-box--background"/>
+    </div>
+
+    <Footer slot="footer" simple-footer/>
+
+</BaseLayout>

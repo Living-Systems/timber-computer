@@ -1,0 +1,29 @@
+///*----------------------------------*\
+//  #ANIMATIONS
+//\*----------------------------------*/
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: var(--pulse-start, 0);
+    }
+    50% {
+        opacity: var(--pulse-end, 1);
+    }
+}
+
+@keyframes hide {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes show-rating-item {
+    from {
+        opacity: 0;
+        width: var(--start-w, 0px);
+    }
+    to {
+        opacity: 1;
+        width: var(--end-w, 100%);
+    }
+}

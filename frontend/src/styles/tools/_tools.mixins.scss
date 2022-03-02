@@ -1,0 +1,588 @@
+@use "sass:string";
+@use "sass:selector";
+@use "sass:list";
+@use "sass:meta";
+
+//*------------------------------------*\
+//    #MIXINS
+//\*------------------------------------*/
+
+// Global mixins available to the entire project.
+
+// Mixin for blurry smoked glass look
+@mixin smoked-glass {
+    background: rgba(59, 55, 55, 0.3);
+    backdrop-filter: blur(1rem);
+    -webkit-backdrop-filter: blur(1rem);
+}
+
+// Mixin for blurry clear glass look
+@mixin clear-glass {
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(1rem);
+    -webkit-backdrop-filter: blur(1rem);
+}
+
+// hover and active styles for buttons
+@mixin active-btn() {
+    &:active {
+        box-shadow: inset 0 0 0 1px var(--border-default);
+        transform: scale(0.98);
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            box-shadow: inset 0 0 0 1px var(--border-default);
+        }
+    }
+}
+
+// Mixin for input placeholder styling
+@mixin placeholder() {
+    ::placeholder {
+        @content
+    }
+}
+
+// Mixin for nested input placeholder styling
+@mixin placeholder-nested() {
+    &::placeholder {
+        @content
+    }
+}
+
+// Mixin for mobile safe hover effects
+//
+// @param {string} $group-hover - CSS class of hovered parent
+// @param {string} $class - Additional CSS class to match
+@mixin hover($group-hover: '', $class: '') {
+    @if $group-hover == '' {
+        // Hover for hover
+        @media (hover: hover) {
+            &:hover {
+                @content;
+            }
+        }
+
+        // Show focus style for non-hover devices
+        @media (hover: none) {
+            &:focus {
+                @content;
+            }
+        }
+
+        @if $class != '' {
+            &#{$class} {
+                @content;
+            }
+        }
+    } @else {
+        // Hover for hover
+        @media (hover: hover) {
+            #{$group-hover}:hover & {
+                @content;
+            }
+        }
+
+        // Show focus style for non-hover devices
+        @media (hover: none) {
+            #{$group-hover}:focus & {
+                @content;
+            }
+        }
+
+        @if $class != '' {
+            #{$group-hover}#{$class} & {
+                @content;
+            }
+        }
+    }
+}
+
+// Mixin for no-touch styles
+@mixin no-touch() {
+    @media (hover: hover) {
+        @content;
+    }
+}
+
+// Mixin for applying mobile specific css
+@mixin no-hover() {
+    @media (hover: none) {
+        @content;
+    }
+}
+
+// Hie scrollbars on ios and other webkits
+@mixin hide-scrollbars() {
+    &::-webkit-scrollbar {
+        height: 0; /* remove scrollbar space */
+        width: 0; /* remove scrollbar space */
+        background: transparent; /* optional: just make scrollbar invisible */
+        display: none;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+        display: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+        display: none;
+    }
+}
+
+/// Shorthand Method for keyframes
+/// Needed here since mixins need animations and therefore come next in mains.scss
+///
+/// @content
+/// @param {string} $name - The name for the keyframes
+@mixin keyframes($name) {
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+// Hide Elements Visually without loosing accessibility
+// Ref: https://css-tricks.com/places-its-tempting-to-use-display-none-but-dont/
+@mixin hide() {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px !important;
+    padding: 0;
+    border: 0;
+}
+
+// Mixin for pseudo elements
+//
+// @param {string} $display [inline-block] - How to display the pseudo element
+// @param {string} $pos     [absolute]     - Position of the pseudo element
+// @param {string} $content [empty]        - Initial content to set
+@mixin pseudo($display: inline-block, $pos: absolute, $content: '') {
+    content: $content;
+    display: $display;
+    position: $pos;
+}
+
+// Mixins to help generating text styles
+@mixin text-style($name) {
+    @if map-has-key($text-styles, $name) {
+
+        // Get size from $size-scale if $name matches a size here
+        @if map-has-key($size-scale, $name) {
+            font-size: map-get($size-scale, $name);
+        }
+
+        // Get defined properties
+        $style: map-get($text-styles, $name);
+
+        // Add defined properties
+        @each $property, $value in $style {
+            #{$property}: #{$value};
+        }
+    } @else {
+        @warn "Unknown `#{$name}` in $text-styles";
+    }
+}
+
+// Mixin for defining text colors with variables
+@mixin text-color($name) {
+    @if map-has-key($text-colors, $name) {
+        color: var(--text-#{$name});
+    } @else {
+        @warn "Unknown `#{$name}` in $text-colors";
+    }
+}
+
+// Mixin for defining background colors with variables
+@mixin bg-color($name) {
+    @if map-has-key($bg-colors, $name) {
+        background-color: var(--bg-#{$name});
+    } @else {
+        @warn "Unknown `#{$name}` in $bg-colors";
+    }
+}
+
+// Mixin for hidding body overflow
+// Used for modals etc
+@mixin hide-body-overflow($class) {
+    body.#{$class} {
+        height: 100%;
+        overflow: hidden;
+        margin-right: var(--scrollbar-width); // Prevent jumping as scroolbar toggles
+    }
+
+    // prevent jumps of fixed elements
+    // as body scrollbar disappears
+    .#{$class} {
+        .navicon,
+        .logo {
+            right: var(--scrollbar-width);
+        }
+    }
+}
+
+// Mixin for progressive enhance transitions
+@mixin full-experience($body-class: false) {
+    @media (prefers-reduced-motion: no-preference) {
+        @supports (--css: variable) and (mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))) { // limit to css properties
+            @if $body-class {
+                .no-edge.no-touch #{$body-class} & { // only show on modern non-touch devices
+                    @content;
+                }
+            } @else {
+                .no-edge.no-touch & { // only show on modern non-touch devices
+                    @content;
+                }
+            }
+        }
+    }
+}
+
+// Mixin for elements to fit inside wrapper
+@mixin cover-box() {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+// Simple truncation mixin to cut off text using an ellipsis after a certain
+// width.
+//
+// .simple-usage {
+//   @include truncate();
+// }
+//
+// .detailed-usage {
+//   @include truncate(<value>);
+// }
+@mixin truncate($width: 100%) {
+    max-width: $width;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// Add a specific ratio to a box
+@mixin aspect-ratio($ratio: '2:3') {
+    // needs to be wrapped with a before because otherwise it will break
+    // on firefox and edge -> flex-box issue
+    &:before {
+        content: '';
+        display: block;
+        width: 100%;
+        padding-bottom: $ratio;
+        height: 0;
+    }
+}
+
+// Make Full Width Containers in Limited Width Parents
+// https://css-tricks.com/full-width-containers-limited-width-parents/
+@mixin full-width() {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+// Mixin for border radius including safari overflow/transform fix
+@mixin border-radius($radius: s, $hide-overflow: true) {
+    border-radius: var(--border-radius-#{$radius});
+
+    @if $hide-overflow {
+        .is-ios &,
+        .is-safari & {
+            // Prevent border-radius glitch on safari https://gist.github.com/ayamflow/b602ab436ac9f05660d9c15190f4fd7b
+            // Beware of this setting because it triggers a new composite layer
+            -webkit-mask-image: -webkit-radial-gradient(white, black);
+        }
+    }
+}
+
+// Mixin for a clearfix, since flexbox we might not need it anymore
+@mixin clearfix() {
+    &:after {
+        clear: both;
+        content: ' ';
+        display: table;
+    }
+}
+
+// Mixin for animations with intersection observer
+// Defines the status before animating to default
+//
+// @content
+@mixin intersect($intersect-class) {
+    .intersection-observer .js-intersect#{$intersect-class} & {
+        @content;
+    }
+}
+
+/// Mixin for motion-design declarations
+///
+// motion design for animated elements
+// global definitions
+@mixin state--initial($intersect-class: 'intersect-inview--entered') {
+    .no-ie.intersection-observer .js-intersect:not(.#{$intersect-class}) & {
+        // animate/animate-children on child element of intersect
+        @content;
+    }
+
+    &.js-intersect:not(.#{$intersect-class}) {
+        // intersect and animate/animate-children on same element
+        .no-ie.intersection-observer & {
+            @content;
+        }
+    }
+}
+
+@mixin state--animated($intersect-class: 'intersect-inview--entered') {
+    // .no-ie.intersection-observer .intersect-inview--before &,
+    .no-ie.intersection-observer .#{$intersect-class} & {
+        // animate/animate-children on child element of intersect
+        @content;
+    }
+
+    // &.intersect-inview--before,
+    &.#{$intersect-class} {
+        // intersect and animate/animate-children on same element
+        .no-ie.intersection-observer & {
+            @content;
+        }
+    }
+}
+
+/// hide elements via animation to only hide if animation is possible
+///
+/// @group humans-machines
+@mixin hide-before-animation() {
+    @supports (animation: trans-title 1s 1 backwards) {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@mixin show-for-animation() {
+    @supports (animation: trans-title 1s 1 backwards) {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+// Nice mixins to have a delay cascade
+@mixin animation-delay($delay: 0.1s, $global-delay: 0s, $items: 20, $invert: false, $child: '') {
+    @for $i from 0 through $items {
+        @if $invert {
+            &:nth-child(#{$i}) #{$child} {
+                animation-delay: ($i * $delay + $global-delay) * -1;
+            }
+        } @else {
+            &:nth-child(#{$i}) #{$child} {
+                animation-delay: $i * $delay + $global-delay;
+            }
+        }
+    }
+}
+
+/// Nice mixins to have a delay cascade
+///
+/// @group humans-machines
+@mixin transition-delay($delay: 0.1s, $global-delay: 0s, $items: 20, $invert: false, $child: '') {
+    @for $i from 1 through $items {
+        @if $invert == false {
+            &:nth-child(#{$i}) #{$child} {
+                transition-delay: $i * $delay - $delay + $global-delay;
+            }
+        } @else {
+            &:nth-child(#{$i}) #{$child} {
+                transition-delay: ($items + 1 - $i) * $delay - $delay + $global-delay;
+            }
+        }
+    }
+}
+
+/// Mixin to create custom properties from s sass map
+///
+/// @group humans-machines
+/// @content
+/// @param {bool} $self [false] - Is the map multidimensional
+@mixin create-custom-properties($map, $responsive: false, $prefix: '') {
+    // create responsive array with breakpoint specific values
+    @if $responsive {
+        @each $type in map-keys($map) {
+            $props: map-get($map, $type);
+
+            @if $type == default {
+                @each $prop, $value in $props {
+                    --#{$prefix}#{$prop}: #{$value};
+                }
+            } @else {
+                @include respond-to($type) {
+                    @each $prop, $value in $props {
+                        --#{$prefix}#{$prop}: #{$value};
+                    }
+                }
+            }
+        }
+    } @else {
+        @each $prop, $value in $map {
+            --#{$prefix}#{$prop}: #{$value};
+        }
+    }
+}
+
+/// Mixin to create a responsive selector version for the given selector
+///
+/// @group humans-machines
+/// @content
+/// @param {string} $prefix - The name of the breakpoint prefix
+/// @param {bool} $self [false] - Include rules in self
+@mixin responsive-selector-single($prefix, $self: false) {
+    $base: ();
+
+    @each $selector in & {
+        $selector: list.nth($selector, 1);
+
+        @if meta.type-of($selector) == 'string' {
+            $selector: string.slice($selector, 2);
+        }
+
+        @if $selector {
+            $base: list.append($base, $selector, comma);
+        }
+    }
+
+    $new-selector: selector.append('#{$prefix}\\:', $base);
+    $new-selector: to-class($new-selector);
+
+    @if ($self == true) {
+        @content;
+    }
+
+    @at-root #{$new-selector} {
+        @include respond-to($prefix) {
+            @content;
+        }
+    }
+}
+
+/// Mixin to create a responsive selector version for the given selector and a list of prefixs
+///
+/// @group humans-machines
+/// @content
+/// @param {bool} $self [true] - Include rules in self
+/// @param {list} $prefixes [md lg] - The the list of default breakpoint prefixes
+@mixin responsive-selector($self: true, $prefixes: md lg) {
+    @if ($self == true) {
+        @content;
+    }
+
+    @each $prefix in $prefixes {
+        @include responsive-selector-single($prefix) {
+            @content;
+        }
+    }
+}
+
+/// Mixin to create utility classes based on css maps
+///
+/// @group humans-machines
+/// @content
+/// @param {string} $class-name - The base name of the class
+/// @param {list} $properties - The properties to be set with the size value
+/// @param {list} $prefixes [md lg] - The the list of default breakpoint prefixes
+/// @param {map} $token-set [$size-scale] - Alternate map for utility creation
+/// @param {bool} $custom-property [false] - Use custom property as setting
+@mixin token-utilities($class-name, $properties, $prefixes: md lg, $token-set: $size-scale, $custom-property: false) {
+    // Loop through token set
+    @each $name in map-keys($token-set) {
+        // Create class with size suffix
+        .#{$class-name}-#{$name} {
+            // Add property with value
+            @each $property in $properties {
+                @if ($custom-property == false) {
+                    #{$property}: map-get($token-set, $name);
+                } @else {
+                    #{$property}: var(--#{$class-name}-#{$name});
+                }
+            }
+        }
+    }
+
+    // Create prefixed variants as well ?
+    @if ($prefixes != false) {
+        // Go through all prefixes one by one
+        // to create responsive utility classes for all breakpoints
+        // in the correct order
+        @each $prefix in $prefixes {
+            @include respond-to($prefix) {
+                // Loop through token set
+                @each $name in map-keys($token-set) {
+                    // Create class with size suffix
+                    .#{$prefix}\:#{$class-name}-#{$name} {
+                        // Add property with value
+                        @each $property in $properties {
+                            @if ($custom-property == false) {
+                                #{$property}: map-get($token-set, $name);
+                            } @else {
+                                #{$property}: var(--#{$class-name}-#{$name});
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/// Mixin to create utility classes based on property map
+///
+/// @group humans-machines
+/// @content
+/// @param {list} $props - The properties to be set with the size value
+/// @param {list} $prefixes [md lg] - The the list of default breakpoint prefixes
+@mixin utility-classes($props, $prefixes: md lg, $invert: false) {
+    // Loop through all defined CSS proporties
+    @each $property in map-keys($props) {
+
+        // Get defined classes
+        $classes: map-get($props, $property);
+
+        // Loop through all class-name property-values pairs
+        // to create all non-responsive classes first
+        @each $class-name, $value in $classes {
+            .#{$class-name} {
+                // Add property with value
+                #{$property}: $value,
+            }
+        }
+
+        // Create prefixed variants as well ?
+        @if ($prefixes != false) {
+            // Go through all prefixes one by one
+            // to create responsive utility classes for all breakpoints
+            // in the correct order
+            @each $prefix in $prefixes {
+                @include respond-to($prefix) {
+                    // Loop through all class-name property-values pairs
+                    @each $class-name, $value in $classes {
+                        .#{$prefix}\:#{$class-name} {
+                            // Add property with value
+                            #{$property}: $value,
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+

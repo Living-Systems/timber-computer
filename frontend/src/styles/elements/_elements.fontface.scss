@@ -1,0 +1,44 @@
+/*------------------------------------*\
+  #FONTFACE
+\*------------------------------------*/
+
+//
+// 1. Prevent FOIT - https://web.dev/font-display/
+// font-display: fallback; -> Acts as a compromise between the auto and swap values.
+// The browser will hide the text for about 100ms and, if the font has not yet been downloaded,
+// will use the fallback text. It will swap to the new font after it is downloaded,
+// but only during a short swap period (probably 3 seconds).
+
+// 1. swap
+// swap gives the font face a zero second block period and an infinite swap period.
+// This means the browser draws text immediately with a fallback if the font face
+// isn’t loaded, but swaps the font face in as soon as it loads. Similar to block,
+// this value should only be used when rendering text in a particular font is
+// important for the page, but rendering in any font will still get a correct
+// message across. Logo text is a good candidate for swap since displaying a
+// company’s name using a reasonable fallback will get the message across but
+// you’d eventually use the official typeface.
+
+// 1. block
+// block gives the font face a short block period (3s is recommended in most cases)
+// and an infinite swap period. In other words, the browser draws "invisible" text
+// at first if the font is not loaded, but swaps the font face in as soon as it loads.
+// To do this the browser creates an anonymous font face with metrics similar to the
+// selected font but with all glyphs containing no "ink." This value should only be
+// used if rendering text in a particular typeface is required for the page to be useable.
+
+@font-face {
+    font-family: 'Monument Grotesk';
+    src: url('../../public/fonts/ABCMonumentGrotesk-Regular.woff2') format('woff2'),
+         url('../../public/fonts/ABCMonumentGrotesk-Regular.woff') format('woff');
+    font-weight: 400;
+    font-display: fallback; // [1]
+}
+
+@font-face {
+    font-family: 'Monument Grotesk';
+    src: url('../../public/fonts/ABCMonumentGrotesk-Medium.woff2') format('woff2'),
+         url('../../public/fonts/ABCMonumentGrotesk-Medium.woff') format('woff');
+    font-weight: 800;
+    font-display: fallback; // [1]
+}

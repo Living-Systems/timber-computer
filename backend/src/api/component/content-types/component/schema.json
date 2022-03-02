@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "components",
+  "info": {
+    "singularName": "component",
+    "pluralName": "components",
+    "displayName": "Component",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "area": {
+      "type": "integer"
+    },
+    "elements": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::element.element"
+    },
+    "element": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::element.element"
+    },
+    "backgroundImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

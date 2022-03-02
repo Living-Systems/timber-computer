@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "constructions",
+  "info": {
+    "singularName": "construction",
+    "pluralName": "constructions",
+    "displayName": "Construction",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "components": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::component.component"
+    }
+  }
+}

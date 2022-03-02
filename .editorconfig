@@ -1,0 +1,19 @@
+# EditorConfig - see: https://editorconfig.org
+root = true
+
+# Default rules
+[*]
+end_of_line = lf
+insert_final_newline = false
+charset = utf-8
+trim_trailing_whitespace = true
+indent_size = 4
+indent_style = space
+
+# PHP files
+[*.php]
+insert_final_newline = true
+
+# JSON and JSON-like files
+[*.{json,babelrc,eslintrc,stylelintrc}]
+indent_size = 2

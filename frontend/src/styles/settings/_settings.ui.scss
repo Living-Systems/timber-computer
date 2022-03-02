@@ -1,0 +1,62 @@
+///*----------------------------------*\
+//  #UI
+//\*----------------------------------*/
+
+// Project-level settings and setup for custom properties dealing with the ui
+//
+// The $ui-props map will automatically be output as custom properties in the :root styles
+// -> ./elements/_elements.root.scss
+
+$ui-props: (
+    // default values
+    'default': (
+        // Layout element sizes
+        'body-p': 0.6rem,
+        'box-p': 1rem,
+        'item-p': 0.5rem,
+        'header-h': 3rem,
+
+        // buttons
+        'btn-md-h': 2rem,
+        'btn-xl-h': 14rem,
+
+        // Default definition for .page-grid
+        'grid-rows': 16,
+
+        // Default gap for columns
+        'column-gap': 0.6rem,
+
+        // Default gap for width classes
+        // Will be set to --column-gap if inside .cluster
+        // Apparently needs to have a px value
+        'cluster-gap': 0px,
+
+        // computer
+        'computer-item-w': 50vw,
+        'computer-item-expanded-w': 80vw,
+
+        // results graph
+        'results-graph-w': 8rem,
+
+        // subnav
+        'subnav-item-h': 2.8rem,
+        'subnav-item-p': 1rem,
+
+        // measure for max line length
+        // usually ex would be the right choice
+        // but for this design system we are going for rem
+        'measure': 38rem,
+    ),
+
+    // breakpoint md values
+    'md': (
+        // specific overwrites here
+
+        // Body padding/margin
+        'body-p': var(--size-200),
+
+        // computer
+        'computer-item-w': 10rem,
+        'computer-item-expanded-w': 40rem,
+    ),
+);

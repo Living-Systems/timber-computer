@@ -1,0 +1,26 @@
+/*------------------------------------*\
+  #ROOT
+\*------------------------------------*/
+
+/**
+ * Default definition of custom properties
+ */
+
+:root {
+    // Add custom properties for size scale
+    @include create-custom-properties($size-scale, false, 'size-');
+
+    // Add custom properties for ui definitions
+    @include create-custom-properties($ui-props, true);
+
+    // Add custom properties for colors
+    @include create-custom-properties($text-colors, false, 'text-');
+    @include create-custom-properties($bg-colors, false, 'bg-');
+    @include create-custom-properties($border-colors, false, 'border-');
+
+    // Add border radius
+    @include create-custom-properties($border-radius, false, 'radius-');
+
+    // Add focus style
+    --focus-ring-color: #{$focus-ring-color};
+}
