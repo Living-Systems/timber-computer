@@ -24,7 +24,7 @@ const { slug } = Astro.request.params;
 const getLegal = await getLegalBySlug(slug);
 const page = getLegal.data[0].attributes;
 
-let title = page.title;
+let title = page.title || slug;
 let bodyClass = 'bg-gold';
 ---
 
