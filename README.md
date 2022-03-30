@@ -1,7 +1,5 @@
 # Timber Computer
 
-Timber Computer for Living Systems
-
 ## General
 We use the current Node LTS version 16.x
 
