@@ -1,5 +1,13 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "allowJs": true,
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@layouts/*":    ["src/layouts/*"],
+      "@store/*":      ["src/store/*"],
+      "@lib/*":        ["src/lib/*"]
+    }
   }
 }

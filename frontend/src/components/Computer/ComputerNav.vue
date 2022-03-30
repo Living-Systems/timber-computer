@@ -1,9 +1,9 @@
 <template>
-    <nav class="subnav">
+    <nav class="subnav subnav--computer">
 
-        <ol class="cluster items-start" :style="'--total-items: ' + numberOfComponents">
+        <ol class="cluster items-start" :style="'--total-items: ' + (numberOfComponents + 1) ">
 
-            <!-- first loop: constructions -->
+            <!-- First loop: Constructions -->
             <li
                 class="subnav__construction"
                 v-for="construction in enhancedConstructions"
@@ -15,7 +15,7 @@
                 </div>
                 <ol class="cluster cluster--stretched items-start">
 
-                    <!-- second loop: components -->
+                    <!-- Second loop: Components -->
                     <li
                         v-for="component in construction.components"
                         :key="component"
@@ -39,25 +39,34 @@
 
             </li>
 
+            <!-- Results link -->
+            <li class="subnav__result kajsd" :data-rating="computedRating">
+                <a href="/result" class="subnav__item subnav__item--result | btn uppercase">
+                    <span class="subnav__result-title">
+                        Result
+                    </span>
+                </a>
+            </li>
         </ol>
 
     </nav>
 </template>
 
 <script setup>
-import { ref } from "vue";
+
+import {computed, ref} from "vue";
 import { useStore } from "@nanostores/vue";
-import { activeComponentId, changeActive, componentCounter } from "../../../store/constructions";
+import { activeComponentId, rating, changeActive, componentCounter, storedRating } from "../../../store/constructions";
 
 const props = defineProps(['building', 'inactive']);
 
 const activeComponent = useStore(activeComponentId);
 const numberOfComponents = useStore(componentCounter);
 
-// * Calculation for Styling
-// numberOfComponents / enhancedConstructions.counter to calculate width
-
 const constructions = ref(props.building.constructions.data);
+
+// ↓ Calculation for Styling ↓
+// numberOfComponents / enhancedConstructions.counter to calculate width
 
 let enhancedConstructions = [];
 
@@ -75,4 +84,9 @@ for (const construction of constructions.value) {
         foundConstruction.components.push({...component});
     }
 }
+
+const computedRating = computed(()=>{
+    return useStore(rating).value;
+});
+
 </script>

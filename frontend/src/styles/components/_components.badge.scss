@@ -5,8 +5,7 @@
 .badge {
     display: inline-block;
     transform: scale(1.4);
-    padding-right: 0.2rem;
-    transform-origin: left center;
+    padding: 0.25rem;
 
     &:after {
         content: "●";
@@ -14,13 +13,13 @@
 }
 
 .badge--high {
-    color: var(--text-green);
+    color: var(--bg-green);
 }
 
 .badge--medium {
-    color: var(--text-orange);
+    color: var(--bg-orange);
 }
 
 .badge--low {
-    color: var(--text-red);
+    color: var(--bg-red);
 }

@@ -1,26 +1,62 @@
 # Timber Computer
 
-## General
-We use the current Node LTS version 16.x
+Timber Computer for Living Systems
 
-Installing global dependencies, that will be used for all workspaces
-`npm install dependency-123 --save`
-
-Installing a dependency for the frontend
-`npm install sass -workspace frontend --save-dev`
-
-More infos on workspaces: [npm workspaces](https://docs.npmjs.com/cli/v8/using-npm/workspaces)
 
 ## Backend
-The backends runs on [strapi](https://strapi.io/)
+The backend runs on [Strapi](https://strapi.io/)
 
-To create the neccessary files for the strapi backend run
-`npm run build`
-Generate files are stored in the .cache folder.
-
-To access the backend in development run
-`npm run develop`
-This is included in the servers pm2 tasks.
 
 ## Frontend
-The frontend is powered by [astro](https://astro.build/), [vue3](https://vuejs.org/), [tailwindcss](https://tailwindcss.com/), [vite](https://vitejs.dev/)
+The frontend is powered by [Astro](https://astro.build/), [Vue 3](https://vuejs.org/), [Nano Stores](https://github.com/nanostores/nanostores), [Tailwind CSS](https://tailwindcss.com/), [Vite](https://vitejs.dev/)
+
+
+## Usage
+
+First install the dependencies:
+
+```sh
+npm install
+```
+
+Then move into frontend or backend folder.
+
+In the frontend you can:
+
+
+| Command               | Description                                   |
+| --------------------- | --------------------------------------------- |
+| **`npm run dev`**     | Runs dev server on http://localhost:3000      |
+| **`npm run start`**   | Runs dev server on http://localhost:3000      |
+| **`npm run build`**   | Runs Astro build process into dist folder     |
+| **`npm run preview`** | Runs preview of build                         |
+
+
+In the backend you can:
+
+| Command               | Description                                   |
+| --------------------- | --------------------------------------------- |
+| **`npm run develop`** | Enable access backend in development          |
+| **`npm run start`**   | |
+| **`npm run build`**   | Create files for backend                      |
+| **`npm run strapi`**  | |
+
+
+This project runs on the current Node LTS version 16.x and uses [npm workspaces](https://docs.npmjs.com/cli/v8/using-npm/workspaces).
+
+To install global dependencies, that will be used for all workspaces, run
+`npm install dependency-123 --save`.
+
+To install a dependency for the frontend, run
+`npm install sass -workspace frontend --save-dev`
+
+
+Make sure you use the correct node.js version:
+
+```sh
+# with bash nvm 
+nvm use `cat .nvmrc`
+# with windows nvm
+nvm use $(cat .nvmrc)
+# or just install the version specified inside `.nvmrc`
+```

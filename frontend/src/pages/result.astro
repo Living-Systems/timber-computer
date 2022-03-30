@@ -1,29 +1,26 @@
 ---
+
 // Import content function
-import { getBuildingByName, getSingleTypeResult } from '../lib/api';
+import { getBuildingByName, getSingleTypeResult } from '@lib/api';
 
-// Component Imports
-import BaseLayout from '../layouts/BaseLayout.astro';
+// BaseLayout Import
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+// Component Import
+import ButtonNavigation from '@components/UI/ButtonNavigation.vue';
+import ShareButton from '@components/UI/ShareButton.vue';
+import Header from '@components/UI/Header.vue';
+import TextBox from '@components/UI/TextBox.vue';
+import MediaBox from '@components/UI/MediaBox.vue';
+
+import ComputerNav from '@components/Computer/ComputerNav.vue';
+import Result from '@components/Computer/Result.vue';
 
 
-// You can import components from any supported Framework here!
-// import Index from './index.vue';
-import ComputerNav from '../components/Computer/ComputerNav.vue';
-
-import ButtonNavigation from '../components/UI/ButtonNavigation.vue';
-import Header from '../components/UI/Header.vue';
-import TextBox from '../components/UI/TextBox.vue';
-import Result from '../components/Computer/Result.vue';
-import BgImage from '../components/UI/BgImage.vue';
-
-// Component Script:
-// You can write any JavaScript/TypeScript that you'd like here.
-// It will run during the build, but never in the browser.
-// All variables are available to use in the HTML template below.
 const buildingType = "Typenhaus";
 const getBuilding  = await getBuildingByName( buildingType );
 const building     = getBuilding.data[0].attributes;
-
+const url          = Astro.request.url;
 
 const getResultSingle  = await getSingleTypeResult();
 const result           = getResultSingle.data.attributes;
@@ -34,8 +31,6 @@ const pages = [
     {attributes: {slug: '/computer', title: 'Revise Selections'}}
 ];
 
-// Full Astro Component Syntax:
-// https://docs.astro.build/core-concepts/astro-components/
 ---
 
 
@@ -48,11 +43,13 @@ const pages = [
         <Result client:only/>
 
         <div class="mt-auto pb-body">
-            <!--<ButtonNavigation button-l="Revise Selections" href-l="/computer" button-r="Mail complete report" href-r="#"/>-->
-            <ButtonNavigation pages={ pages } button-style={ 'btn--smoked' } computer client:only/>
+            <nav class="cluster cluster--y-gap | pt-300">
+                <ButtonNavigation pages={ pages } button-style={ 'btn--smoked' } share/>
+                <ShareButton url={ url.href } button-style={ 'btn--smoked ' } client:load/>
+            </nav>
         </div>
 
-        <BgImage image={ result.backgroundImage } />
+        <MediaBox image={ result.backgroundImage } :sizes="'(max-width: 37.45em) 200vw, (max-width: 63.95em) 150vw, 100vw'" boxClass="media-box--background" imgClass="animate-zoom"/>
     </div>
 
 </BaseLayout>

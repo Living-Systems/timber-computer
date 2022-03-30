@@ -27,3 +27,31 @@
         width: var(--end-w, 100%);
     }
 }
+
+@keyframes animate-mesh {
+    0%, 100% {
+        transform: scale(2);
+    }
+    50% {
+        transform: scale(4) rotate(360deg);
+    }
+}
+
+@keyframes animate-step {
+    from {
+        margin-left: 0;
+        visibility: initial;
+        transform: translate3d(var(--animation-offset, 2rem), 0, 0);
+        opacity: 0;
+    }
+    to {
+        margin-left: 0;
+        visibility: initial;
+    }
+}
+
+@keyframes zoom {
+    to {
+        transform: scale(var(--zoom-in, 1.2));
+    }
+}

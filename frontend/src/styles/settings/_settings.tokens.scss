@@ -47,19 +47,29 @@ $size-scale: (
 $text-colors: (
     'default': #fff,
     'alternate': #000,
-    'green': #00FF42,
-    'green-secondary': #A2F23C,
-    'orange': #FFC700,
-    'orange-secondary': #FF8900,
-    'red-secondary': #FF3F3A,
-    'red': #FF0000,
 );
 
 // Background colors
 $bg-colors: (
     'default': #1a1a1a,
     'gold': #bb9c85,
+    'green': #64deaf,
+    'green-secondary': #86d3da,
+    'orange': #e7c37c,
+    'orange-secondary': #ecc47e,
+    'red-secondary': #ea9d76,
+    'red': #ec5a73,
 );
+
+
+// Gradient background
+$bg-gradient: radial-gradient(at 40% 20%, hsl(29, 73%, 76%) 0, transparent 50%),
+radial-gradient(at 80% 0%, hsl(38, 65%, 81%) 0, transparent 50%),
+radial-gradient(at 0% 50%, hsla(355, 85%, 93%, 1) 0, transparent 50%),
+radial-gradient(at 80% 50%, hsl(340, 70%, 79%) 0, transparent 50%),
+radial-gradient(at 0% 100%, hsl(22, 54%, 74%) 0, transparent 50%),
+radial-gradient(at 80% 100%, hsl(243, 52%, 83%) 0, transparent 50%),
+radial-gradient(at 0% 0%, hsl(236, 45%, 74%) 0, transparent 50%);
 
 // Border colors
 $border-colors: (

@@ -42,13 +42,18 @@
         //     but add a padding to align with the measure max width
         //     of all other items
         max-width: 100% !important;
+        padding-top: var(--size-300);
         padding-right: calc(100vw - var(--body-p) - var(--measure));
+        position: relative;
 
         &:before {
             content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
             border-top-width: 1px;
             display: block;
-            padding-bottom: var(--size-300);
         }
     }
 

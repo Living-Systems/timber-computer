@@ -56,4 +56,5 @@ body {
     @include text-style('default');
     color: var(--text-default);
     background-color: var(--bg-default);
+    background-image: var(--bg-gradient);
 }

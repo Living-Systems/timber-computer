@@ -1,26 +1,61 @@
 .computer-component {
-    &:not(.is-active) {
+    width: calc(100vw - 2 * var(--body-p));
+
+    &:not(.is-active):not(.is-next) {
         width: 0;
+        height: 0;
         overflow: hidden;
+        display: none;
+    }
+
+    // init preloading of images
+    // while still hiding
+    &.is-previous,
+    &.is-next {
+        margin-left: -100%;
+        visibility: hidden;
+    }
+
+    @include respond-to(md) {
+        width: auto;
+    }
+}
+
+.computer-component__title {
+    @include respond-to(md) {
+        align-self: flex-start;
     }
 }
 
 .computer-component__content {
     display: flex;
     flex-direction: column;
-    flex: 1;
-    overflow-y: auto;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
+    margin-left: calc(var(--body-p) * -1);
+    margin-right: calc(var(--body-p) * -1);
+
+    @include respond-to(md) {
+        align-self: flex-start;
+        overflow-y: auto;
+        overflow-x: hidden;
+        @include custom-scrollbar();
+        -webkit-overflow-scrolling: touch;
+        margin-left: 0;
+        margin-right: 0;
+        flex: 1;
+    }
 }
 
 .computer-component__table-header {
-    display: flex;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    white-space: nowrap;
-    min-height: 2.6rem;
+    display: none;
+
+    @include respond-to(lg) {
+        display: flex;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        white-space: nowrap;
+        min-height: 2.6rem;
+    }
 }
 
 .computer-component__table-title {
@@ -34,31 +69,63 @@
 .computer-component__table-info,
 .computer-component__item-info {
     width: calc(var(--computer-item-expanded-w) - var(--computer-item-w));
+    display: none;
 
-    .is-collapsed & {
-        display: none;
+    @include respond-to(lg) {
+        display: flex;
+
+        .is-collapsed & {
+            display: none;
+        }
     }
+
 }
 
 .computer-component__table-info {
     margin-bottom: calc(var(--item-p) * -1);
 }
 
-
 .computer-component__table-body {
     display: flex;
-    flex-direction: column;
     flex: 1;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    padding-left: var(--body-p);
+    padding-right: var(--body-p);
+
+    @include respond-to(md) {
+        flex-direction: column;
+        padding: 0;
+        overflow: visible;
+    }
 }
 
 .computer-component__item {
     flex-grow: 1;
+
+    &:not(:first-child) {
+        margin-left: var(--size-50);
+    }
 
     input[type=radio] {
         position: absolute;
         opacity: 0;
         width: 0;
         height: 0;
+    }
+
+    @include respond-to(md) {
+        &:not(:first-child) {
+            margin-left: 0;
+        }
+
+        // add stacked animation
+        @for $i from 1 through 10 {
+            &:nth-child(#{$i}) {
+                --animation-delay: #{$i * 0.1s - 0.1s};
+            }
+        }
     }
 }
 
@@ -72,6 +139,10 @@
     input[type=radio]:checked ~ & {
         border: 1px solid var(--border-default);
     }
+
+    .is-active & {
+        animation: animate-step $trans-time--s $trans-func--default var(--animation-delay, 0s) backwards;
+    }
 }
 
 .computer-component__item-head {
@@ -79,9 +150,39 @@
     width: calc(var(--computer-item-w) - 2px); // remove border from calced width
 
     .media-box {
-        min-height: 2.6rem;
+        height: 4rem;
         width: 100%;
-        flex-grow: 1;
+    }
+
+    @include respond-to(md) {
+        .media-box {
+            height: auto;
+            min-height: 2.6rem;
+            flex-grow: 1;
+        }
+    }
+}
+
+.computer-component__item-title {
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    width: 100%;
+
+    .badge {
+        margin-top: 0.2rem;
+    }
+
+    span {
+        max-width: 100%;
+    }
+
+    @include respond-to(md) {
+        display: block;
+
+        .badge {
+            margin-top: 0;
+        }
     }
 }
 

@@ -1,31 +1,36 @@
 <template>
-    <label class="computer-component__item">
+    <label class="computer-component__item | clear-glass md:no-glass rounded-sm">
+
+        <!-- Input control -->
         <input
             type="radio"
             :name="component.attributes.name"
             :id="element.id"
             @change="updateSelection(component.id, element)"
-            :checked="props.component.attributes.element.data.id === element.id"
+            :checked="active"
         />
 
+        <!-- Element type -->
         <div class="computer-component__item-content">
-            <div class="computer-component__item-head | flow-300 p-item">
-                <div class="media-box media-box--contain">
-                    <img v-if="element.attributes.thumbnail.data"
-                         :src="root + element.attributes.thumbnail.data.attributes.url"
-                         class="object-contain"
-                         alt="" />
-                    <img v-else src="../../../public/assets/dummy-component.png"
-                         class="object-contain"
+            <div class="computer-component__item-head | flow-25 p-item">
+                <MediaBox
+                    v-if="element.attributes.thumbnail.data"
+                    :image="element.attributes.thumbnail"
+                    :sizes="'(min-width: 64em) 20vw, (min-width: 37.5em) 28vw, 35vw'"
+                    :lazy="true"
+                    class="media-box--contain"/>
+                <div v-else class="media-box media-box--contain">
+                    <img src="../../../public/assets/dummy-component.png"
                          alt="" />
                 </div>
-                <div class="text-center truncate">
-                    <span :class="'badge badge--' + [sustainabilityClass]"><!--{{ element.attributes.sustainability }}--></span>
-                    {{ element.attributes.frontendName }}
+                <div class="computer-component__item-title | text-center">
+                    <span :class="'badge badge--' + [sustainabilityClass]"></span>
+                    <span class="truncate">{{ element.attributes.frontendName }}</span>
                 </div>
             </div>
 
-            <div class="computer-component__item-info | cluster cluster--stretched | hidden lg:flex text-center" aria-hidden="true">
+            <!-- Element values -->
+            <div class="computer-component__item-info | cluster cluster--stretched | text-center" aria-hidden="true">
                 <dl>
                     <dt class="sr-only">Cradle to Site</dt>
                     <dd>{{ element.attributes.cradleToSite }}</dd>
@@ -48,19 +53,25 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
-import { useStore } from "@nanostores/vue";
-import { updateSelection } from "../../../store/constructions";
 
-// TODO: replace with Astro resolve when on production server
+import { ref, computed } from 'vue';
+import { useStore } from "@nanostores/vue";
+import { activeComponentId, updateSelection } from "../../../store/constructions";
+
+import MediaBox from "../UI/MediaBox.vue";
+
 const root  = import.meta.env.PUBLIC_SERVER_URL;
-const props = defineProps(['component', 'element', 'componentState']);
+
+const props = defineProps(['component', 'element', 'componentState', 'active']);
 
 defineEmits(['updateSelection']);
 
 const sustainabilityClass = computed(()=>{
     return props.element.attributes.sustainability;
-})
+});
 
-// @change="$emit('updateSelection', element)"
+const activeComponent = computed(() => {
+    return useStore(activeComponentId);
+});
+
 </script>

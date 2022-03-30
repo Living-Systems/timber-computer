@@ -2,51 +2,111 @@
     width: var(--results-graph-w);
 }
 
-.results-graph--fixed {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    margin: 0 var(--body-p) var(--size-900) 0;
+.results-graph--computer {
+    order: -1;
+    margin-top: auto;
+    margin-bottom: 2rem; // center vertically
+    align-self: center;
+
+    @include respond-to(sm-only) {
+        background: transparent !important;
+        backdrop-filter: none !important;
+    }
+
+    @include respond-to(md) {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        margin: 0 var(--body-p) var(--size-900) 0;
+    }
 }
 
+.results-graph__graph {
+    width: 100%;
+    padding-bottom: 100%;
+    position: relative;
 
-.results-graph__rating-item {
-    span {
-        display: inline-block;
-        border-radius: var(--radius-sm);
-        background: var(--rating-color, var(--text-red));
-        padding: 0.1rem 0.3rem;
-        width: var(--rating-item-w, 50%);
-
-        --start-w: 1rem;
-        --end-w: var(--rating-item-w);
-        animation: show-rating-item $trans-time--m $trans-func--default var(--animation-delay, 0s) backwards;
+    // little devider line
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 1px;
+        height: var(--results-graph-border);
+        background: currentColor;
     }
+}
 
-    @for $i from 1 through 10 {
-        &:nth-child(#{$i}) {
-            --animation-delay: #{$i * 0.1s};
-            --rating-item-w: #{25% + $i * 7.5%};
-        }
-    }
+.results-graph__graph-ring {
+    @include cover-box();
+    border: solid var(--results-graph-border) transparent;
+    border-radius: 50%;
+    // background-image: linear-gradient(var(--rating-color, var(--bg-red)), var(--rating-color, var(--bg-red))),
+    //                   conic-gradient(transparent, var(--bg-red), var(--bg-orange), var(--bg-green), transparent);
+    background-image: linear-gradient(rgba(59, 55, 55, 0.3), rgba(59, 55, 55, 0.1)),
+                      conic-gradient(
+                            var(--bg-red),
+                            var(--bg-red-secondary),
+                            var(--bg-orange-secondary),
+                            var(--bg-orange),
+                            var(--bg-green-secondary),
+                            var(--bg-green));
+    background-origin: padding-box, border-box;
+    background-clip: padding-box, border-box;
+    opacity: 0.9;
 
-    &:nth-child(1) {
-        --rating-color: var(--text-green);
+    &:after {
+        content: "";
+        @include cover-box();
+        @include clear-glass();
+        border-radius: 50%;
     }
+}
 
-    &:nth-child(2) {
-        --rating-color: var(--text-green-secondary);
-    }
+.results-graph__graph-result {
+    @include cover-box();
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-    &:nth-child(3) {
-        --rating-color: var(--text-orange);
+    // indicator dot
+    &:after {
+        content: "●";
+        @include cover-box();
+        display: flex;
+        justify-content: center;
+        margin: -0.03em;
+        transform: rotate(var(--graph-rotate, 8deg));
+        transition: transform $trans-time--m $trans-func--ease-in-out;
     }
+}
 
-    &:nth-child(4) {
-        --rating-color: var(--text-orange-secondary);
-    }
+[data-rating="F"] {
+    --rating-color: var(--bg-red);
+}
 
-    &:nth-child(5) {
-        --rating-color: var(--text-red-secondary);
-    }
+[data-rating="E"] {
+    --graph-rotate: 78deg;
+    --rating-color: var(--bg-red-secondary);
+}
+
+[data-rating="D"] {
+    --graph-rotate: 146deg;
+    --rating-color: var(--bg-orange-secondary);
+}
+
+[data-rating="C"] {
+    --graph-rotate: 214deg;
+    --rating-color: var(--bg-orange);
+}
+
+[data-rating="B"] {
+    --graph-rotate: 282deg;
+    --rating-color: var(--bg-green-secondary);
+}
+
+[data-rating="A"] {
+    --graph-rotate: 354deg;
+    --rating-color: var(--bg-green);
 }

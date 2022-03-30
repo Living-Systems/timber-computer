@@ -25,7 +25,8 @@
       "type": "dynamiczone",
       "components": [
         "page.image",
-        "page.text"
+        "page.text",
+        "page.contact"
       ]
     },
     "order": {

@@ -1,21 +1,25 @@
 <template>
-    <section class="computer | flow-100 mb-900">
+    <section class="computer | flow-grid mb-800 md:mb-900">
         <div class="computer__components">
+
             <!-- Construction -->
             <div
                 v-for="component in allComponents"
                 :key="component.id"
-                class="computer-component | flow-100"
+                class="computer-component | flow-grid"
                 :class="
-                    component.id == activeComponent.value ? 'is-active' : null
+                    component.id == activeComponent.value ? 'is-active' :
+                    component.id == activeComponent.value + 1 ? 'is-next' :
+                    component.id == activeComponent.value - 1 ? 'is-previous' : null
                 "
                 :aria-hidden="component.id != activeComponent.value"
+                :style="'--animation-offset: ' + offset"
             >
                 <ComputerComponent :building="building" :component="component" />
             </div>
         </div>
 
-        <!-- back and forwards buttons -->
+        <!-- Back and Forwards buttons -->
         <nav
             class="computer__nav | cluster cluster--x-50 cluster--stretched"
         >
@@ -63,16 +67,21 @@
         <MediaBox
             v-if="component.id == activeComponent.value || component.id == activeComponent.value + 1"
             :image="component.attributes.backgroundImage"
-            class="media-box--background"
-            :class="component.id != activeComponent.value ? 'hidden' : null"/>
+            class="media-box--computer"
+            :class="component.id != activeComponent.value ? 'hidden' : ''"
+            :img-class="component.id != activeComponent.value ? '' : 'animate-zoom'"/>
     </template>
+
+    <div class="computer__mesh"></div>
 
 </template>
 
 <script setup>
+
 import { computed } from "vue";
 import { useStore } from "@nanostores/vue";
-import { activeComponentId, componentCounter, changeActive, savedCO2, standardC02 } from "../../../store/constructions";
+
+import { activeComponentId, componentCounter, changeActive, savedCO2, standardC02, storedSelection, setOffset } from "../../../store/constructions";
 
 import ComputerComponent from "./ComputerComponent.vue";
 import MediaBox from "../UI/MediaBox.vue";
@@ -82,12 +91,14 @@ const props = defineProps(["building"]);
 const numberOfComponents = useStore(componentCounter);
 const savedCO22 = useStore(savedCO2);
 const standardC022 = useStore(standardC02);
+const offset = useStore(setOffset);
 
 const activeComponent = computed(() => {
     return useStore(activeComponentId);
 });
 
 let allComponents = [];
+
 
 for (const construction of props.building.constructions.data) {
     for (const component of construction.attributes.components.data) {
@@ -97,4 +108,5 @@ for (const construction of props.building.constructions.data) {
         });
     }
 }
+
 </script>

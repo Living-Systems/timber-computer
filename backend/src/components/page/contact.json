@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_page_contacts",
+  "info": {
+    "displayName": "contact",
+    "icon": "envelope",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "mailto": {
+      "type": "email",
+      "required": true
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

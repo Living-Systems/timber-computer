@@ -1,13 +1,15 @@
 <template>
     <div v-if="image"
          class="media-box"
-         :class="boxClass">
-        <img :srcset="root + image.data.attributes.formats.small.url + ' 500w,' +
-                    root + image.data.attributes.formats.medium.url + ' 720w,' +
-                    root + image.data.attributes.formats.large.url + ' 1000w,'"
-             :src="root +image.data.attributes.formats.small.url"
+         :class="boxClass + [rounded && !isSvg(image.mime) ? ' rounded-md' : '']"
+         :style="ratio ? getPadding(image.height,image.width) : ''">
+        <img :srcset="getSrcSet(image.mime, image.formats)"
+             :src="root + image.url"
              :sizes="sizes ? sizes : '100vw'"
-             :alt="alt ? alt : ''"
+             :alt="getAlternativeText()"
+             :width="image.width"
+             :height="image.height"
+             :class="imgClass"
              :loading="lazy ? 'lazy' : 'eager'"
         >
     </div>
@@ -15,14 +17,48 @@
 
 <script setup>
 // Get props
-const props = defineProps(['image', 'src', 'width', 'sizes', 'lazy', 'alt', 'boxClass']);
+const props     = defineProps(['image', 'sizes', 'alt', 'lazy', 'ratio', 'alt', 'boxClass', 'imgClass', 'rounded']);
 
-// Default sizes, width, lazy, alt
-// TODO: Define and output more widths
-// let widths = width ? [width] : [320, 640, 800, 1024, 1440, 1920];
+const root      = import.meta.env.PUBLIC_SERVER_URL;
+const image     = props.image.data.attributes;
+const sizes     = props.sizes;
+const lazy      = props.lazy;
+const ratio     = props.ratio;
 
-// Url
-// TODO: replace with Astro resolve when on production server
-const root  = import.meta.env.PUBLIC_SERVER_URL;
+const getSrcSet = (mime, formats)=> {
+    if (mime === 'image/svg+xml') {
+        return
+    }
+    let srcSet = '';
+    for (const [format, value] of Object.entries(formats)) {
+        srcSet += `${root}${value.url} ${value.width}w,`;
+    }
+    return srcSet;
+}
+
+const getAlternativeText = ()=> {
+    // Default alt content
+    let alt = '';
+
+    // Define alt Tag via props
+    if (props.alt) {
+        alt = props.alt;
+
+    // Or Define show alt tag if different from file name
+    } else if (image.alternativeText !== image.name) {
+        alt = image.alternativeText;
+    }
+
+    return alt;
+}
+
+const getPadding = (height, width)=> {
+    let padding = `--aspect-ratio: ${height / width}`;
+    return padding;
+}
+
+const isSvg  = (mime)=> {
+    return mime === 'image/svg+xml';
+}
 
 </script>

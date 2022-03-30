@@ -27,7 +27,7 @@
 .flow-1000,
 .flow-1100,
 .flow-1200,
-.flow-section {
+.flow-grid {
     display: flex; // [2]
     flex-direction: column; // [2]
     justify-content: flex-start;
@@ -46,21 +46,23 @@
 .flow-900 > * + *,
 .flow-1000 > * + *,
 .flow-1100 > * + *,
-.flow-1200 > * + * {
+.flow-1200 > * + *,
+.flow-grid > * + * {
     margin-top: var(--flow-space);
 }
 
-.flow-25 > * + *  { --flow-space: #{map-get($size-scale, "25")};} // [3]
-.flow-50 > * + *  { --flow-space: #{map-get($size-scale, "50")};} // [3]
-.flow-100 > * + *  { --flow-space: #{map-get($size-scale, "100")};} // [3]
-.flow-200 > * + *  { --flow-space: #{map-get($size-scale, "200")};} // [3]
-.flow-300 > * + *  { --flow-space: #{map-get($size-scale, "300")};} // [3]
-.flow-400 > * + *  { --flow-space: #{map-get($size-scale, "400")};} // [3]
-.flow-500 > * + *  { --flow-space: #{map-get($size-scale, "500")};} // [3]
-.flow-600 > * + *  { --flow-space: #{map-get($size-scale, "600")};} // [3]
-.flow-700 > * + *  { --flow-space: #{map-get($size-scale, "700")};} // [3]
-.flow-800 > * + *  { --flow-space: #{map-get($size-scale, "800")};} // [3]
-.flow-900 > * + *  { --flow-space: #{map-get($size-scale, "900")};} // [3]
-.flow-1000 > * + *  { --flow-space: #{map-get($size-scale, "1000")};} // [3]
-.flow-1100 > * + *  { --flow-space: #{map-get($size-scale, "1100")};} // [3]
-.flow-1200 > * + *  { --flow-space: #{map-get($size-scale, "1200")};} // [3]
+.flow-25 > * + * { --flow-space: var(--size-25);} // [3]
+.flow-50 > * + * { --flow-space: var(--size-50);} // [3]
+.flow-100 > * + * { --flow-space: var(--size-100);} // [3]
+.flow-200 > * + * { --flow-space: var(--size-200);} // [3]
+.flow-300 > * + * { --flow-space: var(--size-300);} // [3]
+.flow-400 > * + * { --flow-space: var(--size-400);} // [3]
+.flow-500 > * + * { --flow-space: var(--size-500);} // [3]
+.flow-600 > * + * { --flow-space: var(--size-600);} // [3]
+.flow-700 > * + * { --flow-space: var(--size-700);} // [3]
+.flow-800 > * + * { --flow-space: var(--size-800);} // [3]
+.flow-900 > * + * { --flow-space: var(--size-900);} // [3]
+.flow-1000 > * + * { --flow-space: var(--size-1000);} // [3]
+.flow-1100 > * + * { --flow-space: var(--size-1100);} // [3]
+.flow-1200 > * + * { --flow-space: var(--size-1200);} // [3]
+.flow-grid > * + * { --flow-space: var(--grid-gap);} // [3]

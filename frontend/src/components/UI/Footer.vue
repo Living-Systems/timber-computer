@@ -15,7 +15,7 @@
                 <dt>Timber Computer is funded by</dt>
                 <dd class="mt-400">
                     <span class="sr-only">Federal Ministry of Education and Research</span>
-                    <img src="../../../public/assets/logo-ministry-en.svg"
+                    <img src="/assets/logo-ministry-en.svg"
                          alt="" />
                 </dd>
             </dl>
@@ -28,8 +28,7 @@
                 </p>
 
                 <p class="mt-400">
-                    And <a href="https://humans-machines.com">Humans & Machines</a><br>
-                    Crew
+                    And <a href="https://humans-machines.com">Humans & Machines</a>
                 </p>
             </div>
         </section>
@@ -50,11 +49,14 @@
 </template>
 
 <script setup>
+
+import { getAllLegalsWithSlugs } from '../../lib/api';
+
 const props = defineProps(['footerClass', 'simpleFooter']);
+
+const getLegals = await getAllLegalsWithSlugs();
+const pages = getLegals.data;
 
 const year = new Date().getFullYear();
 
-import { getAllLegalsWithSlugs } from '../../lib/api';
-const getLegals = await getAllLegalsWithSlugs();
-const pages    = getLegals.data;
 </script>

@@ -4,9 +4,21 @@
 
 // Utilities to add a glass effect
 .smoked-glass {
-    @include smoked-glass;
+    @include responsive-selector(true, md lg) {
+        @include smoked-glass;
+    }
 }
 
 .clear-glass {
-    @include clear-glass;
+    @include responsive-selector(true, md lg) {
+        @include clear-glass;
+    }
+}
+
+.no-glass {
+    @include responsive-selector(true, md lg) {
+        background: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
 }

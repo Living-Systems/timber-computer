@@ -50,8 +50,12 @@ export async function getBuildingByName(name) {
                                                             thumbnail {
                                                                 data {
                                                                     attributes {
+                                                                        name
+                                                                        width
+                                                                        height
                                                                         formats
                                                                         url
+                                                                        alternativeText
                                                                     }
                                                                 }
                                                             }
@@ -66,6 +70,9 @@ export async function getBuildingByName(name) {
                                                 backgroundImage {
                                                     data {
                                                         attributes{
+                                                            name
+                                                            width
+                                                            height
                                                             url
                                                             formats
                                                             alternativeText
@@ -110,11 +117,13 @@ export async function getBuildingByNameStore(name) {
                                                     data {
                                                         id
                                                         attributes {
+                                                            name
                                                             frontendName
                                                             cradleToSite
                                                             cradleToLife
                                                             cradleToCradle
                                                             sustainability
+                                                            renewableMaterial
                                                         }
                                                     }
                                                 }
@@ -130,6 +139,58 @@ export async function getBuildingByNameStore(name) {
                               value
                             }
                           }
+                    }
+                }
+            }
+        }
+    `);
+	return data?.buildings;
+}
+
+// get a single building by its name
+export async function getSelectionByIds(name, ids) {
+	const data = await fetchAPI(`
+        {
+            buildings(filters: { name: { eq: "${name}" } } ) {
+                data {
+                    attributes {
+                        constructions {
+                            data {
+                                id
+                                attributes {
+                                    name
+                                    components {
+                                        data {
+                                            id
+                                            attributes {
+                                                name
+                                                area
+                                                element: elements (filters: { id: { in: [${ids}] } } ) {
+                                                    data {
+                                                        id
+                                                        attributes {
+                                                            name
+                                                            frontendName
+                                                            cradleToSite
+                                                            cradleToLife
+                                                            cradleToCradle
+                                                            sustainability
+                                                            renewableMaterial
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        threshold {
+                            ... on ComponentBuildingSteps {
+                                rating
+                                value
+                            }
+                        }
                     }
                 }
             }
@@ -172,7 +233,10 @@ export async function getPageBySlug(slug) {
                                 image {
                                     data {
                                         attributes {
+                                            name
                                             mime
+                                            width
+                                            height
                                             url
                                             formats
                                             alternativeText
@@ -182,6 +246,11 @@ export async function getPageBySlug(slug) {
                                 }
                                 url
                                 style
+                                responsiveDisplay
+                            }
+                            ... on ComponentPageContact {
+                                mailto
+                                label
                             }
                         }
                     }
@@ -226,6 +295,9 @@ export async function getLegalBySlug(slug) {
                                 image {
                                     data {
                                         attributes {
+                                            name
+                                            width
+                                            height
                                             mime
                                             url
                                             formats
@@ -257,6 +329,9 @@ export async function getSingleTypeHome() {
                         backgroundImage {
                             data {
                                 attributes {
+                                    name
+                                    width
+                                    height
                                     url
                                     formats
                                     caption
@@ -283,6 +358,9 @@ export async function getSingleTypeCompute() {
                         backgroundImage {
                             data {
                                 attributes {
+                                    name
+                                    width
+                                    height
                                     url
                                     formats
                                     caption
@@ -308,6 +386,9 @@ export async function getSingleTypeResult() {
                         backgroundImage {
                             data {
                                 attributes {
+                                    name
+                                    width
+                                    height
                                     url
                                     formats
                                     caption
@@ -321,4 +402,32 @@ export async function getSingleTypeResult() {
         }
 	`);
 	return data?.result;
+}
+
+export async function getSingleTypeOption() {
+	const data = await fetchAPI(`
+        {
+            option {
+                data {
+                    attributes {
+                        seoDescription
+                        socialImage {
+                            data {
+                                attributes {
+                                    name
+                                    width
+                                    height
+                                    url
+                                    formats
+                                    caption
+                                    alternativeText
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+	`);
+	return data?.option;
 }

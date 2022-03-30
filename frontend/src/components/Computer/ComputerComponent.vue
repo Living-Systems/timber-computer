@@ -1,18 +1,18 @@
 <template>
-    <!-- // component heading -->
-    <h2 class="computer-component__title | p-box rounded-sm smoked-glass self-start">
+    <!-- Component Heading -->
+    <h2 class="computer-component__title | p-box rounded-sm smoked-glass">
         {{ component.attributes.name }}
     </h2>
 
-    <!-- //  component types -->
+    <!-- Component Types -->
     <div
-        class="computer-component__content | clear-glass rounded-sm uppercase text-style-200 self-start"
+        class="computer-component__content | md:clear-glass rounded-sm uppercase text-style-200"
         :class="isCollapsed ? 'is-collapsed' : null"
     >
         <div class="computer-component__table-header">
             <div class="computer-component__table-title | p-item">
                 <p aria-hidden="true">Type</p>
-                <button class="btn | cluster cluster--x-50 hidden lg:block"
+                <button class="btn | cluster cluster--x-50 "
                         @click="toggleDetailsCollapsed">
                     <span class="uppercase" v-show="isCollapsed">Details</span>
                     <span>{{ isCollapsed ? '→' : '←' }}</span>
@@ -39,12 +39,14 @@
             </div>
         </div>
 
+        <!-- Elements -->
         <div class="computer-component__table-body">
             <ComputerComponentItem
                 v-for="element in component.attributes.elements.data"
                 :key="element.id"
                 :element="element"
                 :component="component"
+                :active="loadedActive(element)"
                 :componentState="componentState"
                 @update-selection="updateSelection"
             />
@@ -53,20 +55,34 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+
+import { ref, onMounted, getCurrentInstance } from 'vue';
 import { useStore } from "@nanostores/vue";
-import { detailsCollapsed, toggleDetailsCollapsed } from "../../../store/constructions";
+import { detailsCollapsed, toggleDetailsCollapsed, storedSelection, selectedConstructions } from "../../../store/constructions";
 
 import ComputerComponentItem from "./ComputerComponentItem.vue";
 
-const isCollapsed = useStore(detailsCollapsed);
-
 const props = defineProps(['building', 'component']);
 
+const isCollapsed = useStore(detailsCollapsed);
+
+const loadedComponent = ref(null);
 const componentState = ref(null);
 
+const storedSel = useStore(selectedConstructions);
+
 const updateSelection = (val) => {
-    console.log(val);
     componentState.value = val;
 };
+
+const loadedActive = element => {
+    for (const construction of storedSel.value) {
+        for (const component of construction.attributes.components.data){
+            if(element.attributes.name == component.attributes.element.data.attributes.name){
+                return true;
+            }
+        }
+    }
+};
+
 </script>

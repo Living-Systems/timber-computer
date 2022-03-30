@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
 
 const props = defineProps(['heading', 'content', 'boxClass']);
+
 </script>

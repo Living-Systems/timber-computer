@@ -1,30 +1,30 @@
 ---
 
-import { getAllLegalsWithSlugs } from '../../lib/api';
-// Component Imports
-import BaseLayout from '../../layouts/BaseLayout.astro';
+// Import content function
+import { getAllLegalsWithSlugs } from '@lib/api';
 
-// Component Script:
-// You can write any JavaScript/TypeScript that you'd like here.
-// It will run during the build, but never in the browser.
-// All variables are available to use in the HTML template below.
-import ButtonNavigation from '../../components/UI/ButtonNavigation.vue';
-import Header from '../../components/UI/Header.vue';
-import Footer from '../../components/UI/Footer.vue';
+// BaseLayout Import
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+// Component Import
+import ButtonNavigation from '@components/UI/ButtonNavigation.vue';
+import Header from '@components/UI/Header.vue';
+import Footer from '@components/UI/Footer.vue';
 
 let title = 'Legal';
 const getLegals = await getAllLegalsWithSlugs();
 const pages    = getLegals.data;
 let bodyClass = 'bg-gold';
+
 ---
 
 <BaseLayout title={ title } bodyClass={bodyClass}>
 
-    <Header slot="header" link-to="/computer" link-name="Start to Compute" header-class="border-b"/>
+    <Header slot="header" link-to="/computer" link-name="Start to Compute" header-class="border-b mb-200"/>
 
     <div slot="main">
         <section class="flow-200 px-body">
-            <ButtonNavigation pages={ pages } style={ 'outline' } client:only/>
+            <ButtonNavigation pages={ pages } button-style={ 'btn--outline' } style={ 'outline' } />
         </section>
     </div>
 

@@ -1,14 +1,18 @@
 ---
-// Import content function
-import { getAllLegalsWithSlugs, getLegalBySlug } from '../../lib/api';
-// Component Imports
-import BaseLayout from '../../layouts/BaseLayout.astro';
 
-// Component Script:
-import Header from '../../components/UI/Header.vue';
-import Footer from '../../components/UI/Footer.vue';
-import LearnNav from '../../components/Learn/LearnNav.vue';
-import ContentModules from '../../components/Learn/ContentModules.vue';
+// Import content function
+import { getAllLegalsWithSlugs, getLegalBySlug } from '@lib/api';
+
+// BaseLayout Import
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+// Component Import
+import Header from '@components/UI/Header.vue';
+import Footer from '@components/UI/Footer.vue';
+
+import LearnNav from '@components/Learn/LearnNav.vue';
+import ContentModules from '@components/Learn/ContentModules.vue';
+
 
 // generate URLs for pages using the slug
 export async function getStaticPaths() {
@@ -24,25 +28,21 @@ const { slug } = Astro.request.params;
 const getLegal = await getLegalBySlug(slug);
 const page = getLegal.data[0].attributes;
 
-let title = page.title;
+let title = page.title || slug;
 let bodyClass = 'bg-gold';
----
 
+---
 
 <BaseLayout title={ title } bodyClass={bodyClass}>
 
-    <Header slot="header" link-to="/computer" link-name="start to compute" header-class="border-b"/>
-
-    <!-- <div slot="subnav">
-        <LearnNav pages={ pages }/>
-    </div> -->
+    <Header slot="header" link-to="/computer" link-name="Start to Compute" header-class="border-b mb-200"/>
 
     <div slot="main">
 
-        <ContentModules content={ page.content } client:load/>
+        <ContentModules content={ page.content } />
 
     </div>
 
-    <Footer slot="footer" footer-class="pb-700 mt-1100"/>
+    <Footer slot="footer" footer-class="mt-1100"/>
 
 </BaseLayout>

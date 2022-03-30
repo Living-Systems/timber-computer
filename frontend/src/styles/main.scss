@@ -97,6 +97,7 @@
 @import "components/components.computer";
 @import "components/components.computer-component";
 @import "components/components.results-graph";
+@import "components/components.results-details";
 @import "components/components.learn";
 
 // SCOPES
@@ -107,6 +108,7 @@
 @import "utilities/utilities.text-styles";
 // @import "utilities/utilities.accessibility"; // TODO: See if we need that
 @import "utilities/utilities.width";
+@import "utilities/utilities.animation";
 @import "utilities/utilities.glass";
 
 // TAILWIND

@@ -25,6 +25,13 @@
         "centered",
         "full"
       ]
+    },
+    "responsiveDisplay": {
+      "type": "enumeration",
+      "enum": [
+        "mobile_only",
+        "desktop_only"
+      ]
     }
   }
 }

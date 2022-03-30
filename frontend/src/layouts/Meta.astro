@@ -1,0 +1,34 @@
+---
+import { getSingleTypeOption } from '../lib/api';
+
+const { title, description, noindex, image } = Astro.props;
+
+const getOptions         = await getSingleTypeOption();
+const root            = import.meta.env.PUBLIC_SERVER_URL;
+const metaTitle       = title ? title : 'Timber Computer';
+const metaUrl         = Astro.request.canonicalURL;
+const metaDescription = description ? description : getOptions.data?.attributes?.seoDescription;
+const metaRobots      = noindex ? noindex : 'index';
+const metaImage       = image ? image : getOptions.data?.attributes?.socialImage?.data?.attributes?.formats?.large?.url;
+---
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+<title>{ title } 🌲 Timber Computer</title>
+<meta name="description" content={ metaDescription }>
+<meta name="robots" content={ metaRobots } />
+<!-- Open Graph -->
+<meta property="og:title" content={ title + '🌲 Timber Computer' } />
+<meta property="og:description" content={ metaDescription } />
+<meta property="og:url" content={ metaUrl } />
+<meta property="og:image" content={ root + metaImage } />
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content={ metaUrl }/>
+<meta name="twitter:title" content={ title + '🌲 Timber Computer' } />
+<meta name="twitter:description" content={ metaDescription } />
+<meta name="twitter:image" content={ root + metaImage } />
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-icon-180x180.png">
+<meta name="theme-color" content="#b5bdd0">

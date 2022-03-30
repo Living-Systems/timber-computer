@@ -23,3 +23,7 @@
 @include token-utilities('text', color, lg, $text-colors, true);
 @include token-utilities('bg', background-color, lg, $bg-colors, true);
 @include token-utilities('border', border-color, lg, $border-colors, true);
+
+.bg-gold {
+    background-image: none;
+}

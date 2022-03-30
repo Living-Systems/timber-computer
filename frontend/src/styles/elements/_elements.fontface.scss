@@ -29,16 +29,16 @@
 
 @font-face {
     font-family: 'Monument Grotesk';
-    src: url('../../public/fonts/ABCMonumentGrotesk-Regular.woff2') format('woff2'),
-         url('../../public/fonts/ABCMonumentGrotesk-Regular.woff') format('woff');
+    src: url('/fonts/ABCMonumentGrotesk-Regular.woff2') format('woff2'),
+         url('/fonts/ABCMonumentGrotesk-Regular.woff') format('woff');
     font-weight: 400;
     font-display: fallback; // [1]
 }
 
 @font-face {
     font-family: 'Monument Grotesk';
-    src: url('../../public/fonts/ABCMonumentGrotesk-Medium.woff2') format('woff2'),
-         url('../../public/fonts/ABCMonumentGrotesk-Medium.woff') format('woff');
+    src: url('/fonts/ABCMonumentGrotesk-Medium.woff2') format('woff2'),
+         url('/fonts/ABCMonumentGrotesk-Medium.woff') format('woff');
     font-weight: 800;
     font-display: fallback; // [1]
 }

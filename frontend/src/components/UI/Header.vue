@@ -7,5 +7,7 @@
 </template>
 
 <script setup>
+
 const props = defineProps(['linkTo', 'linkName', 'headerClass']);
+
 </script>

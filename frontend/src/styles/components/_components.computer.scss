@@ -1,5 +1,9 @@
 .computer {
-    flex-grow: 1; // stretch to full height
+    margin-top: auto;
+
+    @include respond-to(md) {
+        flex-grow: 1; // stretch to full height
+    }
 }
 
 .computer__components {
@@ -13,20 +17,46 @@
     // - element bottom margin
     // - some random spacing value to offset from bottom
     // - main header height
-    --ios-safe-area: 0;
-    max-height: calc(100vh - var(--ios-safe-area) - var(--size-200) - var(--size-900) - 3rem - var(--header-h));
+    --full-height: 100vh;
+    --bottom-padding: var(--size-800);
+    max-height: min(var(--full-height) - var(--size-200) - var(--bottom-padding) - 3rem - var(--header-h), 30rem);
 
-    // todo: Test if that works with newer ios versions
-    @supports (padding: env(safe-area-inset-bottom)) {
-        --ios-safe-area: env(safe-area-inset-bottom);
+    // Target iOS devices to deal with 100vh issues
+    @supports (-webkit-touch-callout: none) {
+        --full-height: 95vh;
+    }
+
+    // Use modern svh unit in the future
+    // https://www.w3.org/TR/css-values-4/#viewport-variants
+    @supports (height: 100svh) {
+        --full-height: 100svh;
+    }
+
+    @include respond-to(md) {
+        --bottom-padding: var(--size-900);
+        min-height: 12rem; // prevent full collapsing
+        flex-grow: 1; // stretch to full height
     }
 }
 
 .computer__nav {
-    width: calc(var(--computer-item-w) + var(--cluster-gap));
-
-    button:disabled {
-        pointer-events: none;
+    @include respond-to(md) {
+        width: calc(var(--computer-item-w) + var(--cluster-gap));
     }
 }
 
+// TODO: Pick correct colors
+// https://csshero.org/mesher/
+.computer__mesh {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -2;
+    background-image: var(--bg-gradient);
+
+    @include respond-to(md) {
+        display: none;
+    }
+}
