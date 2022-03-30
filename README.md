@@ -1,6 +1,6 @@
 # Timber Computer
 
-Timber Computer for Living Systems
+Timber Computer helps you understand the potential carbon impact of a future design by configuring a reference building.
 
 
 ## Backend
