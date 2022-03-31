@@ -60,12 +60,12 @@ let saving;
 if (params.has('ids')) {
     saving = computed(() => {
         return useStore(calculateSavings).value;
-    }) 
-} 
+    })
+}
 else {
     saving = storedStandard.get() - storedResult.get();
 };
- 
+
 
 const percentageCalculated = computed(() => {
     if(params.has('ids')) {
@@ -95,7 +95,7 @@ const flightCalculated = computed(() => {
     if(params.has('ids')) {
         return useStore(calculateFlight).value;
     } else {
-        return Math.floor(saving) / berlinParisValue;
+        return Math.floor(saving / berlinParisValue);
     }
 });
 
