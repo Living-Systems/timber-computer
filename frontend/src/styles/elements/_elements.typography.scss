@@ -15,3 +15,8 @@ h1,
 h2 {
     @include text-style('600');
 }
+
+.copyleft {
+    display: inline-block;
+    transform: rotate(180deg);
+  }

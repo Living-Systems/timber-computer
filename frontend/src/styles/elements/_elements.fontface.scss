@@ -29,16 +29,7 @@
 
 @font-face {
     font-family: 'Monument Grotesk';
-    src: url('/fonts/ABCMonumentGrotesk-Regular.woff2') format('woff2'),
-         url('/fonts/ABCMonumentGrotesk-Regular.woff') format('woff');
+    src: url('https://www.living.systems/wp-content/uploads/2020/10/ABCMonumentGrotesk-Regular.woff2') format('woff2'),
     font-weight: 400;
-    font-display: fallback; // [1]
-}
-
-@font-face {
-    font-family: 'Monument Grotesk';
-    src: url('/fonts/ABCMonumentGrotesk-Medium.woff2') format('woff2'),
-         url('/fonts/ABCMonumentGrotesk-Medium.woff') format('woff');
-    font-weight: 800;
     font-display: fallback; // [1]
 }

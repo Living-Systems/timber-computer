@@ -5,8 +5,8 @@
             class="md:flex justify-between pb-1000 border-t">
             <dl class="mt-600 md:w-1/4">
                 <dt>Team</dt>
-                <dd class="mt-400">Martin Bittmann</dd>
-                <dd>Leonard Schrage</dd>
+                <dd class="mt-400">Leonard Schrage</dd>
+                <dd>Martin Bittmann</dd>
                 <dd>Daniel Dieren</dd>
                 <dd>Julia Dorn</dd>
             </dl>
@@ -22,13 +22,13 @@
 
             <div class="mt-600 md:w-1/4">
                 <p>
-                    With Neo-Metabolism<br>
+                    With <a href="https://n-m.world" target="_blank">Neo-Metabolism</a><br>
                     Carsten Goertz<br>
                     Ghikhan Blossfeld-Lau
                 </p>
 
                 <p class="mt-400">
-                    And <a href="https://humans-machines.com">Humans & Machines</a>
+                    And <a href="https://humans-machines.com" target="_blank">Humans & Machines</a>
                 </p>
             </div>
         </section>
@@ -41,7 +41,7 @@
                 </a>
             </nav>
             <div class="my-400">
-                ©{{ year }}
+                <span class="copyleft">©</span>{{ year }}
             </div>
         </section>
 

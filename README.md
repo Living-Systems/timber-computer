@@ -65,3 +65,6 @@ nvm use `cat .nvmrc`
 nvm use $(cat .nvmrc)
 # or just install the version specified inside `.nvmrc`
 ```
+
+## License
+Unless otherwise described, the code in this repository is licensed under GNU GPLv3. Please note that some modules, extensions, fonts or code herein might be licensed otherwise. If you have any questions, don't hesitate to get in touch via [email](mailto:mail@timber.computer).
