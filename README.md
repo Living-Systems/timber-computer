@@ -1,17 +1,22 @@
 # Timber Computer
 
-Timber Computer helps you understand the potential carbon impact of a future design by configuring a reference building.
+## About
+Timber Computer is an open-source project that helps understand the potential carbon impact of a future design by configuring a reference building.
 
+The project was made possible by the [Prototype Fund](https://prototypefund.de/en/) and was funded through the [Federal Ministry of Education and Research](https://www.bmbf.de/bmbf/en/home/home_node.html) from October 2021 until February 2022.
 
-## Backend
+If you are interested in supporting the project or simply want to find out more, please reach out via [mail(at)timber.computer](mailto:mail@timber.computer). We're looking forward to hearing from you!
+
+## Set-up
+### Backend
 The backend runs on [Strapi](https://strapi.io/)
 
 
-## Frontend
+### Frontend
 The frontend is powered by [Astro](https://astro.build/), [Vue 3](https://vuejs.org/), [Nano Stores](https://github.com/nanostores/nanostores), [Tailwind CSS](https://tailwindcss.com/), [Vite](https://vitejs.dev/)
 
 
-## Usage
+### Usage
 
 First install the dependencies:
 
@@ -54,7 +59,7 @@ To install a dependency for the frontend, run
 Make sure you use the correct node.js version:
 
 ```sh
-# with bash nvm 
+# with bash nvm
 nvm use `cat .nvmrc`
 # with windows nvm
 nvm use $(cat .nvmrc)
