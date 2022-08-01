@@ -3,7 +3,7 @@
 ## About
 Timber Computer is an open-source project that helps understand the potential carbon impact of a future design by configuring a reference building.
 
-The project was made possible by the [Prototype Fund](https://prototypefund.de/en/) and was funded through the [Federal Ministry of Education and Research](https://www.bmbf.de/bmbf/en/home/home_node.html) from October 2021 until February 2022.
+The project was made possible by the [Prototype Fund](https://prototypefund.de/en/) and was funded through the [Federal Ministry of Education and Research](https://www.bmbf.de/bmbf/en/home/home_node.html) from October 2021 until February 2022. Read more on the [Prototype Fund's Demo Week 10 Website](https://demoweek.prototypefund.de/projects/27-timber-computer.html) (in German).
 
 If you are interested in supporting the project or simply want to find out more, please reach out via [mail(at)timber.computer](mailto:mail@timber.computer). We're looking forward to hearing from you!
 
@@ -67,4 +67,4 @@ nvm use $(cat .nvmrc)
 ```
 
 ## License
-Unless otherwise described, the code in this repository is licensed under GNU GPLv3. Please note that some modules, extensions, fonts or code herein might be licensed otherwise. If you have any questions, don't hesitate to get in touch via [email](mailto:mail@timber.computer).
+Unless otherwise described, the code in this repository is licensed under [GNU AGPLv3](https://www.gnu.org/licenses/agpl-3.0.en.html). Please note that some modules, extensions, fonts or code herein might be licensed otherwise. If you have any questions, don't hesitate to get in touch via [email](mailto:mail@timber.computer).
